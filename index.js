@@ -1,6 +1,15 @@
 const express = require('express')
 const app = express()
 const db = require('./config/database')
+const cors = require('cors')
+
+// models 
+
+const Header = require('./models/dataHeader')
+const Gap = require('./models/dataGap')
+const Height = require('./models/dataHeight')
+const LPI = require('./models/dataLPI')
+
 
 const stateRoutes = require('./routes/stateget')
 
@@ -10,7 +19,19 @@ db.authenticate()
     .catch(err => console.log('error:'+ err));
 
 
-const port = 5002
+app.use((req, res, next)=>{
+  res.setHeader('Access-Control-Allow-Origin','http://localhost:4200','https://landscapedatacommons.org', 'https://test.landscapedatacommons.org')
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, DELETE, PUT, PATCH')
+  res.setHeader('Access-Control-Allow-Headers','Content-Type, Authorization')
+  res.setHeader('Access-Control-Allow-Credentials', true)
+  res.setHeader('set-cookie',[
+    'same-site-cookie=bar; SameSite=None; Secure'
+  ])
+  next()
+})
+
+
+
 app.get('/', (req, res) => 
   res.send('queslake')
 )
@@ -18,6 +39,30 @@ app.get('/', (req, res) =>
 //routes 
 
 app.use('/api', stateRoutes)
+
+
+// model relationships!
+// Header.hasMany(Gap, {
+//   foreignKey: "PrimaryKey"
+// })
+// Gap.belongsTo(Header,{
+//   foreignKey: "PrimaryKey"
+// })
+
+// Header.hasMany(Height,{
+//   foreignKey: "PrimaryKey"
+// })
+// Height.belongsTo(Header,{
+//   foreignKey: "PrimaryKey"
+// })
+
+// Header.hasMany(LPI,{
+//   foreignKey: "PrimaryKey"
+// })
+// LPI.belongsTo(Header,{
+//   foreignKey: "PrimaryKey"
+// })
+
 
 
 db

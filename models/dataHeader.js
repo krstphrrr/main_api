@@ -83,7 +83,7 @@ const dataheader =  db.define('dataHeader', {
 		elevation: {
 			type: Sequelize.DOUBLE,
 			allowNull: true,
-			field: 'Elevation'
+			field: 'ELEVATION'
 		},
 		percentCoveredByEcoSite: {
 			type: Sequelize.DOUBLE,
