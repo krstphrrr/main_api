@@ -1,9 +1,9 @@
 /* jshint indent: 1 */
 const Sequelize = require('sequelize')
+
 const db = require("../config/database")
 
-
-const dataheader =  db.define('dataHeader', {
+const dataHeader = db.define('dataHeader', {
 		primaryKey: {
 			type: Sequelize.STRING,
 			allowNull: false,
@@ -103,8 +103,16 @@ const dataheader =  db.define('dataHeader', {
 	}, {
 		tableName: 'dataHeader',
 		createdAt: false,
-		updatedAt:false
+		updatedAt:false,
+		// classMethod:{
+		// 	associate: (models)=>{
+		// 	dataHeader.hasMany(models.dataGap,{
+		// 		foreignKey: 'PrimaryKey',
+
+		// 	})
+		// 	}
+		// }
 	});
 
-	module.exports = dataheader
+	module.exports = dataHeader
 

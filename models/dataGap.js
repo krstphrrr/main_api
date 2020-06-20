@@ -1,135 +1,139 @@
 /* jshint indent: 1 */
+const Sequelize = require('sequelize')
 
-module.exports = function(sequelize, DataTypes) {
-	return sequelize.define('dataGap', {
+const db = require("../config/database")
+
+const dataGap = db.define('dataGap', {
 		lineKey: {
-			type: DataTypes.STRING,
+			type: Sequelize.STRING,
 			allowNull: true,
+			primaryKey:true,
 			field: 'LineKey'
 		},
 		recKey: {
-			type: DataTypes.STRING,
+			type: Sequelize.STRING,
 			allowNull: true,
 			field: 'RecKey'
 		},
 		dateModified: {
-			type: DataTypes.DATEONLY,
+			type: Sequelize.DATEONLY,
 			allowNull: true,
 			field: 'DateModified'
 		},
 		formType: {
-			type: DataTypes.TEXT,
+			type: Sequelize.TEXT,
 			allowNull: true,
 			field: 'FormType'
 		},
 		formDate: {
-			type: DataTypes.DATEONLY,
+			type: Sequelize.DATEONLY,
 			allowNull: true,
 			field: 'FormDate'
 		},
 		observer: {
-			type: DataTypes.TEXT,
+			type: Sequelize.TEXT,
 			allowNull: true,
 			field: 'Observer'
 		},
 		recorder: {
-			type: DataTypes.TEXT,
+			type: Sequelize.TEXT,
 			allowNull: true,
 			field: 'Recorder'
 		},
 		dataEntry: {
-			type: DataTypes.TEXT,
+			type: Sequelize.TEXT,
 			allowNull: true,
 			field: 'DataEntry'
 		},
 		dataErrorChecking: {
-			type: DataTypes.TEXT,
+			type: Sequelize.TEXT,
 			allowNull: true,
 			field: 'DataErrorChecking'
 		},
 		direction: {
-			type: DataTypes.DOUBLE,
+			type: Sequelize.DOUBLE,
 			allowNull: true,
 			field: 'Direction'
 		},
 		measure: {
-			type: DataTypes.DOUBLE,
+			type: Sequelize.DOUBLE,
 			allowNull: true,
 			field: 'Measure'
 		},
 		lineLengthAmount: {
-			type: DataTypes.DOUBLE,
+			type: Sequelize.DOUBLE,
 			allowNull: true,
 			field: 'LineLengthAmount'
 		},
 		gapMin: {
-			type: DataTypes.DOUBLE,
+			type: Sequelize.DOUBLE,
 			allowNull: true,
 			field: 'GapMin'
 		},
 		gapData: {
-			type: DataTypes.DOUBLE,
+			type: Sequelize.DOUBLE,
 			allowNull: true,
 			field: 'GapData'
 		},
 		perennialsCanopy: {
-			type: DataTypes.DOUBLE,
+			type: Sequelize.DOUBLE,
 			allowNull: true,
 			field: 'PerennialsCanopy'
 		},
 		annualGrassesCanopy: {
-			type: DataTypes.DOUBLE,
+			type: Sequelize.DOUBLE,
 			allowNull: true,
 			field: 'AnnualGrassesCanopy'
 		},
 		annualForbsCanopy: {
-			type: DataTypes.DOUBLE,
+			type: Sequelize.DOUBLE,
 			allowNull: true,
 			field: 'AnnualForbsCanopy'
 		},
 		otherCanopy: {
-			type: DataTypes.DOUBLE,
+			type: Sequelize.DOUBLE,
 			allowNull: true,
 			field: 'OtherCanopy'
 		},
 		notes: {
-			type: DataTypes.TEXT,
+			type: Sequelize.TEXT,
 			allowNull: true,
 			field: 'Notes'
 		},
 		noCanopyGaps: {
-			type: DataTypes.DOUBLE,
+			type: Sequelize.DOUBLE,
 			allowNull: true,
 			field: 'NoCanopyGaps'
 		},
 		noBasalGaps: {
-			type: DataTypes.DOUBLE,
+			type: Sequelize.DOUBLE,
 			allowNull: true,
 			field: 'NoBasalGaps'
 		},
 		perennialsBasal: {
-			type: DataTypes.DOUBLE,
+			type: Sequelize.DOUBLE,
 			allowNull: true,
 			field: 'PerennialsBasal'
 		},
 		annualGrassesBasal: {
-			type: DataTypes.DOUBLE,
+			type: Sequelize.DOUBLE,
 			allowNull: true,
 			field: 'AnnualGrassesBasal'
 		},
 		annualForbsBasal: {
-			type: DataTypes.DOUBLE,
+			type: Sequelize.DOUBLE,
 			allowNull: true,
 			field: 'AnnualForbsBasal'
 		},
 		otherBasal: {
-			type: DataTypes.DOUBLE,
+			type: Sequelize.DOUBLE,
 			allowNull: true,
 			field: 'OtherBasal'
 		},
 		primaryKey: {
-			type: DataTypes.TEXT,
+			type: Sequelize.TEXT,
 			allowNull: true,
+			primaryKey: true,
 			references: {
 				model: 'dataHeader',
 				key: 'PrimaryKey'
@@ -137,56 +141,61 @@ module.exports = function(sequelize, DataTypes) {
 			field: 'PrimaryKey'
 		},
 		dbKey: {
-			type: DataTypes.TEXT,
+			type: Sequelize.TEXT,
 			allowNull: true,
 			field: 'DBKey'
 		},
 		seqNo: {
-			type: DataTypes.TEXT,
+			type: Sequelize.TEXT,
 			allowNull: true,
 			field: 'SeqNo'
 		},
 		recType: {
-			type: DataTypes.TEXT,
+			type: Sequelize.TEXT,
 			allowNull: true,
 			field: 'RecType'
 		},
 		gapStart: {
-			type: DataTypes.DOUBLE,
+			type: Sequelize.DOUBLE,
 			allowNull: true,
 			field: 'GapStart'
 		},
 		gapEnd: {
-			type: DataTypes.DOUBLE,
+			type: Sequelize.DOUBLE,
 			allowNull: true,
 			field: 'GapEnd'
 		},
 		gap: {
-			type: DataTypes.DOUBLE,
+			type: Sequelize.DOUBLE,
 			allowNull: true,
 			field: 'Gap'
 		},
 		source: {
-			type: DataTypes.TEXT,
+			type: Sequelize.TEXT,
 			allowNull: true,
 			field: 'source'
 		},
 		state: {
-			type: DataTypes.TEXT,
+			type: Sequelize.TEXT,
 			allowNull: true,
 			field: 'State'
 		},
 		plotKey: {
-			type: DataTypes.TEXT,
+			type: Sequelize.TEXT,
 			allowNull: true,
 			field: 'PlotKey'
 		},
 		dateLoadedInDb: {
-			type: DataTypes.DATEONLY,
+			type: Sequelize.DATEONLY,
 			allowNull: true,
 			field: 'DateLoadedInDb'
 		}
 	}, {
-		tableName: 'dataGap'
+		tableName: 'dataGap',
+		// associate: (models)=>{
+		// 	dataGap.belongsTo(header,{
+		// 		foreignKey:'PrimaryKey',
+		// 	})
+		// }
 	});
-};
+module.exports = dataGap

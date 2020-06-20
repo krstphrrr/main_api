@@ -1,99 +1,101 @@
 /* jshint indent: 1 */
+const Sequelize = require('sequelize')
 
-module.exports = function(sequelize, DataTypes) {
-	return sequelize.define('dataSpeciesInventory', {
+const db = require("../config/database")
+
+const dataSpeciesInventory = db.define('dataSpeciesInventory', {
 		lineKey: {
-			type: DataTypes.STRING,
+			type: Sequelize.STRING,
 			allowNull: true,
 			field: 'LineKey'
 		},
 		recKey: {
-			type: DataTypes.STRING,
+			type: Sequelize.STRING,
 			allowNull: true,
 			field: 'RecKey'
 		},
 		dateModified: {
-			type: DataTypes.DATEONLY,
+			type: Sequelize.DATEONLY,
 			allowNull: true,
 			field: 'DateModified'
 		},
 		formType: {
-			type: DataTypes.TEXT,
+			type: Sequelize.TEXT,
 			allowNull: true,
 			field: 'FormType'
 		},
 		formDate: {
-			type: DataTypes.DATEONLY,
+			type: Sequelize.DATEONLY,
 			allowNull: true,
 			field: 'FormDate'
 		},
 		observer: {
-			type: DataTypes.TEXT,
+			type: Sequelize.TEXT,
 			allowNull: true,
 			field: 'Observer'
 		},
 		recorder: {
-			type: DataTypes.TEXT,
+			type: Sequelize.TEXT,
 			allowNull: true,
 			field: 'Recorder'
 		},
 		dataEntry: {
-			type: DataTypes.TEXT,
+			type: Sequelize.TEXT,
 			allowNull: true,
 			field: 'DataEntry'
 		},
 		dataErrorChecking: {
-			type: DataTypes.TEXT,
+			type: Sequelize.TEXT,
 			allowNull: true,
 			field: 'DataErrorChecking'
 		},
 		specRichMethod: {
-			type: DataTypes.DOUBLE,
+			type: Sequelize.DOUBLE,
 			allowNull: true,
 			field: 'SpecRichMethod'
 		},
 		specRichMeasure: {
-			type: DataTypes.DOUBLE,
+			type: Sequelize.DOUBLE,
 			allowNull: true,
 			field: 'SpecRichMeasure'
 		},
 		specRichNbrSubPlots: {
-			type: DataTypes.DOUBLE,
+			type: Sequelize.DOUBLE,
 			allowNull: true,
 			field: 'SpecRichNbrSubPlots'
 		},
 		specRich1Container: {
-			type: DataTypes.DOUBLE,
+			type: Sequelize.DOUBLE,
 			allowNull: true,
 			field: 'SpecRich1Container'
 		},
 		specRich1Shape: {
-			type: DataTypes.DOUBLE,
+			type: Sequelize.DOUBLE,
 			allowNull: true,
 			field: 'SpecRich1Shape'
 		},
 		specRich1Dim1: {
-			type: DataTypes.DOUBLE,
+			type: Sequelize.DOUBLE,
 			allowNull: true,
 			field: 'SpecRich1Dim1'
 		},
 		specRich1Dim2: {
-			type: DataTypes.DOUBLE,
+			type: Sequelize.DOUBLE,
 			allowNull: true,
 			field: 'SpecRich1Dim2'
 		},
 		specRich1Area: {
-			type: DataTypes.DOUBLE,
+			type: Sequelize.DOUBLE,
 			allowNull: true,
 			field: 'SpecRich1Area'
 		},
 		notes: {
-			type: DataTypes.TEXT,
+			type: Sequelize.TEXT,
 			allowNull: true,
 			field: 'Notes'
 		},
 		primaryKey: {
-			type: DataTypes.TEXT,
+			type: Sequelize.TEXT,
 			allowNull: true,
 			references: {
 				model: 'dataHeader',
@@ -102,41 +104,41 @@ module.exports = function(sequelize, DataTypes) {
 			field: 'PrimaryKey'
 		},
 		dbKey: {
-			type: DataTypes.TEXT,
+			type: Sequelize.TEXT,
 			allowNull: true,
 			field: 'DBKey'
 		},
 		species: {
-			type: DataTypes.TEXT,
+			type: Sequelize.TEXT,
 			allowNull: true,
 			field: 'Species'
 		},
 		source: {
-			type: DataTypes.TEXT,
+			type: Sequelize.TEXT,
 			allowNull: true,
 			field: 'source'
 		},
 		speciesCount: {
-			type: DataTypes.STRING,
+			type: Sequelize.STRING,
 			allowNull: true,
 			field: 'SpeciesCount'
 		},
 		density: {
-			type: DataTypes.DOUBLE,
+			type: Sequelize.DOUBLE,
 			allowNull: true,
 			field: 'Density'
 		},
 		plotkey: {
-			type: DataTypes.TEXT,
+			type: Sequelize.TEXT,
 			allowNull: true,
 			field: 'Plotkey'
 		},
 		dateLoadedInDb: {
-			type: DataTypes.DATEONLY,
+			type: Sequelize.DATEONLY,
 			allowNull: true,
 			field: 'DateLoadedInDb'
 		}
 	}, {
 		tableName: 'dataSpeciesInventory'
 	});
-};
+module.exports = dataSpeciesInventory

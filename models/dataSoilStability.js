@@ -1,69 +1,71 @@
 /* jshint indent: 1 */
+const Sequelize = require('sequelize')
 
-module.exports = function(sequelize, DataTypes) {
-	return sequelize.define('dataSoilStability', {
+const db = require("../config/database")
+
+const dataSoilStability = db.define('dataSoilStability', {
 		plotKey: {
-			type: DataTypes.STRING,
+			type: Sequelize.STRING,
 			allowNull: true,
 			field: 'PlotKey'
 		},
 		recKey: {
-			type: DataTypes.STRING,
+			type: Sequelize.STRING,
 			allowNull: true,
 			field: 'RecKey'
 		},
 		dateModified: {
-			type: DataTypes.DATEONLY,
+			type: Sequelize.DATEONLY,
 			allowNull: true,
 			field: 'DateModified'
 		},
 		formType: {
-			type: DataTypes.TEXT,
+			type: Sequelize.TEXT,
 			allowNull: true,
 			field: 'FormType'
 		},
 		formDate: {
-			type: DataTypes.DATEONLY,
+			type: Sequelize.DATEONLY,
 			allowNull: true,
 			field: 'FormDate'
 		},
 		lineKey: {
-			type: DataTypes.STRING,
+			type: Sequelize.STRING,
 			allowNull: true,
 			field: 'LineKey'
 		},
 		observer: {
-			type: DataTypes.TEXT,
+			type: Sequelize.TEXT,
 			allowNull: true,
 			field: 'Observer'
 		},
 		recorder: {
-			type: DataTypes.TEXT,
+			type: Sequelize.TEXT,
 			allowNull: true,
 			field: 'Recorder'
 		},
 		dataEntry: {
-			type: DataTypes.TEXT,
+			type: Sequelize.TEXT,
 			allowNull: true,
 			field: 'DataEntry'
 		},
 		dataErrorChecking: {
-			type: DataTypes.TEXT,
+			type: Sequelize.TEXT,
 			allowNull: true,
 			field: 'DataErrorChecking'
 		},
 		soilStabSubSurface: {
-			type: DataTypes.DOUBLE,
+			type: Sequelize.DOUBLE,
 			allowNull: true,
 			field: 'SoilStabSubSurface'
 		},
 		notes: {
-			type: DataTypes.TEXT,
+			type: Sequelize.TEXT,
 			allowNull: true,
 			field: 'Notes'
 		},
 		primaryKey: {
-			type: DataTypes.TEXT,
+			type: Sequelize.TEXT,
 			allowNull: true,
 			references: {
 				model: 'dataHeader',
@@ -72,51 +74,51 @@ module.exports = function(sequelize, DataTypes) {
 			field: 'PrimaryKey'
 		},
 		dbKey: {
-			type: DataTypes.TEXT,
+			type: Sequelize.TEXT,
 			allowNull: true,
 			field: 'DBKey'
 		},
 		position: {
-			type: DataTypes.DOUBLE,
+			type: Sequelize.DOUBLE,
 			allowNull: true,
 			field: 'Position'
 		},
 		line: {
-			type: DataTypes.STRING,
+			type: Sequelize.STRING,
 			allowNull: true,
 			field: 'Line'
 		},
 		pos: {
-			type: DataTypes.STRING,
+			type: Sequelize.STRING,
 			allowNull: true,
 			field: 'Pos'
 		},
 		veg: {
-			type: DataTypes.TEXT,
+			type: Sequelize.TEXT,
 			allowNull: true,
 			field: 'Veg'
 		},
 		rating: {
-			type: DataTypes.DOUBLE,
+			type: Sequelize.DOUBLE,
 			allowNull: true,
 			field: 'Rating'
 		},
 		hydro: {
-			type: DataTypes.DOUBLE,
+			type: Sequelize.DOUBLE,
 			allowNull: true,
 			field: 'Hydro'
 		},
 		source: {
-			type: DataTypes.TEXT,
+			type: Sequelize.TEXT,
 			allowNull: true,
 			field: 'source'
 		},
 		dateLoadedInDb: {
-			type: DataTypes.DATEONLY,
+			type: Sequelize.DATEONLY,
 			allowNull: true,
 			field: 'DateLoadedInDb'
 		}
 	}, {
 		tableName: 'dataSoilStability'
 	});
-};
+module.exports = dataSoilStability

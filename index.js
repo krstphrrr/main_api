@@ -1,18 +1,20 @@
 const express = require('express')
 const app = express()
 const db = require('./config/database')
+const Sequelize = require("sequelize");
 const cors = require('cors')
-
-// models 
-
 const Header = require('./models/dataHeader')
 const Gap = require('./models/dataGap')
-const Height = require('./models/dataHeight')
-const LPI = require('./models/dataLPI')
-
-
 const stateRoutes = require('./routes/stateget')
 
+Header.hasMany(Gap,{
+  foreignKey:"PrimaryKey",
+  as:'gap' 
+})
+Gap.belongsTo(Header,{
+  foreignKey:"PrimaryKey",
+  // as:'gap'
+})
 
 db.authenticate()
     .then(() => console.log('database connected...'))
@@ -40,17 +42,30 @@ app.get('/', (req, res) =>
 
 app.use('/api', stateRoutes)
 
-
+// Gap.associate = (models) => {
+//   Gap.belongsTo(models.dataHeader, {foreignKey:'PrimaryKey'})
+// }
 // model relationships!
+
+
 // Header.hasMany(Gap, {
-//   foreignKey: "PrimaryKey"
+//   foreignKey: "PrimaryKey",
+
 // })
 // Gap.belongsTo(Header,{
-//   foreignKey: "PrimaryKey"
+//   foreignKey:{
+//     name:'PrimaryKey',
+//     allowNull:false
+//   }})
+// Header.hasMany(Gap,{
+//   as:'gap',
+//   foreignKey:{
+//     name:'PrimaryKey', 
+//     allowNull:false
+//   }
 // })
-
 // Header.hasMany(Height,{
-//   foreignKey: "PrimaryKey"
+//   // foreignKey: "PrimaryKey"
 // })
 // Height.belongsTo(Header,{
 //   foreignKey: "PrimaryKey"
