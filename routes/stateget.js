@@ -7,7 +7,7 @@ const router = express.Router()
 
 
 // GET /api/plots
-router.get('/state', stateController.getState)
+router.get('/project/:source', stateController.getState)
 
 
 

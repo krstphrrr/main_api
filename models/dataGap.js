@@ -178,12 +178,12 @@ const dataGap = db.define('dataGap', {
 		state: {
 			type: Sequelize.TEXT,
 			allowNull: true,
-			field: 'State'
+			field: 'STATE'
 		},
 		plotKey: {
 			type: Sequelize.TEXT,
 			allowNull: true,
-			field: 'PlotKey'
+			field: 'PLOTKEY'
 		},
 		dateLoadedInDb: {
 			type: Sequelize.DATEONLY,
@@ -192,10 +192,7 @@ const dataGap = db.define('dataGap', {
 		}
 	}, {
 		tableName: 'dataGap',
-		// associate: (models)=>{
-		// 	dataGap.belongsTo(header,{
-		// 		foreignKey:'PrimaryKey',
-		// 	})
-		// }
+		createdAt: false,
+		updatedAt:false
 	});
 module.exports = dataGap

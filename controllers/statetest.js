@@ -1,32 +1,37 @@
 
 const Header = require('../models/dataHeader')
 const Gap = require('../models/dataGap')
+const Height = require('../models/dataHeight')
 
 
 exports.getState = (req, res, next) =>{
   // console.log(req.query)
+  let whichState = req.params
   let whichPK = req.query
   let qarray = []
   for (const key in req.query){
     qarray.push(`${key}`)
   }
-  // console.log(Header.)
-  // Header.findAll({where:whichPK})
-  //   .then(result=>{console.log(result)})
-  // console.log(whichPK)
+  
   Header.findAll({
-    // where: whichPK,
+    where: whichState,
     include: [
       {
-        model: Gap,
-        as:'gap',
-        attributes: qarray,
-        where: whichPK,
-        nested:true
+        model: Height,
+        as:'height',
+        // attributes: qarray,
+        // where: whichPK,
+        // nested:false
+      },
+      {
+        model:Gap,
+        as:"gap"
       }
     ],
     // attributes:['State'],
-    limit:5
+    limit:1,
+    raw:true,
+    // nest:true
   })
   // console.log(Object.keys(header))
   .then( r => {

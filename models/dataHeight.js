@@ -7,6 +7,7 @@ const dataHeight = db.define('dataHeight', {
 		primaryKey: {
 			type: Sequelize.TEXT,
 			allowNull: true,
+			primaryKey: true,
 			references: {
 				model: 'dataHeader',
 				key: 'PrimaryKey'
@@ -159,6 +160,8 @@ const dataHeight = db.define('dataHeight', {
 			field: 'DateLoadedInDb'
 		}
 	}, {
-		tableName: 'dataHeight'
+		tableName: 'dataHeight',
+		createdAt: false,
+		updatedAt: false
 	});
 module.exports = dataHeight
