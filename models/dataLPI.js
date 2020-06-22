@@ -97,6 +97,7 @@ const dataLPI = db.define('dataLpi', {
 		primaryKey: {
 			type: Sequelize.TEXT,
 			allowNull: true,
+			primaryKey:true,
 			references: {
 				model: 'dataHeader',
 				key: 'PrimaryKey'
@@ -144,6 +145,8 @@ const dataLPI = db.define('dataLpi', {
 			field: 'source'
 		}
 	}, {
-		tableName: 'dataLPI'
+		tableName: 'dataLPI',
+		createdAt: false,
+		updatedAt:false
 	});
 module.exports = dataLPI

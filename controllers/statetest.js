@@ -2,16 +2,15 @@
 const Header = require('../models/dataHeader')
 const Gap = require('../models/dataGap')
 const Height = require('../models/dataHeight')
+const LPI = require('../models/dataLPI')
+const SoilStab = require('../models/dataSoilStability')
+const SpecInv = require('../models/dataSpeciesInventory')
 
 
 exports.getState = (req, res, next) =>{
-  // console.log(req.query)
   let whichState = req.params
   let whichPK = req.query
   let qarray = []
-  for (const key in req.query){
-    qarray.push(`${key}`)
-  }
   
   Header.findAll({
     where: whichState,
@@ -19,17 +18,31 @@ exports.getState = (req, res, next) =>{
       {
         model: Height,
         as:'height',
-        // attributes: qarray,
-        // where: whichPK,
-        // nested:false
+        limit: 1
       },
       {
         model:Gap,
-        as:"gap"
-      }
+        as:"gap",
+        limit:1
+      },
+      {
+        model:LPI,
+        as:"lpi",
+        limit:1
+      },
+      {
+        model:SoilStab,
+        as:"soilstab",
+        // limit:1
+      },
+      {
+        model:SpecInv,
+        as:"speciesinv",
+        // limit:1
+      },
     ],
     // attributes:['State'],
-    limit:1,
+    limit:5,
     raw:true,
     // nest:true
   })

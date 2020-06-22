@@ -1,28 +1,58 @@
 const express = require('express')
 const app = express()
 const db = require('./config/database')
-
 const cors = require('cors')
+//routes
+const stateRoutes = require('./routes/stateget')
+
+//models
 const Header = require('./models/dataHeader')
 const Gap = require('./models/dataGap')
-const stateRoutes = require('./routes/stateget')
 const Height = require('./models/dataHeight')
+const LPI = require('./models/dataLPI')
+const SoilStab = require('./models/dataSoilStability')
+const SpecInv = require('./models/dataSpeciesInventory')
 
+
+// associating header to gap through primarykey
 Header.hasMany(Gap,{
   foreignKey:"PrimaryKey",
   as:'gap' 
 })
 Gap.belongsTo(Header,{
   foreignKey:"PrimaryKey",
-
 })
-
+// associating header to height 
 Height.belongsTo(Header,{
   foreignKey:"PrimaryKey",
 })
 Header.hasMany(Height,{
   foreignKey:"PrimaryKey",
   as:"height"
+})
+//associating header to lpi 
+Header.hasMany(LPI, {
+  foreignKey: "PrimaryKey",
+  as: "lpi"
+})
+LPI.belongsTo(Header, {
+  foreignKey:"PrimaryKey"
+})
+// associating header to soil stability 
+Header.hasMany(SoilStab, {
+  foreignKey:"PrimaryKey",
+  as: "soilstab"
+})
+SoilStab.belongsTo(Header, {
+  foreignKey:"PrimaryKey"
+})
+// associatiung header to species inventory
+Header.hasMany(SpecInv,{
+  foreignKey:"PrimaryKey",
+  as: "speciesinv"
+})
+SpecInv.belongsTo(Header,{
+  foreignKey:"PrimaryKey"
 })
 
 db.authenticate()

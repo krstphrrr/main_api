@@ -67,6 +67,7 @@ const dataSoilStability = db.define('dataSoilStability', {
 		primaryKey: {
 			type: Sequelize.TEXT,
 			allowNull: true,
+			primaryKey:true,
 			references: {
 				model: 'dataHeader',
 				key: 'PrimaryKey'
@@ -119,6 +120,8 @@ const dataSoilStability = db.define('dataSoilStability', {
 			field: 'DateLoadedInDb'
 		}
 	}, {
-		tableName: 'dataSoilStability'
+		tableName: 'dataSoilStability',
+		createdAt: false,
+		updatedAt:false
 	});
 module.exports = dataSoilStability

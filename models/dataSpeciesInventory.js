@@ -97,6 +97,7 @@ const dataSpeciesInventory = db.define('dataSpeciesInventory', {
 		primaryKey: {
 			type: Sequelize.TEXT,
 			allowNull: true,
+			primaryKey:true,
 			references: {
 				model: 'dataHeader',
 				key: 'PrimaryKey'
@@ -139,6 +140,8 @@ const dataSpeciesInventory = db.define('dataSpeciesInventory', {
 			field: 'DateLoadedInDb'
 		}
 	}, {
-		tableName: 'dataSpeciesInventory'
+		tableName: 'dataSpeciesInventory',
+		createdAt: false,
+		updatedAt:false
 	});
 module.exports = dataSpeciesInventory
