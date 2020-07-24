@@ -4,7 +4,7 @@ const Sequelize = require('sequelize')
 const db = require("../config/database")
 
 const dataHeight = db.define('dataHeight', {
-		primaryKey: {
+	PrimaryKey: {
 			type: Sequelize.TEXT,
 			allowNull: true,
 			primaryKey: true,
@@ -14,37 +14,37 @@ const dataHeight = db.define('dataHeight', {
 			},
 			field: 'PrimaryKey'
 		},
-		dbKey: {
+		DBKey: {
 			type: Sequelize.TEXT,
 			allowNull: true,
 			field: 'DBKey'
 		},
-		pointLoc: {
+		PointLoc: {
 			type: Sequelize.DOUBLE,
 			allowNull: true,
 			field: 'PointLoc'
 		},
-		pointNbr: {
+		PointNbr: {
 			type: Sequelize.DOUBLE,
 			allowNull: true,
 			field: 'PointNbr'
 		},
-		recKey: {
+		RecKey: {
 			type: Sequelize.STRING,
 			allowNull: true,
 			field: 'RecKey'
 		},
-		height: {
+		Height: {
 			type: Sequelize.DOUBLE,
 			allowNull: true,
 			field: 'Height'
 		},
-		species: {
+		Species: {
 			type: Sequelize.TEXT,
 			allowNull: true,
 			field: 'Species'
 		},
-		chkbox: {
+		Chkbox: {
 			type: Sequelize.DOUBLE,
 			allowNull: true,
 			field: 'Chkbox'
@@ -54,92 +54,92 @@ const dataHeight = db.define('dataHeight', {
 			allowNull: true,
 			field: 'type'
 		},
-		growthHabitMeasured: {
+		GrowthHabit_measured: {
 			type: Sequelize.TEXT,
 			allowNull: true,
 			field: 'GrowthHabit_measured'
 		},
-		lineKey: {
+		LineKey: {
 			type: Sequelize.STRING,
 			allowNull: true,
 			field: 'LineKey'
 		},
-		dateModified: {
+		DateModified: {
 			type: Sequelize.DATEONLY,
 			allowNull: true,
 			field: 'DateModified'
 		},
-		formType: {
+		FormType: {
 			type: Sequelize.TEXT,
 			allowNull: true,
 			field: 'FormType'
 		},
-		formDate: {
+		FormDate: {
 			type: Sequelize.DATEONLY,
 			allowNull: true,
 			field: 'FormDate'
 		},
-		observer: {
+		Observer: {
 			type: Sequelize.TEXT,
 			allowNull: true,
 			field: 'Observer'
 		},
-		recorder: {
+		Recorder: {
 			type: Sequelize.TEXT,
 			allowNull: true,
 			field: 'Recorder'
 		},
-		dataEntry: {
+		DataEntry: {
 			type: Sequelize.TEXT,
 			allowNull: true,
 			field: 'DataEntry'
 		},
-		dataErrorChecking: {
+		DataErrorChecking: {
 			type: Sequelize.TEXT,
 			allowNull: true,
 			field: 'DataErrorChecking'
 		},
-		direction: {
+		Direction: {
 			type: Sequelize.STRING,
 			allowNull: true,
 			field: 'Direction'
 		},
-		measure: {
+		Measure: {
 			type: Sequelize.DOUBLE,
 			allowNull: true,
 			field: 'Measure'
 		},
-		lineLengthAmount: {
+		LineLengthAmount: {
 			type: Sequelize.DOUBLE,
 			allowNull: true,
 			field: 'LineLengthAmount'
 		},
-		spacingIntervalAmount: {
+		SpacingIntervalAmount: {
 			type: Sequelize.DOUBLE,
 			allowNull: true,
 			field: 'SpacingIntervalAmount'
 		},
-		spacingType: {
+		SpacingType: {
 			type: Sequelize.TEXT,
 			allowNull: true,
 			field: 'SpacingType'
 		},
-		heightOption: {
+		HeightOption: {
 			type: Sequelize.TEXT,
 			allowNull: true,
 			field: 'HeightOption'
 		},
-		heightUom: {
+		HeightUOM: {
 			type: Sequelize.TEXT,
 			allowNull: true,
 			field: 'HeightUOM'
 		},
-		showCheckbox: {
+		ShowCheckbox: {
 			type: Sequelize.DOUBLE,
 			allowNull: true,
 			field: 'ShowCheckbox'
 		},
-		checkboxLabel: {
+		CheckboxLabel: {
 			type: Sequelize.TEXT,
 			allowNull: true,
 			field: 'CheckboxLabel'
@@ -149,12 +149,12 @@ const dataHeight = db.define('dataHeight', {
 			allowNull: true,
 			field: 'source'
 		},
-		uom: {
+		UOM: {
 			type: Sequelize.TEXT,
 			allowNull: true,
 			field: 'UOM'
 		},
-		dateLoadedInDb: {
+		DateLoadedInDb: {
 			type: Sequelize.DATEONLY,
 			allowNull: true,
 			field: 'DateLoadedInDb'

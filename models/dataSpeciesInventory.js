@@ -4,97 +4,97 @@ const Sequelize = require('sequelize')
 const db = require("../config/database")
 
 const dataSpeciesInventory = db.define('dataSpeciesInventory', {
-		lineKey: {
+	LineKey: {
 			type: Sequelize.STRING,
 			allowNull: true,
 			field: 'LineKey'
 		},
-		recKey: {
+		RecKey: {
 			type: Sequelize.STRING,
 			allowNull: true,
 			field: 'RecKey'
 		},
-		dateModified: {
+		DateModified: {
 			type: Sequelize.DATEONLY,
 			allowNull: true,
 			field: 'DateModified'
 		},
-		formType: {
+		FormType: {
 			type: Sequelize.TEXT,
 			allowNull: true,
 			field: 'FormType'
 		},
-		formDate: {
+		FormDate: {
 			type: Sequelize.DATEONLY,
 			allowNull: true,
 			field: 'FormDate'
 		},
-		observer: {
+		Observer: {
 			type: Sequelize.TEXT,
 			allowNull: true,
 			field: 'Observer'
 		},
-		recorder: {
+		Recorder: {
 			type: Sequelize.TEXT,
 			allowNull: true,
 			field: 'Recorder'
 		},
-		dataEntry: {
+		DataEntry: {
 			type: Sequelize.TEXT,
 			allowNull: true,
 			field: 'DataEntry'
 		},
-		dataErrorChecking: {
+		DataErrorChecking: {
 			type: Sequelize.TEXT,
 			allowNull: true,
 			field: 'DataErrorChecking'
 		},
-		specRichMethod: {
+		SpecRichMethod: {
 			type: Sequelize.DOUBLE,
 			allowNull: true,
 			field: 'SpecRichMethod'
 		},
-		specRichMeasure: {
+		SpecRichMeasure: {
 			type: Sequelize.DOUBLE,
 			allowNull: true,
 			field: 'SpecRichMeasure'
 		},
-		specRichNbrSubPlots: {
+		SpecRichNbrSubPlots: {
 			type: Sequelize.DOUBLE,
 			allowNull: true,
 			field: 'SpecRichNbrSubPlots'
 		},
-		specRich1Container: {
+		SpecRich1Container: {
 			type: Sequelize.DOUBLE,
 			allowNull: true,
 			field: 'SpecRich1Container'
 		},
-		specRich1Shape: {
+		SpecRich1Shape: {
 			type: Sequelize.DOUBLE,
 			allowNull: true,
 			field: 'SpecRich1Shape'
 		},
-		specRich1Dim1: {
+		SpecRich1Dim1: {
 			type: Sequelize.DOUBLE,
 			allowNull: true,
 			field: 'SpecRich1Dim1'
 		},
-		specRich1Dim2: {
+		SpecRich1Dim2: {
 			type: Sequelize.DOUBLE,
 			allowNull: true,
 			field: 'SpecRich1Dim2'
 		},
-		specRich1Area: {
+		SpecRich1Area: {
 			type: Sequelize.DOUBLE,
 			allowNull: true,
 			field: 'SpecRich1Area'
 		},
-		notes: {
+		Notes: {
 			type: Sequelize.TEXT,
 			allowNull: true,
 			field: 'Notes'
 		},
-		primaryKey: {
+		PrimaryKey: {
 			type: Sequelize.TEXT,
 			allowNull: true,
 			primaryKey:true,
@@ -104,12 +104,12 @@ const dataSpeciesInventory = db.define('dataSpeciesInventory', {
 			},
 			field: 'PrimaryKey'
 		},
-		dbKey: {
+		DBKey: {
 			type: Sequelize.TEXT,
 			allowNull: true,
 			field: 'DBKey'
 		},
-		species: {
+		Species: {
 			type: Sequelize.TEXT,
 			allowNull: true,
 			field: 'Species'
@@ -119,22 +119,22 @@ const dataSpeciesInventory = db.define('dataSpeciesInventory', {
 			allowNull: true,
 			field: 'source'
 		},
-		speciesCount: {
+		SpeciesCount: {
 			type: Sequelize.STRING,
 			allowNull: true,
 			field: 'SpeciesCount'
 		},
-		density: {
+		Density: {
 			type: Sequelize.DOUBLE,
 			allowNull: true,
 			field: 'Density'
 		},
-		plotkey: {
+		Plotkey: {
 			type: Sequelize.TEXT,
 			allowNull: true,
 			field: 'Plotkey'
 		},
-		dateLoadedInDb: {
+		DateLoadedInDb: {
 			type: Sequelize.DATEONLY,
 			allowNull: true,
 			field: 'DateLoadedInDb'

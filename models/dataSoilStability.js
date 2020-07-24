@@ -4,67 +4,67 @@ const Sequelize = require('sequelize')
 const db = require("../config/database")
 
 const dataSoilStability = db.define('dataSoilStability', {
-		plotKey: {
+	PlotKey: {
 			type: Sequelize.STRING,
 			allowNull: true,
 			field: 'PlotKey'
 		},
-		recKey: {
+		RecKey: {
 			type: Sequelize.STRING,
 			allowNull: true,
 			field: 'RecKey'
 		},
-		dateModified: {
+		DateModified: {
 			type: Sequelize.DATEONLY,
 			allowNull: true,
 			field: 'DateModified'
 		},
-		formType: {
+		FormType: {
 			type: Sequelize.TEXT,
 			allowNull: true,
 			field: 'FormType'
 		},
-		formDate: {
+		FormDate: {
 			type: Sequelize.DATEONLY,
 			allowNull: true,
 			field: 'FormDate'
 		},
-		lineKey: {
+		LineKey: {
 			type: Sequelize.STRING,
 			allowNull: true,
 			field: 'LineKey'
 		},
-		observer: {
+		Observer: {
 			type: Sequelize.TEXT,
 			allowNull: true,
 			field: 'Observer'
 		},
-		recorder: {
+		Recorder: {
 			type: Sequelize.TEXT,
 			allowNull: true,
 			field: 'Recorder'
 		},
-		dataEntry: {
+		DataEntry: {
 			type: Sequelize.TEXT,
 			allowNull: true,
 			field: 'DataEntry'
 		},
-		dataErrorChecking: {
+		DataErrorChecking: {
 			type: Sequelize.TEXT,
 			allowNull: true,
 			field: 'DataErrorChecking'
 		},
-		soilStabSubSurface: {
+		SoilStabSubSurface: {
 			type: Sequelize.DOUBLE,
 			allowNull: true,
 			field: 'SoilStabSubSurface'
 		},
-		notes: {
+		Notes: {
 			type: Sequelize.TEXT,
 			allowNull: true,
 			field: 'Notes'
 		},
-		primaryKey: {
+		PrimaryKey: {
 			type: Sequelize.TEXT,
 			allowNull: true,
 			primaryKey:true,
@@ -74,37 +74,37 @@ const dataSoilStability = db.define('dataSoilStability', {
 			},
 			field: 'PrimaryKey'
 		},
-		dbKey: {
+		DBKey: {
 			type: Sequelize.TEXT,
 			allowNull: true,
 			field: 'DBKey'
 		},
-		position: {
+		Position: {
 			type: Sequelize.DOUBLE,
 			allowNull: true,
 			field: 'Position'
 		},
-		line: {
+		Line: {
 			type: Sequelize.STRING,
 			allowNull: true,
 			field: 'Line'
 		},
-		pos: {
+		Pos: {
 			type: Sequelize.STRING,
 			allowNull: true,
 			field: 'Pos'
 		},
-		veg: {
+		Veg: {
 			type: Sequelize.TEXT,
 			allowNull: true,
 			field: 'Veg'
 		},
-		rating: {
+		Rating: {
 			type: Sequelize.DOUBLE,
 			allowNull: true,
 			field: 'Rating'
 		},
-		hydro: {
+		Hydro: {
 			type: Sequelize.DOUBLE,
 			allowNull: true,
 			field: 'Hydro'
@@ -114,7 +114,7 @@ const dataSoilStability = db.define('dataSoilStability', {
 			allowNull: true,
 			field: 'source'
 		},
-		dateLoadedInDb: {
+		DateLoadedInDb: {
 			type: Sequelize.DATEONLY,
 			allowNull: true,
 			field: 'DateLoadedInDb'

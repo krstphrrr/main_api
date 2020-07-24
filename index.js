@@ -2,6 +2,7 @@ const express = require('express')
 const app = express()
 const db = require('./config/database')
 const cors = require('cors')
+const helmet = require('helmet')
 //routes
 const stateRoutes = require('./routes/stateget')
 
@@ -59,22 +60,13 @@ db.authenticate()
     .then(() => console.log('database connected...'))
     .catch(err => console.log('error:'+ err));
 
-
-app.use((req, res, next)=>{
-  res.setHeader('Access-Control-Allow-Origin','http://localhost:4200','https://landscapedatacommons.org', 'https://test.landscapedatacommons.org')
-  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, DELETE, PUT, PATCH')
-  res.setHeader('Access-Control-Allow-Headers','Content-Type, Authorization')
-  res.setHeader('Access-Control-Allow-Credentials', true)
-  res.setHeader('set-cookie',[
-    'same-site-cookie=bar; SameSite=None; Secure'
-  ])
-  next()
-})
+app.use(cors())
+app.use(helmet())
 
 
 
 app.get('/', (req, res) => 
-  res.send('queslake')
+  res.send('ldc api up')
 )
 
 //routes 

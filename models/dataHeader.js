@@ -4,63 +4,63 @@ const Sequelize = require('sequelize')
 const db = require("../config/database")
 
 const dataHeader = db.define('dataHeader', {
-		primaryKey: {
+	PrimaryKey: {
 			type: Sequelize.STRING,
 			allowNull: false,
 			primaryKey: true,
 			field: 'PrimaryKey'
 		},
-		speciesState: {
+		SpeciesState: {
 			type: Sequelize.STRING,
 			allowNull: true,
 			field: 'SpeciesState'
 		},
-		plotId: {
+		PlotID: {
 			type: Sequelize.TEXT,
 			allowNull: true,
 			field: 'PlotID'
 		},
-		plotKey: {
+		PlotKey: {
 			type: Sequelize.STRING,
 			allowNull: true,
 			field: 'PlotKey'
 		},
-		dbKey: {
+		DBKey: {
 			type: Sequelize.TEXT,
 			allowNull: true,
 			field: 'DBKey'
 		},
-		ecologicalSiteId: {
+		EcologicalSiteId: {
 			type: Sequelize.STRING,
 			allowNull: true,
 			field: 'EcologicalSiteId'
 		},
-		latitudeNad83: {
+		Latitude_NAD83: {
 			type: Sequelize.DOUBLE,
 			allowNull: true,
 			field: 'Latitude_NAD83'
 		},
-		longitudeNad83: {
+		Longitude_NAD83: {
 			type: Sequelize.DOUBLE,
 			allowNull: true,
 			field: 'Longitude_NAD83'
 		},
-		state: {
+		State: {
 			type: Sequelize.STRING,
 			allowNull: true,
 			field: 'State'
 		},
-		county: {
+		County: {
 			type: Sequelize.STRING,
 			allowNull: true,
 			field: 'County'
 		},
-		dateEstablished: {
+		DateEstablished: {
 			type: Sequelize.DATEONLY,
 			allowNull: true,
 			field: 'DateEstablished'
 		},
-		projectName: {
+		ProjectName: {
 			type: Sequelize.TEXT,
 			allowNull: true,
 			field: 'ProjectName'
@@ -70,32 +70,32 @@ const dataHeader = db.define('dataHeader', {
 			allowNull: true,
 			field: 'source'
 		},
-		locationType: {
+		LocationType: {
 			type: Sequelize.STRING,
 			allowNull: true,
 			field: 'LocationType'
 		},
-		dateVisited: {
+		DateVisited: {
 			type: Sequelize.DATEONLY,
 			allowNull: true,
 			field: 'DateVisited'
 		},
-		elevation: {
+		Elevation: {
 			type: Sequelize.DOUBLE,
 			allowNull: true,
 			field: 'ELEVATION'
 		},
-		percentCoveredByEcoSite: {
+		PercentCoveredByEcoSite: {
 			type: Sequelize.DOUBLE,
 			allowNull: true,
 			field: 'PercentCoveredByEcoSite'
 		},
-		dateLoadedInDb: {
+		DateLoadedInDb: {
 			type: Sequelize.DATEONLY,
 			allowNull: true,
 			field: 'DateLoadedInDb'
 		},
-		wkbGeometry: {
+		wkb_geometry: {
 			type: Sequelize.GEOMETRY('Point', 4326),
 			allowNull: true,
 			field: 'wkb_geometry'

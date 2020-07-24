@@ -4,133 +4,133 @@ const Sequelize = require('sequelize')
 const db = require("../config/database")
 
 const dataGap = db.define('dataGap', {
-		lineKey: {
+	LineKey: {
 			type: Sequelize.STRING,
 			allowNull: true,
 			primaryKey:true,
 			field: 'LineKey'
 		},
-		recKey: {
+		RecKey: {
 			type: Sequelize.STRING,
 			allowNull: true,
 			field: 'RecKey'
 		},
-		dateModified: {
+		DateModified: {
 			type: Sequelize.DATEONLY,
 			allowNull: true,
 			field: 'DateModified'
 		},
-		formType: {
+		FormType: {
 			type: Sequelize.TEXT,
 			allowNull: true,
 			field: 'FormType'
 		},
-		formDate: {
+		FormDate: {
 			type: Sequelize.DATEONLY,
 			allowNull: true,
 			field: 'FormDate'
 		},
-		observer: {
+		Observer: {
 			type: Sequelize.TEXT,
 			allowNull: true,
 			field: 'Observer'
 		},
-		recorder: {
+		Recorder: {
 			type: Sequelize.TEXT,
 			allowNull: true,
 			field: 'Recorder'
 		},
-		dataEntry: {
+		DataEntry: {
 			type: Sequelize.TEXT,
 			allowNull: true,
 			field: 'DataEntry'
 		},
-		dataErrorChecking: {
+		DataErrorChecking: {
 			type: Sequelize.TEXT,
 			allowNull: true,
 			field: 'DataErrorChecking'
 		},
-		direction: {
+		Direction: {
 			type: Sequelize.DOUBLE,
 			allowNull: true,
 			field: 'Direction'
 		},
-		measure: {
+		Measure: {
 			type: Sequelize.DOUBLE,
 			allowNull: true,
 			field: 'Measure'
 		},
-		lineLengthAmount: {
+		LineLengthAmount: {
 			type: Sequelize.DOUBLE,
 			allowNull: true,
 			field: 'LineLengthAmount'
 		},
-		gapMin: {
+		GapMin: {
 			type: Sequelize.DOUBLE,
 			allowNull: true,
 			field: 'GapMin'
 		},
-		gapData: {
+		GapData: {
 			type: Sequelize.DOUBLE,
 			allowNull: true,
 			field: 'GapData'
 		},
-		perennialsCanopy: {
+		PerennialsCanopy: {
 			type: Sequelize.DOUBLE,
 			allowNull: true,
 			field: 'PerennialsCanopy'
 		},
-		annualGrassesCanopy: {
+		AnnualGrassesCanopy: {
 			type: Sequelize.DOUBLE,
 			allowNull: true,
 			field: 'AnnualGrassesCanopy'
 		},
-		annualForbsCanopy: {
+		AnnualForbsCanopy: {
 			type: Sequelize.DOUBLE,
 			allowNull: true,
 			field: 'AnnualForbsCanopy'
 		},
-		otherCanopy: {
+		OtherCanopy: {
 			type: Sequelize.DOUBLE,
 			allowNull: true,
 			field: 'OtherCanopy'
 		},
-		notes: {
+		Notes: {
 			type: Sequelize.TEXT,
 			allowNull: true,
 			field: 'Notes'
 		},
-		noCanopyGaps: {
+		NoCanopyGaps: {
 			type: Sequelize.DOUBLE,
 			allowNull: true,
 			field: 'NoCanopyGaps'
 		},
-		noBasalGaps: {
+		NoBasalGaps: {
 			type: Sequelize.DOUBLE,
 			allowNull: true,
 			field: 'NoBasalGaps'
 		},
-		perennialsBasal: {
+		PerennialsBasal: {
 			type: Sequelize.DOUBLE,
 			allowNull: true,
 			field: 'PerennialsBasal'
 		},
-		annualGrassesBasal: {
+		AnnualGrassesBasal: {
 			type: Sequelize.DOUBLE,
 			allowNull: true,
 			field: 'AnnualGrassesBasal'
 		},
-		annualForbsBasal: {
+		AnnualForbsBasal: {
 			type: Sequelize.DOUBLE,
 			allowNull: true,
 			field: 'AnnualForbsBasal'
 		},
-		otherBasal: {
+		OtherBasal: {
 			type: Sequelize.DOUBLE,
 			allowNull: true,
 			field: 'OtherBasal'
 		},
-		primaryKey: {
+		PrimaryKey: {
 			type: Sequelize.TEXT,
 			allowNull: true,
 			primaryKey: true,
@@ -140,32 +140,32 @@ const dataGap = db.define('dataGap', {
 			},
 			field: 'PrimaryKey'
 		},
-		dbKey: {
+		DBKey: {
 			type: Sequelize.TEXT,
 			allowNull: true,
 			field: 'DBKey'
 		},
-		seqNo: {
+		SeqNo: {
 			type: Sequelize.TEXT,
 			allowNull: true,
 			field: 'SeqNo'
 		},
-		recType: {
+		RecType: {
 			type: Sequelize.TEXT,
 			allowNull: true,
 			field: 'RecType'
 		},
-		gapStart: {
+		GapStart: {
 			type: Sequelize.DOUBLE,
 			allowNull: true,
 			field: 'GapStart'
 		},
-		gapEnd: {
+		GapEnd: {
 			type: Sequelize.DOUBLE,
 			allowNull: true,
 			field: 'GapEnd'
 		},
-		gap: {
+		Gap: {
 			type: Sequelize.DOUBLE,
 			allowNull: true,
 			field: 'Gap'
@@ -175,17 +175,17 @@ const dataGap = db.define('dataGap', {
 			allowNull: true,
 			field: 'source'
 		},
-		state: {
+		State: {
 			type: Sequelize.TEXT,
 			allowNull: true,
 			field: 'STATE'
 		},
-		plotKey: {
+		PlotKey: {
 			type: Sequelize.TEXT,
 			allowNull: true,
 			field: 'PLOTKEY'
 		},
-		dateLoadedInDb: {
+		DateLoadedInDb: {
 			type: Sequelize.DATEONLY,
 			allowNull: true,
 			field: 'DateLoadedInDb'

@@ -13,517 +13,517 @@ const geoIndicators =  db.define('geoIndicators', {
 			autoIncrement: true,
 			field: 'ogc_fid'
 		},
-		ahAnnGrassCover: {
+		AH_AnnGrassCover: {
 			type: Sequelize.DOUBLE,
 			allowNull: true,
 			field: 'AH_AnnGrassCover'
 		},
-		ahForbCover: {
+		AH_ForbCover: {
 			type: Sequelize.DOUBLE,
 			allowNull: true,
 			field: 'AH_ForbCover'
 		},
-		ahGrassCover: {
+		AH_GrassCover: {
 			type: Sequelize.DOUBLE,
 			allowNull: true,
 			field: 'AH_GrassCover'
 		},
-		ahNonNoxAnnForbCover: {
+		AH_NonNoxAnnForbCover: {
 			type: Sequelize.DOUBLE,
 			allowNull: true,
 			field: 'AH_NonNoxAnnForbCover'
 		},
-		ahNonNoxAnnForbGrassCover: {
+		AH_NonNoxAnnForbGrassCover: {
 			type: Sequelize.DOUBLE,
 			allowNull: true,
 			field: 'AH_NonNoxAnnForbGrassCover'
 		},
-		ahNonNoxAnnGrassCover: {
+		AH_NonNoxAnnGrassCover: {
 			type: Sequelize.DOUBLE,
 			allowNull: true,
 			field: 'AH_NonNoxAnnGrassCover'
 		},
-		ahNonNoxCover: {
+		AH_NonNoxCover: {
 			type: Sequelize.DOUBLE,
 			allowNull: true,
 			field: 'AH_NonNoxCover'
 		},
-		ahNonNoxPerenForbCover: {
+		AH_NonNoxPerenForbCover: {
 			type: Sequelize.DOUBLE,
 			allowNull: true,
 			field: 'AH_NonNoxPerenForbCover'
 		},
-		ahNonNoxPerenForbGrassCover: {
+		AH_NonNoxPerenForbGrassCover: {
 			type: Sequelize.DOUBLE,
 			allowNull: true,
 			field: 'AH_NonNoxPerenForbGrassCover'
 		},
-		ahNonNoxPerenGrassCover: {
+		AH_NonNoxPerenGrassCover: {
 			type: Sequelize.DOUBLE,
 			allowNull: true,
 			field: 'AH_NonNoxPerenGrassCover'
 		},
-		ahNonNoxShrubCover: {
+		AH_NonNoxShrubCover: {
 			type: Sequelize.DOUBLE,
 			allowNull: true,
 			field: 'AH_NonNoxShrubCover'
 		},
-		ahNonNoxSubShrubCover: {
+		AH_NonNoxSubShrubCover: {
 			type: Sequelize.DOUBLE,
 			allowNull: true,
 			field: 'AH_NonNoxSubShrubCover'
 		},
-		ahNonNoxSucculentCover: {
+		AH_NonNoxSucculentCover: {
 			type: Sequelize.DOUBLE,
 			allowNull: true,
 			field: 'AH_NonNoxSucculentCover'
 		},
-		ahNonNoxTreeCover: {
+		AH_NonNoxTreeCover: {
 			type: Sequelize.DOUBLE,
 			allowNull: true,
 			field: 'AH_NonNoxTreeCover'
 		},
-		ahNonSagebrushShrubCover: {
+		AH_NonSagebrushShrubCover: {
 			type: Sequelize.DOUBLE,
 			allowNull: true,
 			field: 'AH_NonSagebrushShrubCover'
 		},
-		ahNoxAnnForbCover: {
+		AH_NoxAnnForbCover: {
 			type: Sequelize.DOUBLE,
 			allowNull: true,
 			field: 'AH_NoxAnnForbCover'
 		},
-		ahNoxAnnForbGrassCover: {
+		AH_NoxAnnForbGrassCover: {
 			type: Sequelize.DOUBLE,
 			allowNull: true,
 			field: 'AH_NoxAnnForbGrassCover'
 		},
-		ahNoxAnnGrassCover: {
+		AH_NoxAnnGrassCover: {
 			type: Sequelize.DOUBLE,
 			allowNull: true,
 			field: 'AH_NoxAnnGrassCover'
 		},
-		ahNoxCover: {
+		AH_NoxCover: {
 			type: Sequelize.DOUBLE,
 			allowNull: true,
 			field: 'AH_NoxCover'
 		},
-		ahNoxPerenForbCover: {
+		AH_NoxPerenForbCover: {
 			type: Sequelize.DOUBLE,
 			allowNull: true,
 			field: 'AH_NoxPerenForbCover'
 		},
-		ahNoxPerenForbGrassCover: {
+		AH_NoxPerenForbGrassCover: {
 			type: Sequelize.DOUBLE,
 			allowNull: true,
 			field: 'AH_NoxPerenForbGrassCover'
 		},
-		ahNoxPerenGrassCover: {
+		AH_NoxPerenGrassCover: {
 			type: Sequelize.DOUBLE,
 			allowNull: true,
 			field: 'AH_NoxPerenGrassCover'
 		},
-		ahNoxShrubCover: {
+		AH_NoxShrubCover: {
 			type: Sequelize.DOUBLE,
 			allowNull: true,
 			field: 'AH_NoxShrubCover'
 		},
-		ahNoxSubShrubCover: {
+		AH_NoxSubShrubCover: {
 			type: Sequelize.DOUBLE,
 			allowNull: true,
 			field: 'AH_NoxSubShrubCover'
 		},
-		ahNoxSucculentCover: {
+		AH_NoxSucculentCover: {
 			type: Sequelize.INTEGER,
 			allowNull: true,
 			field: 'AH_NoxSucculentCover'
 		},
-		ahNoxTreeCover: {
+		AH_NoxTreeCover: {
 			type: Sequelize.DOUBLE,
 			allowNull: true,
 			field: 'AH_NoxTreeCover'
 		},
-		ahPerenForbCover: {
+		AH_PerenForbCover: {
 			type: Sequelize.DOUBLE,
 			allowNull: true,
 			field: 'AH_PerenForbCover'
 		},
-		ahPerenGrassCover: {
+		AH_PerenGrassCover: {
 			type: Sequelize.DOUBLE,
 			allowNull: true,
 			field: 'AH_PerenGrassCover'
 		},
-		ahPerenGrassForbCover: {
+		AH_PerenGrassForbCover: {
 			type: Sequelize.DOUBLE,
 			allowNull: true,
 			field: 'AH_PerenGrassForbCover'
 		},
-		ahPreferredForb: {
+		AH_PreferredForb: {
 			type: Sequelize.DOUBLE,
 			allowNull: true,
 			field: 'AH_PreferredForb'
 		},
-		ahPreferredForbCover: {
+		AH_PreferredForbCover: {
 			type: Sequelize.DOUBLE,
 			allowNull: true,
 			field: 'AH_PreferredForbCover'
 		},
-		ahSagebrushCover: {
+		AH_SagebrushCover: {
 			type: Sequelize.DOUBLE,
 			allowNull: true,
 			field: 'AH_SagebrushCover'
 		},
-		ahSagebrushCoverLive: {
+		AH_SagebrushCover_Live: {
 			type: Sequelize.DOUBLE,
 			allowNull: true,
 			field: 'AH_SagebrushCover_Live'
 		},
-		ahShortPerenGrassCover: {
+		AH_ShortPerenGrassCover: {
 			type: Sequelize.DOUBLE,
 			allowNull: true,
 			field: 'AH_ShortPerenGrassCover'
 		},
-		ahShrubCover: {
+		AH_ShrubCover: {
 			type: Sequelize.DOUBLE,
 			allowNull: true,
 			field: 'AH_ShrubCover'
 		},
-		ahTallPerenGrassCover: {
+		AH_TallPerenGrassCover: {
 			type: Sequelize.DOUBLE,
 			allowNull: true,
 			field: 'AH_TallPerenGrassCover'
 		},
-		bareSoilCover: {
+		BareSoilCover: {
 			type: Sequelize.DOUBLE,
 			allowNull: true,
 			field: 'BareSoilCover'
 		},
-		county: {
+		County: {
 			type: Sequelize.STRING,
 			allowNull: true,
 			field: 'County'
 		},
-		dbKey: {
+		DBKey: {
 			type: Sequelize.STRING,
 			allowNull: true,
 			field: 'DBKey'
 		},
-		dateEstablished: {
+		DateEstablished: {
 			type: Sequelize.DATE,
 			allowNull: true,
 			field: 'DateEstablished'
 		},
-		dateLoadedInDb: {
+		DateLoadedInDb: {
 			type: Sequelize.STRING,
 			allowNull: true,
 			field: 'DateLoadedInDb'
 		},
-		dateVisited: {
+		DateVisited: {
 			type: Sequelize.DATE,
 			allowNull: true,
 			field: 'DateVisited'
 		},
-		elevation: {
+		Elevation: {
 			type: Sequelize.DOUBLE,
 			allowNull: true,
 			field: 'ELEVATION'
 		},
-		ecolSiteName: {
+		EcolSiteName: {
 			type: Sequelize.STRING,
 			allowNull: true,
 			field: 'EcolSiteName'
 		},
-		ecologicalSiteId: {
+		EcologicalSiteId: {
 			type: Sequelize.STRING,
 			allowNull: true,
 			field: 'EcologicalSiteId'
 		},
-		fhCyanobacteriaCover: {
+		FH_CyanobacteriaCover: {
 			type: Sequelize.DOUBLE,
 			allowNull: true,
 			field: 'FH_CyanobacteriaCover'
 		},
-		fhDepSoilCover: {
+		FH_DepSoilCover: {
 			type: Sequelize.DOUBLE,
 			allowNull: true,
 			field: 'FH_DepSoilCover'
 		},
-		fhDuffCover: {
+		FH_DuffCover: {
 			type: Sequelize.DOUBLE,
 			allowNull: true,
 			field: 'FH_DuffCover'
 		},
-		fhEmbLitterCover: {
+		FH_EmbLitterCover: {
 			type: Sequelize.DOUBLE,
 			allowNull: true,
 			field: 'FH_EmbLitterCover'
 		},
-		fhHerbLitterCover: {
+		FH_HerbLitterCover: {
 			type: Sequelize.DOUBLE,
 			allowNull: true,
 			field: 'FH_HerbLitterCover'
 		},
-		fhLichenCover: {
+		FH_LichenCover: {
 			type: Sequelize.DOUBLE,
 			allowNull: true,
 			field: 'FH_LichenCover'
 		},
-		fhMossCover: {
+		FH_MossCover: {
 			type: Sequelize.DOUBLE,
 			allowNull: true,
 			field: 'FH_MossCover'
 		},
-		fhNonNoxAnnForbCover: {
+		FH_NonNoxAnnForbCover: {
 			type: Sequelize.DOUBLE,
 			allowNull: true,
 			field: 'FH_NonNoxAnnForbCover'
 		},
-		fhNonNoxAnnGrassCover: {
+		FH_NonNoxAnnGrassCover: {
 			type: Sequelize.DOUBLE,
 			allowNull: true,
 			field: 'FH_NonNoxAnnGrassCover'
 		},
-		fhNonNoxPerenForbCover: {
+		FH_NonNoxPerenForbCover: {
 			type: Sequelize.DOUBLE,
 			allowNull: true,
 			field: 'FH_NonNoxPerenForbCover'
 		},
-		fhNonNoxPerenGrassCover: {
+		FH_NonNoxPerenGrassCover: {
 			type: Sequelize.DOUBLE,
 			allowNull: true,
 			field: 'FH_NonNoxPerenGrassCover'
 		},
-		fhNonNoxShrubCover: {
+		FH_NonNoxShrubCover: {
 			type: Sequelize.DOUBLE,
 			allowNull: true,
 			field: 'FH_NonNoxShrubCover'
 		},
-		fhNonNoxSubShrubCover: {
+		FH_NonNoxSubShrubCover: {
 			type: Sequelize.DOUBLE,
 			allowNull: true,
 			field: 'FH_NonNoxSubShrubCover'
 		},
-		fhNonNoxSucculentCover: {
+		FH_NonNoxSucculentCover: {
 			type: Sequelize.DOUBLE,
 			allowNull: true,
 			field: 'FH_NonNoxSucculentCover'
 		},
-		fhNonNoxTreeCover: {
+		FH_NonNoxTreeCover: {
 			type: Sequelize.DOUBLE,
 			allowNull: true,
 			field: 'FH_NonNoxTreeCover'
 		},
-		fhNoxAnnForbCover: {
+		FH_NoxAnnForbCover: {
 			type: Sequelize.DOUBLE,
 			allowNull: true,
 			field: 'FH_NoxAnnForbCover'
 		},
-		fhNoxAnnGrassCover: {
+		FH_NoxAnnGrassCover: {
 			type: Sequelize.DOUBLE,
 			allowNull: true,
 			field: 'FH_NoxAnnGrassCover'
 		},
-		fhNoxPerenForbCover: {
+		FH_NoxPerenForbCover: {
 			type: Sequelize.DOUBLE,
 			allowNull: true,
 			field: 'FH_NoxPerenForbCover'
 		},
-		fhNoxPerenGrassCover: {
+		FH_NoxPerenGrassCover: {
 			type: Sequelize.DOUBLE,
 			allowNull: true,
 			field: 'FH_NoxPerenGrassCover'
 		},
-		fhNoxShrubCover: {
+		FH_NoxShrubCover: {
 			type: Sequelize.DOUBLE,
 			allowNull: true,
 			field: 'FH_NoxShrubCover'
 		},
-		fhNoxSubShrubCover: {
+		FH_NoxSubShrubCover: {
 			type: Sequelize.DOUBLE,
 			allowNull: true,
 			field: 'FH_NoxSubShrubCover'
 		},
-		fhNoxSucculentCover: {
+		FH_NoxSucculentCover: {
 			type: Sequelize.INTEGER,
 			allowNull: true,
 			field: 'FH_NoxSucculentCover'
 		},
-		fhNoxTreeCover: {
+		FH_NoxTreeCover: {
 			type: Sequelize.DOUBLE,
 			allowNull: true,
 			field: 'FH_NoxTreeCover'
 		},
-		fhRockCover: {
+		FH_RockCover: {
 			type: Sequelize.DOUBLE,
 			allowNull: true,
 			field: 'FH_RockCover'
 		},
-		fhSagebrushCover: {
+		FH_SagebrushCover: {
 			type: Sequelize.DOUBLE,
 			allowNull: true,
 			field: 'FH_SagebrushCover'
 		},
-		fhTotalLitterCover: {
+		FH_TotalLitterCover: {
 			type: Sequelize.DOUBLE,
 			allowNull: true,
 			field: 'FH_TotalLitterCover'
 		},
-		fhVagrLichenCover: {
+		FH_VagrLichenCover: {
 			type: Sequelize.DOUBLE,
 			allowNull: true,
 			field: 'FH_VagrLichenCover'
 		},
-		fhWaterCover: {
+		FH_WaterCover: {
 			type: Sequelize.DOUBLE,
 			allowNull: true,
 			field: 'FH_WaterCover'
 		},
-		fhWoodyLitterCover: {
+		FH_WoodyLitterCover: {
 			type: Sequelize.DOUBLE,
 			allowNull: true,
 			field: 'FH_WoodyLitterCover'
 		},
-		gapCover101200: {
+		GapCover_101_200: {
 			type: Sequelize.DOUBLE,
 			allowNull: true,
 			field: 'GapCover_101_200'
 		},
-		gapCover200Plus: {
+		GapCover_200_plus: {
 			type: Sequelize.DOUBLE,
 			allowNull: true,
 			field: 'GapCover_200_plus'
 		},
-		gapCover2550: {
+		GapCover_25_50: {
 			type: Sequelize.DOUBLE,
 			allowNull: true,
 			field: 'GapCover_25_50'
 		},
-		gapCover25Plus: {
+		GapCover_25_plus: {
 			type: Sequelize.DOUBLE,
 			allowNull: true,
 			field: 'GapCover_25_plus'
 		},
-		gapCover51100: {
+		GapCover_51_100: {
 			type: Sequelize.DOUBLE,
 			allowNull: true,
 			field: 'GapCover_51_100'
 		},
-		globalId: {
+		GlobalID: {
 			type: Sequelize.STRING,
 			allowNull: true,
 			field: 'GlobalID'
 		},
-		hgtForbAvg: {
+		Hgt_Forb_Avg: {
 			type: Sequelize.DOUBLE,
 			allowNull: true,
 			field: 'Hgt_Forb_Avg'
 		},
-		hgtGrassAvg: {
+		Hgt_Grass_Avg: {
 			type: Sequelize.DOUBLE,
 			allowNull: true,
 			field: 'Hgt_Grass_Avg'
 		},
-		hgtHerbaceousAvg: {
+		Hgt_Herbaceous_Avg: {
 			type: Sequelize.DOUBLE,
 			allowNull: true,
 			field: 'Hgt_Herbaceous_Avg'
 		},
-		hgtNonNoxPerenGrassAvg: {
+		Hgt_NonNoxPerenGrass_Avg: {
 			type: Sequelize.DOUBLE,
 			allowNull: true,
 			field: 'Hgt_NonNoxPerenGrass_Avg'
 		},
-		hgtNonSagebrushShrubAvg: {
+		Hgt_NonSagebrushShrub_Avg: {
 			type: Sequelize.DOUBLE,
 			allowNull: true,
 			field: 'Hgt_NonSagebrushShrub_Avg'
 		},
-		hgtNoxPerenGrassAvg: {
+		Hgt_NoxPerenGrass_Avg: {
 			type: Sequelize.DOUBLE,
 			allowNull: true,
 			field: 'Hgt_NoxPerenGrass_Avg'
 		},
-		hgtPerenForbGrassAvg: {
+		Hgt_PerenForbGrass_Avg: {
 			type: Sequelize.DOUBLE,
 			allowNull: true,
 			field: 'Hgt_PerenForbGrass_Avg'
 		},
-		hgtPerenForbAvg: {
+		Hgt_PerenForb_Avg: {
 			type: Sequelize.DOUBLE,
 			allowNull: true,
 			field: 'Hgt_PerenForb_Avg'
 		},
-		hgtPerenGrassAvg: {
+		Hgt_PerenGrass_Avg: {
 			type: Sequelize.DOUBLE,
 			allowNull: true,
 			field: 'Hgt_PerenGrass_Avg'
 		},
-		hgtSagebrushAvg: {
+		Hgt_Sagebrush_Avg: {
 			type: Sequelize.DOUBLE,
 			allowNull: true,
 			field: 'Hgt_Sagebrush_Avg'
 		},
-		hgtSagebrushLiveAvg: {
+		Hgt_Sagebrush_Live_Avg: {
 			type: Sequelize.DOUBLE,
 			allowNull: true,
 			field: 'Hgt_Sagebrush_Live_Avg'
 		},
-		hgtShortPerenGrassAvg: {
+		Hgt_ShortPerenGrass_Avg: {
 			type: Sequelize.DOUBLE,
 			allowNull: true,
 			field: 'Hgt_ShortPerenGrass_Avg'
 		},
-		hgtTallPerenGrassAvg: {
+		Hgt_TallPerenGrass_Avg: {
 			type: Sequelize.DOUBLE,
 			allowNull: true,
 			field: 'Hgt_TallPerenGrass_Avg'
 		},
-		hgtWoodyAvg: {
+		Hgt_Woody_Avg: {
 			type: Sequelize.DOUBLE,
 			allowNull: true,
 			field: 'Hgt_Woody_Avg'
 		},
-		latitudeNad83: {
+		Latitude_NAD83: {
 			type: Sequelize.DOUBLE,
 			allowNull: true,
 			field: 'latitude_nad83'
 		},
-		locationType: {
+		LocationType: {
 			type: Sequelize.STRING,
 			allowNull: true,
 			field: 'LocationType'
 		},
-		longitudeNad83: {
+		Longitude_NAD83: {
 			type: Sequelize.DOUBLE,
 			allowNull: true,
 			field: 'Longitude_NAD83'
 		},
-		numSppNonNoxPlant: {
+		NumSpp_NonNoxPlant: {
 			type: Sequelize.DOUBLE,
 			allowNull: true,
 			field: 'NumSpp_NonNoxPlant'
 		},
-		numSppNoxPlant: {
+		NumSpp_NoxPlant: {
 			type: Sequelize.DOUBLE,
 			allowNull: true,
 			field: 'NumSpp_NoxPlant'
 		},
-		numSppPreferredForb: {
+		NumSpp_PreferredForb: {
 			type: Sequelize.DOUBLE,
 			allowNull: true,
 			field: 'NumSpp_PreferredForb'
 		},
-		plotkey: {
+		PlotKey: {
 			type: Sequelize.STRING,
 			allowNull: true,
 			field: 'PLOTKEY'
 		},
-		percentCoveredByEcoSite: {
+		PercentCoveredByEcoSite: {
 			type: Sequelize.DOUBLE,
 			allowNull: true,
 			field: 'PercentCoveredByEcoSite'
 		},
-		plotId: {
+		PlotID: {
 			type: Sequelize.STRING,
 			allowNull: true,
 			field: 'PlotID'
@@ -533,7 +533,7 @@ const geoIndicators =  db.define('geoIndicators', {
 			allowNull: true,
 			field: 'plotkey2'
 		},
-		primaryKey: {
+		PrimaryKey: {
 			type: Sequelize.STRING,
 			allowNull: true,
 			references: {
@@ -542,237 +542,237 @@ const geoIndicators =  db.define('geoIndicators', {
 			},
 			field: 'PrimaryKey'
 		},
-		projectName: {
+		ProjectName: {
 			type: Sequelize.STRING,
 			allowNull: true,
 			field: 'ProjectName'
 		},
-		rhAnnualProd: {
+		RH_AnnualProd: {
 			type: Sequelize.STRING,
 			allowNull: true,
 			field: 'RH_AnnualProd'
 		},
-		rhBareGround: {
+		RH_BareGround: {
 			type: Sequelize.STRING,
 			allowNull: true,
 			field: 'RH_BareGround'
 		},
-		rhBioticIntegrity: {
+		RH_BioticIntegrity: {
 			type: Sequelize.STRING,
 			allowNull: true,
 			field: 'RH_BioticIntegrity'
 		},
-		rhCommentsBi: {
+		RH_CommentsBI: {
 			type: Sequelize.STRING,
 			allowNull: true,
 			field: 'RH_CommentsBI'
 		},
-		rhCommentsHf: {
+		RH_CommentsHF: {
 			type: Sequelize.STRING,
 			allowNull: true,
 			field: 'RH_CommentsHF'
 		},
-		rhCommentsSs: {
+		RH_CommentsSS: {
 			type: Sequelize.STRING,
 			allowNull: true,
 			field: 'RH_CommentsSS'
 		},
-		rhCompaction: {
+		RH_Compaction: {
 			type: Sequelize.STRING,
 			allowNull: true,
 			field: 'RH_Compaction'
 		},
-		rhDeadDyingPlantParts: {
+		RH_DeadDyingPlantParts: {
 			type: Sequelize.STRING,
 			allowNull: true,
 			field: 'RH_DeadDyingPlantParts'
 		},
-		rhFuncSructGroup: {
+		RH_FuncSructGroup: {
 			type: Sequelize.STRING,
 			allowNull: true,
 			field: 'RH_FuncSructGroup'
 		},
-		rhGullies: {
+		RH_Gullies: {
 			type: Sequelize.STRING,
 			allowNull: true,
 			field: 'RH_Gullies'
 		},
-		rhHydrologicFunction: {
+		RH_HydrologicFunction: {
 			type: Sequelize.STRING,
 			allowNull: true,
 			field: 'RH_HydrologicFunction'
 		},
-		rhInvasivePlants: {
+		RH_InvasivePlants: {
 			type: Sequelize.STRING,
 			allowNull: true,
 			field: 'RH_InvasivePlants'
 		},
-		rhLitterAmount: {
+		RH_LitterAmount: {
 			type: Sequelize.STRING,
 			allowNull: true,
 			field: 'RH_LitterAmount'
 		},
-		rhLitterMovement: {
+		RH_LitterMovement: {
 			type: Sequelize.STRING,
 			allowNull: true,
 			field: 'RH_LitterMovement'
 		},
-		rhPedestalsTerracettes: {
+		RH_PedestalsTerracettes: {
 			type: Sequelize.STRING,
 			allowNull: true,
 			field: 'RH_PedestalsTerracettes'
 		},
-		rhPlantCommunityComp: {
+		RH_PlantCommunityComp: {
 			type: Sequelize.STRING,
 			allowNull: true,
 			field: 'RH_PlantCommunityComp'
 		},
-		rhReprodCapabilityPeren: {
+		RH_ReprodCapabilityPeren: {
 			type: Sequelize.STRING,
 			allowNull: true,
 			field: 'RH_ReprodCapabilityPeren'
 		},
-		rhRills: {
+		RH_Rills: {
 			type: Sequelize.STRING,
 			allowNull: true,
 			field: 'RH_Rills'
 		},
-		rhSoilSiteStability: {
+		RH_SoilSiteStability: {
 			type: Sequelize.STRING,
 			allowNull: true,
 			field: 'RH_SoilSiteStability'
 		},
-		rhSoilSurfLossDeg: {
+		RH_SoilSurfLossDeg: {
 			type: Sequelize.STRING,
 			allowNull: true,
 			field: 'RH_SoilSurfLossDeg'
 		},
-		rhSoilSurfResisErosion: {
+		RH_SoilSurfResisErosion: {
 			type: Sequelize.STRING,
 			allowNull: true,
 			field: 'RH_SoilSurfResisErosion'
 		},
-		rhWaterFlowPatterns: {
+		RH_WaterFlowPatterns: {
 			type: Sequelize.STRING,
 			allowNull: true,
 			field: 'RH_WaterFlowPatterns'
 		},
-		rhWindScouredAreas: {
+		RH_WindScouredAreas: {
 			type: Sequelize.STRING,
 			allowNull: true,
 			field: 'RH_WindScouredAreas'
 		},
-		recordCount: {
+		RecordCount: {
 			type: Sequelize.STRING,
 			allowNull: true,
 			field: 'RecordCount'
 		},
-		sagebrushShapeAllColumnCount: {
+		SagebrushShape_All_ColumnCount: {
 			type: Sequelize.DOUBLE,
 			allowNull: true,
 			field: 'SagebrushShape_All_ColumnCount'
 		},
-		sagebrushShapeAllPredominant: {
+		SagebrushShape_All_Predominant: {
 			type: Sequelize.STRING,
 			allowNull: true,
 			field: 'SagebrushShape_All_Predominant'
 		},
-		sagebrushShapeAllSpreadCount: {
+		SagebrushShape_All_SpreadCount: {
 			type: Sequelize.DOUBLE,
 			allowNull: true,
 			field: 'SagebrushShape_All_SpreadCount'
 		},
-		sagebrushShapeLiveColumnCount: {
+		SagebrushShape_Live_ColumnCount: {
 			type: Sequelize.DOUBLE,
 			allowNull: true,
 			field: 'SagebrushShape_Live_ColumnCount'
 		},
-		sagebrushShapeLivePredominant: {
+		SagebrushShape_Live_Predominant: {
 			type: Sequelize.STRING,
 			allowNull: true,
 			field: 'SagebrushShape_Live_Predominant'
 		},
-		sagebrushShapeLiveSpreadCount: {
+		SagebrushShape_Live_SpreadCount: {
 			type: Sequelize.DOUBLE,
 			allowNull: true,
 			field: 'SagebrushShape_Live_SpreadCount'
 		},
-		soilStabilityAll: {
+		SoilStability_All: {
 			type: Sequelize.DOUBLE,
 			allowNull: true,
 			field: 'SoilStability_All'
 		},
-		soilStabilityProtected: {
+		SoilStability_Protected: {
 			type: Sequelize.DOUBLE,
 			allowNull: true,
 			field: 'SoilStability_Protected'
 		},
-		soilStabilityUnprotected: {
+		SoilStability_Unprotected: {
 			type: Sequelize.DOUBLE,
 			allowNull: true,
 			field: 'SoilStability_Unprotected'
 		},
-		sppNox: {
+		Spp_Nox: {
 			type: Sequelize.STRING,
 			allowNull: true,
 			field: 'Spp_Nox'
 		},
-		sppPreferredForb: {
+		Spp_PreferredForb: {
 			type: Sequelize.STRING,
 			allowNull: true,
 			field: 'Spp_PreferredForb'
 		},
-		sppSagebrush: {
+		Spp_Sagebrush: {
 			type: Sequelize.STRING,
 			allowNull: true,
 			field: 'Spp_Sagebrush'
 		},
-		sppShortPerenGrass: {
+		Spp_ShortPerenGrass: {
 			type: Sequelize.STRING,
 			allowNull: true,
 			field: 'Spp_ShortPerenGrass'
 		},
-		sppTallPerenGrass: {
+		Spp_TallPerenGrass: {
 			type: Sequelize.STRING,
 			allowNull: true,
 			field: 'Spp_TallPerenGrass'
 		},
-		state: {
+		State: {
 			type: Sequelize.STRING,
 			allowNull: true,
 			field: 'State'
 		},
-		totalFoliarCover: {
+		TotalFoliarCover: {
 			type: Sequelize.DOUBLE,
 			allowNull: true,
 			field: 'TotalFoliarCover'
 		},
-		createdDate: {
+		created_date: {
 			type: Sequelize.DATE,
 			allowNull: true,
 			field: 'created_date'
 		},
-		createdUser: {
+		created_user: {
 			type: Sequelize.STRING,
 			allowNull: true,
 			field: 'created_user'
 		},
-		lastEditedDate: {
+		last_edited_date: {
 			type: Sequelize.DATE,
 			allowNull: true,
 			field: 'last_edited_date'
 		},
-		lastEditedUser: {
+		last_edited_user: {
 			type: Sequelize.STRING,
 			allowNull: true,
 			field: 'last_edited_user'
 		},
-		wkbGeometry: {
+		wkb_geometry: {
 			type: Sequelize.GEOMETRY('Point', 4326),
 			allowNull: true,
 			field: 'wkb_geometry'
 		},
-		public: {
+		Public: {
 			type: Sequelize.BOOLEAN,
 			allowNull: true,
 			field: 'Public'
