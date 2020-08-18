@@ -6,13 +6,7 @@ const Header = require('../models/dataHeader')
 
 
 const geoIndicators =  db.define('geoIndicators', {
-		ogcFid: {
-			type: Sequelize.INTEGER,
-			allowNull: false,
-			primaryKey: true,
-			autoIncrement: true,
-			field: 'ogc_fid'
-		},
+
 		AH_AnnGrassCover: {
 			type: Sequelize.DOUBLE,
 			allowNull: true,
@@ -486,7 +480,7 @@ const geoIndicators =  db.define('geoIndicators', {
 		Latitude_NAD83: {
 			type: Sequelize.DOUBLE,
 			allowNull: true,
-			field: 'latitude_nad83'
+			field: 'Latitude_NAD83'
 		},
 		LocationType: {
 			type: Sequelize.STRING,
@@ -528,14 +522,15 @@ const geoIndicators =  db.define('geoIndicators', {
 			allowNull: true,
 			field: 'PlotID'
 		},
-		plotkey2: {
+		PLOTKEY: {
 			type: Sequelize.DOUBLE,
 			allowNull: true,
-			field: 'plotkey2'
+			field: 'PLOTKEY'
 		},
 		PrimaryKey: {
 			type: Sequelize.STRING,
 			allowNull: true,
+			primaryKey:true,
 			references: {
 				model: "dataHeader",
 				key: 'PrimaryKey'
@@ -767,16 +762,16 @@ const geoIndicators =  db.define('geoIndicators', {
 			allowNull: true,
 			field: 'last_edited_user'
 		},
-		wkb_geometry: {
-			type: Sequelize.GEOMETRY('Point', 4326),
-			allowNull: true,
-			field: 'wkb_geometry'
-		},
-		Public: {
-			type: Sequelize.BOOLEAN,
-			allowNull: true,
-			field: 'Public'
-		}
+		// wkb_geometry: {
+		// 	type: Sequelize.GEOMETRY('Point', 4326),
+		// 	allowNull: true,
+		// 	field: 'wkb_geometry'
+		// },
+		// Public: {
+		// 	type: Sequelize.BOOLEAN,
+		// 	allowNull: true,
+		// 	field: 'Public'
+		// }
 	}, {
 		tableName: 'geoIndicators',
 		createdAt: false,
