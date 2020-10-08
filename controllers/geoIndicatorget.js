@@ -14,7 +14,7 @@ exports.getGeoInd = (req, res, next) =>{
       }
     ],
 
-    limit:100,
+    // limit:100,
     raw:true,
 
   })
