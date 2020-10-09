@@ -5,13 +5,13 @@ const db = require("../config/database")
 
 
 const geoSpecies =  db.define('geoSpecies', {
-		ogcFid: {
-			type: Sequelize.INTEGER,
-			allowNull: false,
-			primaryKey: true,
-			autoIncrement: true,
-			field: 'ogc_fid'
-		},
+		// ogcFid: {
+		// 	type: Sequelize.INTEGER,
+		// 	allowNull: false,
+		// 	primaryKey: true,
+		// 	autoIncrement: true,
+		// 	field: 'ogc_fid'
+		// },
 		AH_SpeciesCover: {
 			type: Sequelize.DOUBLE,
 			allowNull: true,
@@ -25,6 +25,7 @@ const geoSpecies =  db.define('geoSpecies', {
 		DBKey: {
 			type: Sequelize.STRING,
 			allowNull: true,
+			primaryKey:true,
 			field: 'DBKey'
 		},
 		Duration: {
