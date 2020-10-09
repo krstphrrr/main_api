@@ -10,7 +10,8 @@ exports.getHeight= (req, res, next) =>{
     where: whichHeight,
     include: [
       {
-        model: Height
+        model: Height,
+        as:'height'
       }
     ],
 

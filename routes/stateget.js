@@ -21,7 +21,7 @@ router.get('/cleangeoindicators', geoIndicatorsController.getCleanGeoind)
 router.get('/geospecies',geoSpeciesController.getSpecies)
 router.get('/dataspeciesinventory',dataSpeciesInv.getSpeciesInv)
 router.get('/dataheight',dataHeight.getHeight)
-router.get('/datalpi',dataLPI)
+router.get('/datalpi',dataLPI.getGeoInd)
 router.get('/datasoil',dataSoil.getSoilStab)
 router.get('/datagap',dataGap.getGap)
 

@@ -10,7 +10,8 @@ exports.getSoilStab = (req, res, next) =>{
     where: whichSoilStab,
     include: [
       {
-        model: SoilStab
+        model: SoilStab,
+        as: 'soilstab'
       }
     ],
 

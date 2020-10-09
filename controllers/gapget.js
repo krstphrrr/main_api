@@ -10,7 +10,8 @@ exports.getGap = (req, res, next) =>{
     where: whichgap,
     include: [
       {
-        model: geogap
+        model: Gap,
+        as: 'gap'
       }
     ],
 

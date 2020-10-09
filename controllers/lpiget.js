@@ -10,7 +10,8 @@ exports.getGeoInd = (req, res, next) =>{
     where: whichLpi,
     include: [
       {
-        model: Lpi
+        model: Lpi,
+        as: 'lpi'
       }
     ],
 

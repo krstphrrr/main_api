@@ -76,7 +76,7 @@ app.use(helmet())
 
 
 app.get('/', (req, res) => 
-  res.send('ldc api up')
+  res.send('ldc api up. update:10/09/2020 10:20am')
 )
 
 //routes 

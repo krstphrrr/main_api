@@ -10,7 +10,8 @@ exports.getSpeciesInv = (req, res, next) =>{
     where: whichSpeciesInv,
     include: [
       {
-        model: SpeciesInv
+        model: SpeciesInv,
+        as: 'speciesinv'
       }
     ],
 
