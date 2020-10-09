@@ -10,7 +10,8 @@ exports.getSpecies = (req, res, next) =>{
     where: whichSpecies,
     include: [
       {
-        model: Species
+        model: Species,
+        as: 'geospecies'
       }
     ],
 

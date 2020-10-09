@@ -14,6 +14,7 @@ const LPI = require('./models/dataLPI')
 const SoilStab = require('./models/dataSoilStability')
 const SpecInv = require('./models/dataSpeciesInventory')
 const GeoInd = require('./models/geoIndicators')
+const GeoSpe = require('./models/geoSpecies')
 
 // associating header to gap through primarykey
 Header.hasMany(Gap,{
@@ -64,6 +65,16 @@ Header.hasMany(GeoInd,{
 GeoInd.belongsTo(Header,{
   foreignKey:"PrimaryKey",
   as: "geoindicators"
+})
+
+////////////////
+
+Header.hasMany(GeoSpe,{
+  foreignKey:"PrimaryKey"
+})
+GeoSpe.belongsTo(Header,{
+  foreignKey:"PrimaryKey",
+  as: "geospecies"
 })
 
 db.authenticate()
