@@ -93,10 +93,10 @@ const geoSpecies =  db.define('geoSpecies', {
 			allowNull: true,
 			field: 'Species'
 		},
-		SpeciesState: {
+		SpeciesKey: {
 			type: Sequelize.STRING,
 			allowNull: true,
-			field: 'SpeciesState'
+			field: 'SpeciesKey'
 		},
 		created_date: {
 			type: Sequelize.DATE,
@@ -118,11 +118,11 @@ const geoSpecies =  db.define('geoSpecies', {
 			allowNull: true,
 			field: 'last_edited_user'
 		},
-		wkb_geometry: {
-			type: Sequelize.GEOMETRY('Point', 4326),
-			allowNull: true,
-			field: 'wkb_geometry'
-		},
+		// wkb_geometry: {
+		// 	type: Sequelize.GEOMETRY('Point', 4326),
+		// 	allowNull: true,
+		// 	field: 'wkb_geometry'
+		// },
 		DateLoadedInDb: {
 			type: Sequelize.DATEONLY,
 			allowNull: true,
