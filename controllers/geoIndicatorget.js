@@ -10,8 +10,7 @@ exports.getGeoInd = (req, res, next) =>{
     where: whichgeoInd,
     include: [
       {
-        model: geoIndicators,
-        as: 'geoindicators'
+        model: geoIndicators
       }
     ],
 
