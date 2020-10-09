@@ -58,16 +58,16 @@ const geoSpecies =  db.define('geoSpecies', {
 			allowNull: true,
 			field: 'Hgt_Species_Avg_n'
 		},
-		Latitude_NAD83: {
-			type: Sequelize.DOUBLE,
-			allowNull: true,
-			field: 'latitude_nad83'
-		},
-		Longitude_NAD83: {
-			type: Sequelize.DOUBLE,
-			allowNull: true,
-			field: 'Longitude_NAD83'
-		},
+		// Latitude_NAD83: {
+		// 	type: Sequelize.DOUBLE,
+		// 	allowNull: true,
+		// 	field: 'latitude_nad83'
+		// },
+		// Longitude_NAD83: {
+		// 	type: Sequelize.DOUBLE,
+		// 	allowNull: true,
+		// 	field: 'Longitude_NAD83'
+		// },
 		Noxious: {
 			type: Sequelize.STRING,
 			allowNull: true,
