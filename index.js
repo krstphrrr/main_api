@@ -3,6 +3,7 @@ const app = express()
 const db = require('./config/database')
 const cors = require('cors')
 const helmet = require('helmet')
+// const bodyparser = require('body-parser')
 //routes
 const stateRoutes = require('./routes/stateget')
 
@@ -84,7 +85,7 @@ db.authenticate()
 app.use(cors())
 app.use(helmet())
 
-
+// app.use(express.raw({limit:1}))
 
 app.get('/', (req, res) => 
   res.send('ldc api up. update:10/09/2020 11:15am')

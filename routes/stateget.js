@@ -9,7 +9,6 @@ const dataSoil = require('../controllers/soilStabilityget')
 const dataGap = require('../controllers/gapget')
 
 
-
 const router = express.Router()
 
 
