@@ -15,7 +15,7 @@ exports.getSpecies = (req, res, next) =>{
     if(err){
       return console.error("error ")
     }
-    const query = new QueryStream('SELECT * FROM "geoSpecies" limit 1000')
+    const query = new QueryStream('SELECT * FROM "geoSpecies"')
     const stream = client.query(query)
     // client.query('SELECT * FROM "geoSpecies" LIMIT 1', (err, result)=>{
     //   release()
