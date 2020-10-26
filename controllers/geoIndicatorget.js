@@ -37,20 +37,24 @@ const pool = new Pool({
 //     res.status(200).json(r)
 //   })
 //   .catch(err=>{console.log(err)})
-// }
+// }            
+
 
 // STREAMING CONTROLLER
 
 exports.getGeoInd = (req, res, next) =>{
   //parsing URL query parameters IF they exist
   let sql = `
-            SELECT "dataHeader".*, "geoIndicators".* 
+            SELECT "dataHeader".*, "geoIndicators".*, "geoSpecies".* 
             FROM (
               SELECT * FROM "dataHeader" AS "dataHeader" 
               ) 
             AS "dataHeader" 
             LEFT OUTER JOIN "geoIndicators" AS "geoIndicators" 
-            ON "dataHeader"."PrimaryKey" = "geoIndicators"."PrimaryKey"
+              ON "dataHeader"."PrimaryKey" = "geoIndicators"."PrimaryKey"
+            LEFT OUTER JOIN "geoSpecies" AS "geoSpecies" 
+              ON "dataHeader"."PrimaryKey" = "geoSpecies"."PrimaryKey"
+
             `
   let values = []
   let head = "WHERE "
@@ -58,27 +62,51 @@ exports.getGeoInd = (req, res, next) =>{
     
     // let params = [req.query]
     let list = []
-    
+    geospe_array = ["GrowthHabitSub","Noxious","GrowthHabit","Duration"]
     let count = 1
+
     for(const [key,value] of Object.entries(req.query)){
+      console.log(key,value)
       if(Array.isArray(value)){
+        
         for (i = 0; i<value.length; i++){
-          // console.log(value[i])
+          // console.log(count,"#1")
           // temp = `${key} = ${value[i]}`
-          temp = `"dataHeader"."${key}" = $${count}`
-          count+=1
-          values.push(value[i])
-          list.push(temp)
+          if(geospe_array.includes(key)){
+            temp = `"geoSpecies"."${key}" = $${count}`
+            count+=1
+            values.push(value[i])
+            list.push(temp)
+          } else {
+            temp = `"dataHeader"."${key}" = $${count}`
+            count+=1
+            values.push(value[i])
+            list.push(temp)
+          }
+          
+          
         }
       } else {
-        temp = `"dataHeader"."${key}" = $${count}`
-        values.push(value)
-        list.push(temp)
+        // console.log(count,"#2")
+        if(geospe_array.includes(key)){
+          temp = `"geoSpecies"."${key}" = $${count}`
+          count+=1
+          values.push(value)
+          list.push(temp)
+        } else {
+          temp = `"dataHeader"."${key}" = $${count}`
+          count+=1
+          values.push(value)
+          list.push(temp)
+        }
+        
         
       }
       
     }
+    
     sql = sql + head + list.join(" AND ")
+    console.log(sql)
 
 
   }
@@ -88,7 +116,7 @@ exports.getGeoInd = (req, res, next) =>{
       return console.error("error ")
     }
     if (Object.keys(req.query).length!==0){
-      console.log(sql)
+
       const query = new QueryStream(sql, values)
       const stream = client.query(query)
       stream.on('end',release)
