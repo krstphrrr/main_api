@@ -12,15 +12,7 @@ const pool = new Pool({
   connectionString:process.env.DBSTR
 })
 
-let sql = `
-SELECT "dataHeader".*, "geoIndicators".* 
-FROM (
-  SELECT * FROM "dataHeader" AS "dataHeader" 
-  ) 
-AS "dataHeader" 
-LEFT OUTER JOIN "geoIndicators" AS "geoIndicators" 
-ON "dataHeader"."PrimaryKey" = "geoIndicators"."PrimaryKey"
-`
+
 
 
 
@@ -51,9 +43,19 @@ ON "dataHeader"."PrimaryKey" = "geoIndicators"."PrimaryKey"
 
 exports.getGeoInd = (req, res, next) =>{
   //parsing URL query parameters IF they exist
+  let sql = `
+            SELECT "dataHeader".*, "geoIndicators".* 
+            FROM (
+              SELECT * FROM "dataHeader" AS "dataHeader" 
+              ) 
+            AS "dataHeader" 
+            LEFT OUTER JOIN "geoIndicators" AS "geoIndicators" 
+            ON "dataHeader"."PrimaryKey" = "geoIndicators"."PrimaryKey"
+            `
   let values = []
+  let head = "WHERE "
   if (Object.keys(req.query).length!==0){
-    let head = "WHERE "
+    
     // let params = [req.query]
     let list = []
     
@@ -78,6 +80,7 @@ exports.getGeoInd = (req, res, next) =>{
     }
     sql = sql + head + list.join(" AND ")
 
+
   }
   
   pool.connect((err, client, release)=>{
@@ -85,6 +88,7 @@ exports.getGeoInd = (req, res, next) =>{
       return console.error("error ")
     }
     if (Object.keys(req.query).length!==0){
+      console.log(sql)
       const query = new QueryStream(sql, values)
       const stream = client.query(query)
       stream.on('end',release)
