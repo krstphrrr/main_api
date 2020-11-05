@@ -3,80 +3,39 @@ const app = express()
 const db = require('./config/database')
 const cors = require('cors')
 const helmet = require('helmet')
-// const bodyparser = require('body-parser')
+const swaggerJsDoc = require('swagger-jsdoc')
+const swaggerUi = require('swagger-ui-express')
+const path = require('path')
+const bodyparser = require('body-parser')
+app.use(bodyparser.urlencoded({ extended: true }));
+
 //routes
 const stateRoutes = require('./routes/stateget')
 
-//models
-const Header = require('./models/dataHeader')
-const Gap = require('./models/dataGap')
-const Height = require('./models/dataHeight')
-const LPI = require('./models/dataLPI')
-const SoilStab = require('./models/dataSoilStability')
-const SpecInv = require('./models/dataSpeciesInventory')
-const GeoInd = require('./models/geoIndicators')
-const GeoSpe = require('./models/geoSpecies')
+const swaggerOptions = {
+  swaggerDefinition: {
+    info:{
+      title: 'Tall tables API',
+      description: 'API to serve to tall tables data',
+      contact:{
+        name:'kris'
+      },
+      servers:["http://localhost:5002/api/", "https://api.landscapedatacommons.org/api/"]
+    }
+  },
+  apis:["./routes/*.js"]
+}
 
-// associating header to gap through primarykey
-Header.hasMany(Gap,{
-  foreignKey:"PrimaryKey",
-  as:'gap' 
-})
-Gap.belongsTo(Header,{
-  foreignKey:"PrimaryKey",
-})
-// associating header to height 
-Height.belongsTo(Header,{
-  foreignKey:"PrimaryKey",
-})
-Header.hasMany(Height,{
-  foreignKey:"PrimaryKey",
-  as:"height"
-})
-//associating header to lpi 
-Header.hasMany(LPI, {
-  foreignKey: "PrimaryKey",
-  as: "lpi"
-})
-LPI.belongsTo(Header, {
-  foreignKey:"PrimaryKey"
-})
-// associating header to soil stability 
-Header.hasMany(SoilStab, {
-  foreignKey:"PrimaryKey",
-  as: "soilstab"
-})
-SoilStab.belongsTo(Header, {
-  foreignKey:"PrimaryKey"
-})
-// associatiung header to species inventory
-Header.hasMany(SpecInv,{
-  foreignKey:"PrimaryKey",
-  as: "speciesinv"
-})
-SpecInv.belongsTo(Header,{
-  foreignKey:"PrimaryKey"
-})
+var swaggerUiOpts = {
+  explorer: false,
+  swaggerOptions: swaggerOptions,
+  customCss: '.swagger-ui .topbar { display: none }'
+}
 
-////
 
-Header.hasMany(GeoInd,{
-  foreignKey:"PrimaryKey"
-})
-GeoInd.belongsTo(Header,{
-  foreignKey:"PrimaryKey",
-  as: "geoindicators"
-})
+const swaggerDocs = swaggerJsDoc(swaggerOptions)
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs, swaggerUiOpts))
 
-////////////////
-
-Header.hasMany(GeoSpe,{
-  foreignKey:"PrimaryKey"
-})
-GeoSpe.belongsTo(Header,{
-  foreignKey:"PrimaryKey",
-  as: "geospecies"
-})
 
 db.authenticate()
     .then(() => console.log('database connected...'))
@@ -88,7 +47,7 @@ app.use(helmet())
 // app.use(express.raw({limit:1}))
 
 app.get('/', (req, res) => 
-  res.send('ldc api up. update:10/12/2020 2:49pm')
+  res.send('ldc api up. update:11-04-2020')
 )
 
 //routes 

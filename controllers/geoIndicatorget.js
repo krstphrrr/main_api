@@ -13,9 +13,6 @@ const pool = new Pool({
 })
 
 
-
-
-
 // SEQUELIZE CONTROLLER
 // exports.getGeoInd = (req, res, next) =>{
 //   let whichgeoInd = req.params
@@ -37,7 +34,7 @@ const pool = new Pool({
 //     res.status(200).json(r)
 //   })
 //   .catch(err=>{console.log(err)})
-// }            
+// }
 
 
 // STREAMING CONTROLLER
@@ -119,19 +116,15 @@ exports.getGeoInd = (req, res, next) =>{
           values.push(value)
           list.push(temp)
         }
-        
-        
       }
-      
     }
     
     sql = sql + head + list.join(" AND ")
     console.log(sql)
-
-
   }
   
   pool.connect((err, client, release)=>{
+    res.contentType('application/json')
     if(err){
       return console.error("error ")
     }

@@ -1,17 +1,22 @@
+const JSONStream = require('JSONStream')
+const QueryStream = require('pg-query-stream')
 
-const Header = require('../models/dataHeader')
-const SoilStab= require('../models/dataSoilStability')
+
+const {Pool} = require('pg')
+const pool = new Pool({
+  connectionString:process.env.DBSTR
+})
 
 
-exports.getSoilStab = (req, res, next) =>{
-  // let whichSoilStab = req.params
+exports.getHeader= (req, res, next) =>{
+  // let whichHeight = req.params
 
   // Header.findAll({
-  //   where: whichSoilStab,
+  //   where: whichHeight,
   //   include: [
   //     {
-  //       model: SoilStab,
-  //       as: 'soilstab'
+  //       model: Height,
+  //       as:'height'
   //     }
   //   ],
 
@@ -26,13 +31,8 @@ exports.getSoilStab = (req, res, next) =>{
   // .catch(err=>{console.log(err)})
 
   sql = `
-  SELECT "dataHeader".*, "dataSoilStability".* 
-  FROM (
-    SELECT * FROM "dataHeader" AS "dataHeader" 
-    ) 
-  AS "dataHeader" 
-  LEFT OUTER JOIN "dataSoilStability" AS "dataSoilStability" 
-    ON "dataHeader"."PrimaryKey" = "dataSoilStability"."PrimaryKey"
+  SELECT * 
+    FROM "dataHeader"
   `
 let values = []
 let head = "WHERE "
@@ -45,14 +45,14 @@ console.log(key,value)
 if(Array.isArray(value)){
 
 for (i = 0; i<value.length; i++){
-temp = `"dataSoilStability"."${key}" = $${count}`
+temp = `"dataHeader"."${key}" = $${count}`
 count+=1
 values.push(value[i])
 list.push(temp)
 }
 } else {
 
-temp = `"dataSoilStability"."${key}" = $${count}`
+temp = `"dataHeader"."${key}" = $${count}`
 count+=1
 values.push(value)
 list.push(temp)    
@@ -85,5 +85,4 @@ stream.on('end',release)
 stream.pipe(JSONStream.stringify()).pipe(res)
 }
 })
-
 }

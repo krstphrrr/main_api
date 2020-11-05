@@ -11,12 +11,8 @@ const pool = new Pool({
   connectionString:process.env.DBSTR
 })
 
-testparams = {
-  'primaryKey':"1109211155239312011-09-01",
-  "EcologicalSiteId":"R023XY200OR"
-}
-
-let sql = `
+exports.getSpecies = (req, res, next) =>{
+  let sql = `
 SELECT "dataHeader".*, "geoSpecies".* 
 FROM (
   SELECT * FROM "dataHeader" AS "dataHeader" 
@@ -25,39 +21,37 @@ AS "dataHeader"
 LEFT OUTER JOIN "geoSpecies" AS "geoSpecies" 
 ON "dataHeader"."PrimaryKey" = "geoSpecies"."PrimaryKey"
 `
-
-exports.getSpecies = (req, res, next) =>{
   // console.log(req.query)
   let values = []
+  let head = "WHERE "
   if (Object.keys(req.query).length!==0){
-    let head = "WHERE "
+    
     // let params = [req.query]
     let list = []
-    
     let count = 1
     for(const [key,value] of Object.entries(req.query)){
+      console.log(key,value)
       if(Array.isArray(value)){
+
         for (i = 0; i<value.length; i++){
-          // console.log(value[i])
-          // temp = `${key} = ${value[i]}`
-          temp = `"dataHeader"."${key}" = $${count}`
+          temp = `"geoSpecies"."${key}" = $${count}`
           count+=1
           values.push(value[i])
           list.push(temp)
         }
       } else {
-        temp = `"dataHeader"."${key}" = $${count}`
+        temp = `"geoSpecies"."${key}" = $${count}`
+        count+=1
         values.push(value)
         list.push(temp)
-        
       }
-      
     }
     sql = sql + head + list.join(" AND ")
-
+    console.log(sql)
   }
   
   pool.connect((err, client, release)=>{
+    res.contentType('application/json')
     if(err){
       return console.error("error ")
     }
@@ -73,10 +67,6 @@ exports.getSpecies = (req, res, next) =>{
       stream.on('end',release)
       stream.pipe(JSONStream.stringify()).pipe(res)
     }
-    
-    
   })
-
-
 }
 

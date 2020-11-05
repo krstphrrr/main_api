@@ -21,6 +21,8 @@
     "pg-query-stream": "^3.3.1",
     "pump": "^3.0.0",
     "sequelize": "^5.22.3",
+    "swagger-jsdoc": "^5.0.0",
+    "swagger-ui-express": "^4.1.4",
     "through2": "^4.0.2"
   }
 }
