@@ -45,9 +45,7 @@ exports.getGeoInd = (req, res, next) =>{
   const geospe_array = ["GrowthHabitSub","Noxious","GrowthHabit","Duration", "Species"]
  
   // console.log(Object.keys(req.query).some(r => geospe_array.includes(r)))
-  switch(Object.keys(req.query).some(r => geospe_array.includes(r))){
-    case true:
-      sql = `
+  sql = `
             SELECT "dataHeader".*, "geoIndicators".*, "geoSpecies".* 
             FROM (
               SELECT * FROM "dataHeader" AS "dataHeader" 
@@ -59,20 +57,6 @@ exports.getGeoInd = (req, res, next) =>{
               ON "dataHeader"."PrimaryKey" = "geoSpecies"."PrimaryKey"
 
             `
-      break;
-    case false:
-      sql = `
-            SELECT "dataHeader".*, "geoIndicators".* 
-            FROM (
-              SELECT * FROM "dataHeader" AS "dataHeader" 
-              ) 
-            AS "dataHeader" 
-            LEFT OUTER JOIN "geoIndicators" AS "geoIndicators" 
-              ON "dataHeader"."PrimaryKey" = "geoIndicators"."PrimaryKey"
-            `
-      break;
-  }
-
   let values = []
   let head = "WHERE "
   if (Object.keys(req.query).length!==0){
