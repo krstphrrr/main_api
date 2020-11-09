@@ -42,7 +42,7 @@ const pool = new Pool({
 exports.getGeoInd = (req, res, next) =>{
   //parsing URL query parameters IF they exist
   let sql;
-  const geospe_array = ["GrowthHabitSub","Noxious","GrowthHabit","Duration"]
+  const geospe_array = ["GrowthHabitSub","Noxious","GrowthHabit","Duration", "Species"]
  
   // console.log(Object.keys(req.query).some(r => geospe_array.includes(r)))
   switch(Object.keys(req.query).some(r => geospe_array.includes(r))){
