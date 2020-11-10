@@ -643,25 +643,45 @@ router.get('/datagap',dataGap.getGap)
  *  geospecies:
  *    type: "object"
  *    properties:
- *      parameter_set:
+ *      AH_SpeciesCover:
+ *        type: "numeric"
+ *      AH_SpeciesCover_n:
  *        type: "integer"
- *      likelihood:
- *        type: "number"
- *      horizontal_flux_total:
- *        type: "number"
- *      vertical_flux:
- *        type: "number"
- *      PM1:
- *        type: "number"
- *      PM2_5:
- *        type: "number"
- *      PM10:
- *        type: "number"
- *      PlotId:
+ *      DBKey:
  *        type: "string"
- *      Source:
+ *      Duration:
  *        type: "string"
- *      ModelRunKey:
+ *      GlobalID:
+ *        type: "string"
+ *      GrowthHabit:
+ *        type: "string"
+ *      GrowthHabitSub:
+ *        type: "string"
+ *      Hgt_Species_Avg:
+ *        type: "number"
+ *      Hgt_Species_Avg_n:
+ *        type: "number"
+ *      Noxious:
+ *        type: "string"
+ *      PlotID:
+ *        type: "string"
+ *      PrimaryKey:
+ *        type: "string"
+ *      SG_Group:
+ *        type: "string"
+ *      Species:
+ *        type: "string"
+ *      created_date:
+ *        type: "date"
+ *      created_user:
+ *        type: "string"
+ *      last_edited_date:
+ *        type: "date"
+ *      last_edited_user:
+ *        type: "string"
+ *      DateLoadedInDb:
+ *        type: "date"
+ *      SpeciesKey:
  *        type: "string"
  *  dataspeciesinventory:
  *    type: "object"
