@@ -798,27 +798,9 @@ router.get('/datagap',dataGap.getGap)
  *  datalpi:
  *    type: "object"
  *    properties:
- *      PrimaryKey:
- *        type: "string"
- *      DBKey:
- *        type: "string"
- *      PointLoc:
- *        type: "number"
- *      PointNbr:
- *        type: "number"
- *      RecKey:
- *        type: "string"
- *      Height:
- *        type: "number"
- *      Species:
- *        type: "string"
- *      Chkbox:
- *        type: "number"
- *      type:
- *        type: "string"
- *      GrowthHabit_measured:
- *        type: "string"
  *      LineKey:
+ *        type: "string"
+ *      RecKey:
  *        type: "string"
  *      DateModified:
  *        type: "date"
@@ -827,12 +809,14 @@ router.get('/datagap',dataGap.getGap)
  *      FormDate:
  *        type: "date"
  *      Observer:
- *        type: "string"
+ *        type: "number"
  *      Recorder:
  *        type: "string"
  *      DataEntry:
- *        type: "string"
+ *        type: "number"
  *      DataErrorChecking:
+ *        type: "string"
+ *      GrowthHabit_measured:
  *        type: "string"
  *      Direction:
  *        type: "string"
@@ -849,15 +833,36 @@ router.get('/datagap',dataGap.getGap)
  *      HeightUOM:
  *        type: "string"
  *      ShowCheckbox:
- *        type: "number"
+ *        type: "string"
  *      CheckboxLabel:
  *        type: "string"
+ *      PrimaryKey:
+ *        type: "string"
+ *      DBKey:
+ *        type: "string"
+ *      PointLoc:
+ *        type: "number"
+ *      PointNbr:
+ *        type: "number"
+ *      ShrubShape:
+ *        type: "string"
+ *      layer:
+ *        type: "string"
+ *      code:
+ *        type: "string"
+ *      chckbox:
+ *        type: "number"
  *      source:
  *        type: "string"
- *      UOM:
+ *      STATE:
  *        type: "string"
  *      DateLoadedInDb:
  *        type: "date"
+ *      SAGEBRUSH_SPP:
+ *        type: "string"
+ *      PLOTKEY:
+ *        type: "string"
+ * 
  * 
  *  datasoilstability:
  *    type: "object"
