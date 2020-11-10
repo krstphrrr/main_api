@@ -46,26 +46,6 @@ const router = express.Router()
  *        name: EcologicalSiteId
  *        schema:
  *          type: string
- *      - in : query
- *        name: State
- *        type: "array"
- *        items:
- *          type: "string"
- *          enum:
- *          - "AK"
- *          - "AZ"
- *          - "CA"
- *          - "CO"
- *          - "ID"
- *          - "MT"
- *          - "ND"
- *          - "NM"
- *          - "NV"
- *          - "OR"
- *          - "SD"
- *          - "UT"
- *          - "WA"
- *          - "WY"
  *    responses:
  *      '200':
  *        description: A successful response.
@@ -95,25 +75,13 @@ router.get('/geoindicators', geoIndicatorsController.getGeoInd)
  *        schema:
  *          type: string
  *      - in : query
- *        name: SpeciesKey
- *        type: "array"
- *        items:
- *          type: "string"
- *          enum:
- *          - "AK"
- *          - "AZ"
- *          - "CA"
- *          - "CO"
- *          - "ID"
- *          - "MT"
- *          - "ND"
- *          - "NM"
- *          - "NV"
- *          - "OR"
- *          - "SD"
- *          - "UT"
- *          - "WA"
- *          - "WY"
+ *        name: source
+ *        schema:
+ *          type: string
+ *      - in : query
+ *        name: Species
+ *        schema:
+ *          type: string
  *    responses:
  *      '200':
  *        description: A successful response.
@@ -140,15 +108,7 @@ router.get('/geospecies',geoSpeciesController.getSpecies)
  *        schema:
  *          type: string
  *      - in : query
- *        name: LineKey
- *        schema:
- *          type: string
- *      - in : query
- *        name: RecKey
- *        schema:
- *          type: string
- *      - in : query
- *        name: Source
+ *        name: source
  *        schema:
  *          type: string
  *    responses:
@@ -174,10 +134,6 @@ router.get('/dataspeciesinventory',dataSpeciesInv.getSpeciesInv)
  *    parameters:
  *      - in : query
  *        name: PrimaryKey
- *        schema:
- *          type: string
- *      - in : query
- *        name: RecKey
  *        schema:
  *          type: string
  *      - in : query
@@ -210,14 +166,6 @@ router.get('/dataheight',dataHeight.getHeight)
  *        schema:
  *          type: string
  *      - in : query
- *        name: LineKey
- *        schema:
- *          type: string
- *      - in : query
- *        name: RecKey
- *        schema:
- *          type: string
- *      - in : query
  *        name: source
  *        schema:
  *          type: string
@@ -247,15 +195,7 @@ router.get('/datalpi',dataLPI.getLPI)
  *        schema:
  *          type: string
  *      - in : query
- *        name: PlotKey
- *        schema:
- *          type: string
- *      - in : query
- *        name: RecKey
- *        schema:
- *          type: string
- *      - in : query
- *        name: Source
+ *        name: source
  *        schema:
  *          type: string
  *    responses:
@@ -284,17 +224,14 @@ router.get('/datasoilstability',dataSoil.getSoilStab)
  *        schema:
  *          type: string
  *      - in : query
- *        name: LineKey
+ *        name: source
  *        schema:
  *          type: string
  *      - in : query
- *        name: RecKey
+ *        name: Species
  *        schema:
  *          type: string
- *      - in : query
- *        name: Source
- *        schema:
- *          type: string
+ * 
  *    responses:
  *      '200':
  *        description: A successful response.
@@ -322,7 +259,7 @@ router.get('/datagap',dataGap.getGap)
  *        schema:
  *          type: string
  *      - in : query
- *        name: SpeciesState
+ *        name: SpeciesKey
  *        type: "array"
  *        items:
  *          type: "string"
@@ -333,13 +270,10 @@ router.get('/datagap',dataGap.getGap)
  *          - "CO"
  *          - "ID"
  *          - "MT"
- *          - "ND"
  *          - "NM"
  *          - "NV"
  *          - "OR"
- *          - "SD"
  *          - "UT"
- *          - "WA"
  *          - "WY"
  *      - in : query
  *        name: EcologicalSiteId
@@ -423,7 +357,7 @@ router.get('/datagap',dataGap.getGap)
  *      DateEstablished:
  *        type: "date"
  *      DateLoadedInDb:
- *        type: "string"
+ *        type: "date"
  *      DateVisited:
  *        type: "date"
  *      ELEVATION:
@@ -635,11 +569,11 @@ router.get('/datagap',dataGap.getGap)
  *      created_date:
  *        type: "date"
  *      created_user:
- *        type: "string"
+ *        type: "date"
  *      last_edited_date:
- *        type: "string"
+ *        type: "date"
  *      last_edited_user:
- *        type: "string"
+ *        type: "date"
  *  geospecies:
  *    type: "object"
  *    properties:
@@ -674,11 +608,11 @@ router.get('/datagap',dataGap.getGap)
  *      created_date:
  *        type: "date"
  *      created_user:
- *        type: "string"
+ *        type: "date"
  *      last_edited_date:
  *        type: "date"
  *      last_edited_user:
- *        type: "string"
+ *        type: "date"
  *      DateLoadedInDb:
  *        type: "date"
  *      SpeciesKey:
@@ -686,72 +620,245 @@ router.get('/datagap',dataGap.getGap)
  *  dataspeciesinventory:
  *    type: "object"
  *    properties:
- *      parameter_set:
- *        type: "integer"
- *      likelihood:
- *        type: "number"
- *      horizontal_flux_total:
- *        type: "number"
- *      vertical_flux:
- *        type: "number"
- *      PM1:
- *        type: "number"
- *      PM2_5:
- *        type: "number"
- *      PM10:
- *        type: "number"
- *      PlotId:
+ *      LineKey:
  *        type: "string"
- *      Source:
+ *      RecKey:
  *        type: "string"
- *      ModelRunKey:
+ *      DateModified:
+ *        type: "date"
+ *      FormType:
+ *        type: "string"
+ *      FormDate:
+ *        type: "date"
+ *      Observer:
+ *        type: "string"
+ *      Recorder:
+ *        type: "string"
+ *      DataEntry:
+ *        type: "string"
+ *      DataErrorChecking:
+ *        type: "string"
+ *      SpecRichMethod:
+ *        type: "number"
+ *      SpecRichMeasure:
+ *        type: "number"
+ *      SpecRichNbrSubPlots:
+ *        type: "number"
+ *      SpecRich1Container:
+ *        type: "number"
+ *      SpecRich1Shape:
+ *        type: "number"
+ *      SpecRich1Dim1:
+ *        type: "number"
+ *      SpecRich1Dim2:
+ *        type: "number"
+ *      SpecRich1Area:
+ *        type: "number"
+ *      SpecRich2Container:
+ *        type: "number"
+ *      SpecRich2Shape:
+ *        type: "number"
+ *      SpecRich2Dim1:
+ *        type: "number"
+ *      SpecRich2Dim2:
+ *        type: "number"
+ *      SpecRich2Area:
+ *        type: "number"
+ *      SpecRich3Container:
+ *        type: "number"
+ *      SpecRich3Shape:
+ *        type: "number"
+ *      SpecRich3Dim1:
+ *        type: "number"
+ *      SpecRich3Dim2:
+ *        type: "number"
+ *      SpecRich3Area:
+ *        type: "number"
+ *      SpecRich4Container:
+ *        type: "number"
+ *      SpecRich4Shape:
+ *        type: "number"
+ *      SpecRich4Dim1:
+ *        type: "number"
+ *      SpecRich4Dim2:
+ *        type: "number"
+ *      SpecRich4Area:
+ *        type: "number"
+ *      SpecRich5Container:
+ *        type: "number"
+ *      SpecRich5Shape:
+ *        type: "number"
+ *      SpecRich5Dim1:
+ *        type: "number"
+ *      SpecRich5Dim2:
+ *        type: "number"
+ *      SpecRich5Area:
+ *        type: "number"
+ *      SpecRich6Container:
+ *        type: "number"
+ *      SpecRich6Shape:
+ *        type: "number"
+ *      SpecRich6Dim1:
+ *        type: "number"
+ *      SpecRich6Dim2:
+ *        type: "number"
+ *      SpecRich6Area:
+ *        type: "number"
+ *      Notes:
+ *        type: "string"
+ *      DateLoadedInDb:
+ *        type: "date"
+ *      PrimaryKey:
+ *        type: "string"
+ *      DBKey:
+ *        type: "string"
+ *      created_user:
+ *        type: "date"
+ *      created_date:
+ *        type: "date"
+ *      last_edited_user:
+ *        type: "date"
+ *      last_edited_date:
+ *        type: "date"
+ *      GlobalID:
+ *        type: "string"
+ *      Species:
+ *        type: "string"
+ *      source:
+ *        type: "string"
+ *      SpeciesCount:
+ *        type: "number"
+ *      DENSITY:
+ *        type: "number"
+ *      PLOTKEY:
  *        type: "string"
  *  dataheight:
  *    type: "object"
  *    properties:
- *      parameter_set:
- *        type: "integer"
- *      likelihood:
- *        type: "number"
- *      horizontal_flux_total:
- *        type: "number"
- *      vertical_flux:
- *        type: "number"
- *      PM1:
- *        type: "number"
- *      PM2_5:
- *        type: "number"
- *      PM10:
- *        type: "number"
- *      PlotId:
+ *      PrimaryKey:
  *        type: "string"
- *      Source:
+ *      DBKey:
  *        type: "string"
- *      ModelRunKey:
+ *      PointLoc:
+ *        type: "number"
+ *      PointNbr:
+ *        type: "number"
+ *      RecKey:
  *        type: "string"
+ *      Height:
+ *        type: "number"
+ *      Species:
+ *        type: "string"
+ *      Chkbox:
+ *        type: "number"
+ *      type:
+ *        type: "string"
+ *      GrowthHabit_measured:
+ *        type: "string"
+ *      LineKey:
+ *        type: "string"
+ *      DateModified:
+ *        type: "date"
+ *      FormType:
+ *        type: "string"
+ *      FormDate:
+ *        type: "date"
+ *      Observer:
+ *        type: "string"
+ *      Recorder:
+ *        type: "string"
+ *      DataEntry:
+ *        type: "string"
+ *      DataErrorChecking:
+ *        type: "string"
+ *      Direction:
+ *        type: "string"
+ *      Measure:
+ *        type: "number"
+ *      LineLengthAmount:
+ *        type: "number"
+ *      SpacingIntervalAmount:
+ *        type: "number"
+ *      SpacingType:
+ *        type: "string"
+ *      HeightOption:
+ *        type: "string"
+ *      HeightUOM:
+ *        type: "string"
+ *      ShowCheckbox:
+ *        type: "number"
+ *      CheckboxLabel:
+ *        type: "string"
+ *      source:
+ *        type: "string"
+ *      UOM:
+ *        type: "string"
+ *      DateLoadedInDb:
+ *        type: "date"
  *  datalpi:
  *    type: "object"
  *    properties:
- *      parameter_set:
- *        type: "integer"
- *      likelihood:
- *        type: "number"
- *      horizontal_flux_total:
- *        type: "number"
- *      vertical_flux:
- *        type: "number"
- *      PM1:
- *        type: "number"
- *      PM2_5:
- *        type: "number"
- *      PM10:
- *        type: "number"
- *      PlotId:
+ *      PrimaryKey:
  *        type: "string"
- *      Source:
+ *      DBKey:
  *        type: "string"
- *      ModelRunKey:
+ *      PointLoc:
+ *        type: "number"
+ *      PointNbr:
+ *        type: "number"
+ *      RecKey:
  *        type: "string"
+ *      Height:
+ *        type: "number"
+ *      Species:
+ *        type: "string"
+ *      Chkbox:
+ *        type: "number"
+ *      type:
+ *        type: "string"
+ *      GrowthHabit_measured:
+ *        type: "string"
+ *      LineKey:
+ *        type: "string"
+ *      DateModified:
+ *        type: "date"
+ *      FormType:
+ *        type: "string"
+ *      FormDate:
+ *        type: "date"
+ *      Observer:
+ *        type: "string"
+ *      Recorder:
+ *        type: "string"
+ *      DataEntry:
+ *        type: "string"
+ *      DataErrorChecking:
+ *        type: "string"
+ *      Direction:
+ *        type: "string"
+ *      Measure:
+ *        type: "number"
+ *      LineLengthAmount:
+ *        type: "number"
+ *      SpacingIntervalAmount:
+ *        type: "number"
+ *      SpacingType:
+ *        type: "string"
+ *      HeightOption:
+ *        type: "string"
+ *      HeightUOM:
+ *        type: "string"
+ *      ShowCheckbox:
+ *        type: "number"
+ *      CheckboxLabel:
+ *        type: "string"
+ *      source:
+ *        type: "string"
+ *      UOM:
+ *        type: "string"
+ *      DateLoadedInDb:
+ *        type: "date"
+ * 
  *  datasoilstability:
  *    type: "object"
  *    properties:
