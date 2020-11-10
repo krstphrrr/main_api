@@ -867,26 +867,51 @@ router.get('/datagap',dataGap.getGap)
  *  datasoilstability:
  *    type: "object"
  *    properties:
- *      parameter_set:
- *        type: "integer"
- *      likelihood:
- *        type: "number"
- *      horizontal_flux_total:
- *        type: "number"
- *      vertical_flux:
- *        type: "number"
- *      PM1:
- *        type: "number"
- *      PM2_5:
- *        type: "number"
- *      PM10:
- *        type: "number"
- *      PlotId:
+ *      PlotKey:
  *        type: "string"
- *      Source:
+ *      RecKey:
  *        type: "string"
- *      ModelRunKey:
+ *      DateModified:
+ *        type: "date"
+ *      FormType:
  *        type: "string"
+ *      FormDate:
+ *        type: "date"
+ *      LineKey:
+ *        type: "number"
+ *      Observer:
+ *        type: "number"
+ *      Recorder:
+ *        type: "string"
+ *      DataEntry:
+ *        type: "string"
+ *      DataErrorChecking:
+ *        type: "string"
+ *      SoilStabSubSurface:
+ *        type: "number"
+ *      Notes:
+ *        type: "string"
+ *      DateLoadedInDb:
+ *        type: "date"
+ *      PrimaryKey:
+ *        type: "string"
+ *      DBKey:
+ *        type: "string"
+ *      Position:
+ *        type: "number"
+ *      Line:
+ *        type: "string"
+ *      Pos:
+ *        type: "string"
+ *      Veg:
+ *        type: "string"
+ *      Rating:
+ *        type: "number"
+ *      Hydro:
+ *        type: "number"
+ *      source:
+ *        type: "string"
+ * 
  *  datagap:
  *    type: "object"
  *    properties:
