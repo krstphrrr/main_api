@@ -915,25 +915,77 @@ router.get('/datagap',dataGap.getGap)
  *  datagap:
  *    type: "object"
  *    properties:
- *      parameter_set:
- *        type: "integer"
- *      likelihood:
- *        type: "number"
- *      horizontal_flux_total:
- *        type: "number"
- *      vertical_flux:
- *        type: "number"
- *      PM1:
- *        type: "number"
- *      PM2_5:
- *        type: "number"
- *      PM10:
- *        type: "number"
- *      PlotId:
+ *      LineKey:
  *        type: "string"
- *      Source:
+ *      RecKey:
  *        type: "string"
- *      ModelRunKey:
+ *      DateModified:
+ *        type: "date"
+ *      FormType:
+ *        type: "string"
+ *      FormDate:
+ *        type: "date"
+ *      Observer:
+ *        type: "string"
+ *      Recorder:
+ *        type: "string"
+ *      DataEntry:
+ *        type: "string"
+ *      DataErrorChecking:
+ *        type: "string"
+ *      Direction:
+ *        type: "string"
+ *      Measure:
+ *        type: "number"
+ *      LineLengthAmount:
+ *        type: "number"
+ *      GapMin:
+ *        type: "number"
+ *      GapData:
+ *        type: "number"
+ *      PerennialsCanopy:
+ *        type: "number"
+ *      AnnualGrassesCanopy:
+ *        type: "number"
+ *      AnnualForbsCanopy:
+ *        type: "number"
+ *      OtherCanopy:
+ *        type: "number"
+ *      Notes:
+ *        type: "string"
+ *      NoCanopyGaps:
+ *        type: "number"
+ *      NoBasalGaps:
+ *        type: "number"
+ *      DateLoadedInDb:
+ *        type: "date"
+ *      PerennialsBasal:
+ *        type: "number"
+ *      AnnualGrassesBasal:
+ *        type: "number"
+ *      AnnualForbsBasal:
+ *        type: "number"
+ *      OtherBasal:
+ *        type: "number"
+ *      PrimaryKey:
+ *        type: "string"
+ *      DBKey:
+ *        type: "string"
+ *      SeqNo:
+ *        type: "string"
+ *      RecType:
+ *        type: "number"
+ *      GapStart:
+ *        type: "number"
+ *      GapEnd:
+ *        type: "number"
+ *      Gap:
+ *        type: "string"
+ *      source:
+ *        type: "string"
+ *      STATE:
+ *        type: "string"
+ *      PLOTKEY:
  *        type: "string"
  *  dataheader:
  *    type: "object"
