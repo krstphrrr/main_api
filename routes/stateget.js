@@ -990,26 +990,42 @@ router.get('/datagap',dataGap.getGap)
  *  dataheader:
  *    type: "object"
  *    properties:
- *      parameter_set:
- *        type: "integer"
- *      likelihood:
- *        type: "number"
- *      horizontal_flux_total:
- *        type: "number"
- *      vertical_flux:
- *        type: "number"
- *      PM1:
- *        type: "number"
- *      PM2_5:
- *        type: "number"
- *      PM10:
- *        type: "number"
- *      PlotId:
+ *      PrimaryKey:
  *        type: "string"
- *      Source:
+ *      SpeciesKey:
  *        type: "string"
- *      ModelRunKey:
+ *      PlotID:
  *        type: "string"
+ *      PlotKey:
+ *        type: "string"
+ *      DBKey:
+ *        type: "string"
+ *      EcologicalSiteId:
+ *        type: "string"
+ *      Latitude_NAD83:
+ *        type: "number"
+ *      Longitude_NAD83:
+ *        type: "number"
+ *      State:
+ *        type: "string"
+ *      DateEstablished:
+ *        type: "date"
+ *      DateLoadedInDb:
+ *        type: "date"
+ *      ProjectName:
+ *        type: "string"
+ *      source:
+ *        type: "string"
+ *      LocationType:
+ *        type: "string"
+ *      DateVisited:
+ *        type: "date"
+ *      ELEVATION:
+ *        type: "number"
+ *      PercentCoveredByEcoSite:
+ *        type: "number"
+ *      wkb_geometry:
+ *        type: "geometry"
  * 
  */
 
