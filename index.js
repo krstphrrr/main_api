@@ -7,7 +7,8 @@ const swaggerJsDoc = require('swagger-jsdoc')
 const swaggerUi = require('swagger-ui-express')
 const path = require('path')
 const bodyparser = require('body-parser')
-app.use(bodyparser.urlencoded({ extended: true }));
+app.use(bodyparser.json())
+// app.use(bodyparser.urlencoded({ extended: true }));
 
 //routes
 const stateRoutes = require('./routes/stateget')

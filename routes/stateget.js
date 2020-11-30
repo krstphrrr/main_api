@@ -8,6 +8,7 @@ const dataLPI = require('../controllers/lpiget')
 const dataSoil = require('../controllers/soilStabilityget')
 const dataGap = require('../controllers/gapget')
 const dataHeader = require('../controllers/headerget')
+const postTest=require('../controllers/posttest')
 
 
 const router = express.Router()
@@ -1032,7 +1033,7 @@ router.get('/datagap',dataGap.getGap)
 
 router.get('/dataheader',dataHeader.getHeader)
 
-
+router.post("/posttest",postTest.postTest)
 
 
 module.exports = router
