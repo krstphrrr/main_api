@@ -4,7 +4,7 @@ const Sequelize = require('sequelize')
 const db = require("../config/database")
 
 const dataGap = db.define('dataGap', {
-	LineKey: {
+		LineKey: {
 			type: Sequelize.STRING,
 			allowNull: true,
 			primaryKey:true,

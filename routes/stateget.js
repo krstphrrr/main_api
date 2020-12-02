@@ -244,6 +244,7 @@ router.get('/datasoilstability',dataSoil.getSoilStab)
 
 
 router.get('/datagap',dataGap.getGap)
+router.post('/postgap',dataGap.postGap)
 
 /**
  * @swagger 
