@@ -57,7 +57,7 @@ const router = express.Router()
  */
 
 router.get('/geoindicators', geoIndicatorsController.getGeoInd)
-// router.get('/cleangeoindicators', geoIndicatorsController.getCleanGeoind)
+router.post('/postgeoindicators',geoIndicatorsController.postGeoIndicators)
 
 /**
  * @swagger 
@@ -93,6 +93,7 @@ router.get('/geoindicators', geoIndicatorsController.getGeoInd)
  */
 
 router.get('/geospecies',geoSpeciesController.getSpecies)
+router.post('/postgeospecies',geoSpeciesController.postGeoSpecies)
 
 /**
  * @swagger 
@@ -122,6 +123,7 @@ router.get('/geospecies',geoSpeciesController.getSpecies)
  */
 
 router.get('/dataspeciesinventory',dataSpeciesInv.getSpeciesInv)
+router.post('/postspeciesinventory',dataSpeciesInv.postSpeciesInventory)
 
 /**
  * @swagger 
@@ -151,6 +153,7 @@ router.get('/dataspeciesinventory',dataSpeciesInv.getSpeciesInv)
  */
 
 router.get('/dataheight',dataHeight.getHeight)
+router.post('/postheight',dataHeight.postHeight)
 
 /**
  * @swagger 
@@ -180,6 +183,7 @@ router.get('/dataheight',dataHeight.getHeight)
  */
 
 router.get('/datalpi',dataLPI.getLPI)
+router.post('/postlpi',dataLPI.postLPI)
 
 /**
  * @swagger 
@@ -209,6 +213,7 @@ router.get('/datalpi',dataLPI.getLPI)
  */
 
 router.get('/datasoilstability',dataSoil.getSoilStab)
+router.post('/postsoilstability',dataSoil.postSoilStab)
 
 /**
  * @swagger 
@@ -1033,8 +1038,9 @@ router.post('/postgap',dataGap.postGap)
 
 
 router.get('/dataheader',dataHeader.getHeader)
+router.post('/postheader',dataHeader.postHeader)
 
-router.post("/posttest",postTest.postTest)
+// router.post("/posttest",postTest.postTest)
 
 
 module.exports = router

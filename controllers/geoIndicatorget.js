@@ -12,33 +12,6 @@ const pool = new Pool({
   connectionString:process.env.DBSTR
 })
 
-
-// SEQUELIZE CONTROLLER
-// exports.getGeoInd = (req, res, next) =>{
-//   let whichgeoInd = req.params
-
-//   Header.findAll({
-//     where: whichgeoInd,
-//     include: [
-//       {
-//         model: geoIndicators
-//       }
-//     ],
-
-//     limit:1,
-//     raw:true,
-
-//   })
-
-//   .then( r => {
-//     res.status(200).json(r)
-//   })
-//   .catch(err=>{console.log(err)})
-// }
-
-
-// STREAMING CONTROLLER
-
 exports.getGeoInd = (req, res, next) =>{
   //parsing URL query parameters IF they exist
   let sql;
@@ -131,20 +104,39 @@ exports.getGeoInd = (req, res, next) =>{
 
 }
 
+exports.postGeoIndicators = (req, res, next) =>{
+  geoIndicators.sync()
+    try{
+        Object.entries(req.body).forEach( (value,index) =>{
 
+        
+          geoIndicators.findOne({
+            where:{
+              PrimaryKey:value[1].PrimaryKey,
+              EcologicalSiteId:value[1].EcologicalSiteId,
+              PlotID:value[1].PlotID,
+              PlotKey:value[1].PlotKey
 
+            }
+          })
+          
+          .then(e=>{
+            if(e!==null){
+                console.log("found record; skipping ")
+              } else {
+                console.log(value[1])
+                geoIndicators.create(value[1])
+              }
+            })
 
-exports.getCleanGeoind = (req, res, next) =>{
-  let whichgeoInd = req.params
-
-  geoIndicators.findAll({
-    where: whichgeoInd,
-    limit:100,
-    raw:true,
-  })
-
-  .then( r => {
-    res.status(200).json(r)
-  })
-  .catch(err=>{console.log(err)})
+          .catch(err=>{
+              console.log(err)
+              res.status(400).send(error)
+            })
+          })
+        res.status(200).send("done")
+    } catch(error){
+      console.log(error)
+      res.status(400).send(error)
+  }
 }

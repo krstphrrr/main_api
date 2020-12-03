@@ -71,17 +71,14 @@ exports.postGap = (req, res, next) =>{
   dataGap.sync()
     try{
         Object.entries(req.body).forEach( (value,index) =>{
+
         
-          let [pkval, lkval, rkval, seqval] = [ pk_check(value), 
-                                                lk_check(value), 
-                                                rk_check(value),
-                                                seq_check(value) ]
           dataGap.findOne({
             where:{
-              PrimaryKey:pkval,
-              LineKey:lkval,
-              RecKey:rkval,
-              SeqNo:seqval,
+              PrimaryKey:value[1].PrimaryKey,
+              LineKey:value[1].LineKey,
+              RecKey:value[1].RecKey,
+              SeqNo:value[1].SeqNo,
             }
           })
           
@@ -94,8 +91,9 @@ exports.postGap = (req, res, next) =>{
               }
             })
 
-          .catch(er=>{
+          .catch(err=>{
               console.log(err)
+              res.status(400).send(error)
             })
           })
         res.status(200).send("done")
@@ -103,42 +101,5 @@ exports.postGap = (req, res, next) =>{
       console.log(error)
       res.status(400).send(error)
     }
-  
 }
-// change property per table
-const pk_check = (obj) => {
-  for (let i=0; i<obj.length;i++){
-    if (obj[1].hasOwnProperty('PrimaryKey')){
-      return obj[1].PrimaryKey
-    } else {
-      return 'No primarykey field'
-    }
-  }
-}
-const lk_check = (obj) => {
-  for (let i=0; i<obj.length;i++){
-    if (obj[1].hasOwnProperty('LineKey')){
-      return obj[1].LineKey
-    } else {
-      return 'No LineKey field'
-    }
-  }
-}
-const rk_check = (obj) => {
-  for (let i=0; i<obj.length;i++){
-    if (obj[1].hasOwnProperty('RecKey')){
-      return obj[1].RecKey
-    } else {
-      return 'No RecKey field'
-    }
-  }
-}
-const seq_check = (obj) => {
-  for (let i=0; i<obj.length;i++){
-    if (obj[1].hasOwnProperty('SeqNo')){
-      return obj[1].SeqNo
-    } else {
-      return 'No Seqno field'
-    }
-  }
-}
+
