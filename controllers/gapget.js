@@ -79,6 +79,12 @@ exports.postGap = (req, res, next) =>{
               LineKey:value[1].LineKey,
               RecKey:value[1].RecKey,
               SeqNo:value[1].SeqNo,
+              // DBKey:value[1].DBKey,
+              // source:value[1].source,
+              //source /ProjectKey: write pcpp
+              // 21 - 1
+              // 21 
+
             }
           })
           

@@ -113,9 +113,12 @@ exports.postGeoIndicators = (req, res, next) =>{
           geoIndicators.findOne({
             where:{
               PrimaryKey:value[1].PrimaryKey,
-              EcologicalSiteId:value[1].EcologicalSiteId,
-              PlotID:value[1].PlotID,
-              PlotKey:value[1].PlotKey
+              // EcologicalSiteId:value[1].EcologicalSiteId,
+              // PlotID:value[1].PlotID,
+              // PLOTKEY:value[1].PLOTKEY,
+              DBKey:value[1].DBKey,
+              // source:value[1].source,
+              ProjectName:value[1].ProjectName,
 
             }
           })
@@ -124,14 +127,14 @@ exports.postGeoIndicators = (req, res, next) =>{
             if(e!==null){
                 console.log("found record; skipping ")
               } else {
-                console.log(value[1])
-                geoIndicators.create(value[1])
+                console.log("ok")
+                // geoIndicators.create(value[1])
               }
             })
 
           .catch(err=>{
               console.log(err)
-              res.status(400).send(error)
+              res.status(400).send(err)
             })
           })
         res.status(200).send("done")
