@@ -7,6 +7,7 @@ const swaggerJsDoc = require('swagger-jsdoc')
 const swaggerUi = require('swagger-ui-express')
 const path = require('path')
 const bodyparser = require('body-parser')
+const { QueryTypes } = require('sequelize');
 app.use(bodyparser.json())
 // app.use(bodyparser.urlencoded({ extended: true }));
 
@@ -54,6 +55,33 @@ app.get('/', (req, res) =>
 //routes 
 
 app.use('/api', stateRoutes)
+// route for fetching tables
+app.get('/tables', (req, res)=>{
+  db.query(`
+   select * from pg_catalog.pg_tables 
+   where schemaname != 'pg_catalog' 
+   and schemaname != 'information_schema'
+   and schemaname != 'postgis'
+   and schemaname != 'metdb'
+   and schemaname != 'gis'
+   
+   ;`,{
+  
+    logging: console.log,
+    plain: false,
+    raw: true,
+    type: QueryTypes.SELECT
+    })
+     .then(data=>{
+      //  console.log(data)
+       let result = data.map(a=>a.tablename)
+       res.status(200).send(result)
+      //  res.render('table.pug', {data:result})
+     })
+     .catch(err=>{
+       console.log(err)
+     })
+})
 
 
 db
