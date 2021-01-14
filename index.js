@@ -48,15 +48,15 @@ app.use(helmet())
 
 // app.use(express.raw({limit:1}))
 
-app.get('/', (req, res) => 
+app.get('/', cors(),(req, res) => 
   res.send('ldc api up. update:01-13-2021')
 )
 
 //routes 
 
-app.use('/api', stateRoutes)
+app.use('/api',cors(), stateRoutes)
 // route for fetching tables
-app.get('/tables', (req, res)=>{
+app.get('/tables',cors(), (req, res)=>{
   db.query(`
    select * from pg_catalog.pg_tables 
    where schemaname != 'pg_catalog' 

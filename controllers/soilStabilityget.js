@@ -31,14 +31,15 @@ exports.getSoilStab = (req, res, next) =>{
 
     for(const [key,value] of Object.entries(req.query)){
 
-      console.log(key,value)
-      if(Array.isArray(value)){
+      let trick = value.split(",")
+      
+      if(Array.isArray(trick)){
         defaultJoinVerb = " OR "
-        for (i = 0; i<value.length; i++){
+        for (i = 0; i<trick.length; i++){
 
           temp = `"dataSoilStability"."${key}" = $${count}`
           count+=1
-          values.push(value[i])
+          values.push(trick[i])
           list.push(temp)
         }
       } else {

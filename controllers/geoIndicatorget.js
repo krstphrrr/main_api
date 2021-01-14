@@ -19,15 +19,14 @@ exports.getGeoInd = (req, res, next) =>{
  
   // console.log(Object.keys(req.query).some(r => geospe_array.includes(r)))
   sql = `
-            SELECT "dataHeader".*, "geoIndicators".*, "geoSpecies".* 
+            SELECT "dataHeader".*, "geoIndicators".*
             FROM (
               SELECT * FROM "dataHeader" AS "dataHeader" 
               ) 
             AS "dataHeader" 
             LEFT OUTER JOIN "geoIndicators" AS "geoIndicators" 
               ON "dataHeader"."PrimaryKey" = "geoIndicators"."PrimaryKey"
-            LEFT OUTER JOIN "geoSpecies" AS "geoSpecies" 
-              ON "dataHeader"."PrimaryKey" = "geoSpecies"."PrimaryKey"
+            
 
             `
   let values = []
@@ -42,20 +41,22 @@ exports.getGeoInd = (req, res, next) =>{
 
     for(const [key,value] of Object.entries(req.query)){
       console.log(key,value)
-      if(Array.isArray(value)){
+      let trick = value.split(",")
+      
+      if(Array.isArray(trick)){
         defaultJoinVerb = " OR "
-        for (i = 0; i<value.length; i++){
+        for (i = 0; i<trick.length; i++){
           // console.log(count,"#1")
           // temp = `${key} = ${value[i]}`
           if(geospe_array.includes(key)){
             temp = `"geoSpecies"."${key}" = $${count}`
             count+=1
-            values.push(value[i])
+            values.push(trick[i])
             list.push(temp)
           } else {
             temp = `"dataHeader"."${key}" = $${count}`
             count+=1
-            values.push(value[i])
+            values.push(trick[i])
             list.push(temp)
           }
           

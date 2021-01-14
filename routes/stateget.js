@@ -1,5 +1,5 @@
 const express = require('express')
-const stateController = require('../controllers/statetest')
+// const stateController = require('../controllers/statetest')
 const geoIndicatorsController = require('../controllers/geoIndicatorget')
 const geoSpeciesController = require('../controllers/Speciesget')
 const dataSpeciesInv = require('../controllers/speciesInvget')
@@ -8,7 +8,7 @@ const dataLPI = require('../controllers/lpiget')
 const dataSoil = require('../controllers/soilStabilityget')
 const dataGap = require('../controllers/gapget')
 const dataHeader = require('../controllers/headerget')
-const postTest=require('../controllers/posttest')
+// const postTest=require('../controllers/posttest')
 
 
 const router = express.Router()
