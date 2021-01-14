@@ -19,6 +19,7 @@ exports.getGap = (req, res, next) =>{
       `
   let values = []
   let head = "WHERE "
+  let defaultJoinVerb = " AND "
   if (Object.keys(req.query).length!==0){
     let list = []
     let count = 1
@@ -26,7 +27,7 @@ exports.getGap = (req, res, next) =>{
     for(const [key,value] of Object.entries(req.query)){
       console.log(key,value)
       if(Array.isArray(value)){
-
+        defaultJoinVerb = " OR "
         for (i = 0; i<value.length; i++){
           temp = `"dataGap"."${key}" = $${count}`
           count+=1
@@ -34,7 +35,7 @@ exports.getGap = (req, res, next) =>{
           list.push(temp)
         }
       } else {
-
+        defaultJoinVerb = " AND "
         temp = `"dataGap"."${key}" = $${count}`
         count+=1
         values.push(value)
@@ -43,7 +44,7 @@ exports.getGap = (req, res, next) =>{
       }
     }
 
-    sql = sql + head + list.join(" AND ")
+    sql = sql + head + list.join(defaultJoinVerb)
     console.log(sql)
   }
 

@@ -23,6 +23,7 @@ exports.getSoilStab = (req, res, next) =>{
     `
   let values = []
   let head = "WHERE "
+  let defaultJoinVerb = " AND "
   if (Object.keys(req.query).length!==0){
 
     let list = []
@@ -32,7 +33,7 @@ exports.getSoilStab = (req, res, next) =>{
 
       console.log(key,value)
       if(Array.isArray(value)){
-
+        defaultJoinVerb = " OR "
         for (i = 0; i<value.length; i++){
 
           temp = `"dataSoilStability"."${key}" = $${count}`
@@ -41,7 +42,7 @@ exports.getSoilStab = (req, res, next) =>{
           list.push(temp)
         }
       } else {
-
+        defaultJoinVerb = " AND "
         temp = `"dataSoilStability"."${key}" = $${count}`
         count+=1
         values.push(value)
@@ -51,7 +52,7 @@ exports.getSoilStab = (req, res, next) =>{
 
     }
 
-    sql = sql + head + list.join(" AND ")
+    sql = sql + head + list.join(defaultJoinVerb)
     console.log(sql)
 
   }

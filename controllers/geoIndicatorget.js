@@ -32,6 +32,7 @@ exports.getGeoInd = (req, res, next) =>{
             `
   let values = []
   let head = "WHERE "
+  let defaultJoinVerb = " AND "
   if (Object.keys(req.query).length!==0){
     
     // let params = [req.query]
@@ -42,7 +43,7 @@ exports.getGeoInd = (req, res, next) =>{
     for(const [key,value] of Object.entries(req.query)){
       console.log(key,value)
       if(Array.isArray(value)){
-        
+        defaultJoinVerb = " OR "
         for (i = 0; i<value.length; i++){
           // console.log(count,"#1")
           // temp = `${key} = ${value[i]}`
@@ -61,6 +62,7 @@ exports.getGeoInd = (req, res, next) =>{
           
         }
       } else {
+        defaultJoinVerb = " AND "
         // console.log(count,"#2")
         if(geospe_array.includes(key)){
           temp = `"geoSpecies"."${key}" = $${count}`
@@ -76,7 +78,7 @@ exports.getGeoInd = (req, res, next) =>{
       }
     }
     
-    sql = sql + head + list.join(" AND ")
+    sql = sql + head + list.join(defaultJoinVerb)
     console.log(sql)
   }
   

@@ -23,6 +23,7 @@ exports.getSpecies = (req, res, next) =>{
   // console.log(req.query)
   let values = []
   let head = "WHERE "
+  let defaultJoinVerb = " AND "
   if (Object.keys(req.query).length!==0){
     
     // let params = [req.query]
@@ -32,6 +33,7 @@ exports.getSpecies = (req, res, next) =>{
 
       console.log(key,value)
       if(Array.isArray(value)){
+        defaultJoinVerb = " OR "
         for (i = 0; i<value.length; i++){
 
           temp = `"geoSpecies"."${key}" = $${count}`
@@ -41,7 +43,7 @@ exports.getSpecies = (req, res, next) =>{
 
         }
       } else {
-
+        defaultJoinVerb = " AND "
         temp = `"geoSpecies"."${key}" = $${count}`
         count+=1
         values.push(value)
@@ -49,7 +51,7 @@ exports.getSpecies = (req, res, next) =>{
 
       }
     }
-    sql = sql + head + list.join(" AND ")
+    sql = sql + head + list.join(defaultJoinVerb)
     console.log(sql)
   }
   

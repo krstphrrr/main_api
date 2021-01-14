@@ -17,13 +17,16 @@ exports.getHeader= (req, res, next) =>{
     `
   let values = []
   let head = "WHERE "
+  let defaultJoinVerb = " AND "
   if (Object.keys(req.query).length!==0){
     let list = []
     let count = 1
 
     for(const [key,value] of Object.entries(req.query)){
-      console.log(key,value)
+      console.log(key,value, "MIRA AQUI")
+      
       if(Array.isArray(value)){
+        defaultJoinVerb = " OR "
         for (i = 0; i<value.length; i++){
           temp = `"dataHeader"."${key}" = $${count}`
           count+=1
@@ -31,14 +34,15 @@ exports.getHeader= (req, res, next) =>{
           list.push(temp)
         }
       } else {
+        defaultJoinVerb = " AND "
         temp = `"dataHeader"."${key}" = $${count}`
         count+=1
         values.push(value)
         list.push(temp)
       }
     }
-
-    sql = sql + head + list.join(" AND ")
+    console.log(list)
+    sql = sql + head + list.join(defaultJoinVerb)
     console.log(sql)
   }
   pool.connect((err,client, release)=>{

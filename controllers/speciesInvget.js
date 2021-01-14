@@ -20,6 +20,7 @@ exports.getSpeciesInv = (req, res, next) =>{
             `
 let values = []
 let head = "WHERE "
+let defaultJoinVerb = " AND "
 if (Object.keys(req.query).length!==0){
   let list = []
   let count = 1
@@ -27,7 +28,7 @@ if (Object.keys(req.query).length!==0){
   for(const [key,value] of Object.entries(req.query)){
     console.log(key,value)
     if(Array.isArray(value)){
-      
+      defaultJoinVerb = " OR "
       for (i = 0; i<value.length; i++){
           temp = `"dataSpeciesInventory"."${key}" = $${count}`
           count+=1
@@ -35,7 +36,7 @@ if (Object.keys(req.query).length!==0){
           list.push(temp)
       }
     } else {
-
+      defaultJoinVerb = " AND "
         temp = `"dataSpeciesInventory"."${key}" = $${count}`
         count+=1
         values.push(value)
@@ -45,7 +46,7 @@ if (Object.keys(req.query).length!==0){
     
   }
   
-  sql = sql + head + list.join(" AND ")
+  sql = sql + head + list.join(defaultJoinVerb)
   console.log(sql)
 
 
