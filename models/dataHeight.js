@@ -144,10 +144,10 @@ const dataHeight = db.define('dataHeight', {
 			allowNull: true,
 			field: 'CheckboxLabel'
 		},
-		source: {
+		ProjectKey: {
 			type: Sequelize.TEXT,
 			allowNull: true,
-			field: 'source'
+			field: 'ProjectKey'
 		},
 		UOM: {
 			type: Sequelize.TEXT,

@@ -109,10 +109,10 @@ const dataSoilStability = db.define('dataSoilStability', {
 			allowNull: true,
 			field: 'Hydro'
 		},
-		source: {
+		ProjectKey: {
 			type: Sequelize.TEXT,
 			allowNull: true,
-			field: 'source'
+			field: 'ProjectKey'
 		},
 		DateLoadedInDb: {
 			type: Sequelize.DATEONLY,

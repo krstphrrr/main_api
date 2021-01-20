@@ -114,10 +114,10 @@ const dataSpeciesInventory = db.define('dataSpeciesInventory', {
 			allowNull: true,
 			field: 'Species'
 		},
-		source: {
+		ProjectKey: {
 			type: Sequelize.TEXT,
 			allowNull: true,
-			field: 'source'
+			field: 'ProjectKey'
 		},
 		SpeciesCount: {
 			type: Sequelize.STRING,

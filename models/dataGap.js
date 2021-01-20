@@ -170,10 +170,10 @@ const dataGap = db.define('dataGap', {
 			allowNull: true,
 			field: 'Gap'
 		},
-		source: {
+		ProjectKey: {
 			type: Sequelize.TEXT,
 			allowNull: true,
-			field: 'source'
+			field: 'ProjectKey'
 		},
 		State: {
 			type: Sequelize.TEXT,

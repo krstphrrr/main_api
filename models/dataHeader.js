@@ -65,10 +65,10 @@ const dataHeader = db.define('dataHeader', {
 			allowNull: true,
 			field: 'ProjectName'
 		},
-		source: {
+		ProjectKey: {
 			type: Sequelize.TEXT,
 			allowNull: true,
-			field: 'source'
+			field: 'ProjectKey'
 		},
 		LocationType: {
 			type: Sequelize.STRING,

@@ -23,7 +23,7 @@ exports.getHeader= (req, res, next) =>{
     let count = 1
 
     for(const [key,value] of Object.entries(req.query)){
-
+      
       let trick = value.split(",")
       
       if(Array.isArray(trick)){

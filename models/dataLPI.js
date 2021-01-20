@@ -139,10 +139,10 @@ const dataLPI = db.define('dataLpi', {
 			allowNull: true,
 			field: 'chckbox'
 		},
-		source: {
+		ProjectKey: {
 			type: Sequelize.TEXT,
 			allowNull: true,
-			field: 'source'
+			field: 'ProjectKey'
 		}
 	}, {
 		tableName: 'dataLPI',
