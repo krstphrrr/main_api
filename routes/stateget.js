@@ -1038,7 +1038,9 @@ router.post('/postgap',dataGap.postGap)
 
 
 router.get('/dataheader',dataHeader.getHeader)
+router.get('/dataheader_coords',dataHeader.getHeaderCoords)
 router.post('/postheader',dataHeader.postHeader)
+
 
 // router.post("/posttest",postTest.postTest)
 

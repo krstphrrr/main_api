@@ -98,3 +98,67 @@ exports.postHeader = (req, res, next) =>{
       res.status(400).send(error)
     }
 }
+
+exports.getHeaderCoords = (req, res, next) =>{
+  for(const [key,value] of Object.entries(req.query)){
+    // console.log(value)
+    let bufferObj = Buffer.from(value, 'base64')
+    let decoded = bufferObj.toString("utf-8")
+    let usefulCoords = decoded.split(",").map(Number)
+    console.log(usefulCoords)
+  }
+  // sql = `
+  //   SELECT * 
+  //     FROM "dataHeader"
+  //   `
+  // let values = []
+  // let head = "WHERE "
+  // let defaultJoinVerb = " AND "
+  // if (Object.keys(req.query).length!==0){
+  //   let list = []
+  //   let count = 1
+
+  //   for(const [key,value] of Object.entries(req.query)){
+      
+  //     let trick = value.split(",")
+      
+  //     if(Array.isArray(trick)){
+  //       defaultJoinVerb = " OR "
+  //       for (i = 0; i<trick.length; i++){
+  //         temp = `"dataHeader"."${key}" = $${count}`
+  //         count+=1
+  //         values.push(trick[i])
+  //         list.push(temp)
+  //       }
+  //     } else {
+  //       defaultJoinVerb = " AND "
+  //       temp = `"dataHeader"."${key}" = $${count}`
+  //       count+=1
+  //       values.push(value)
+  //       list.push(temp)
+  //     }
+  //   }
+  //   console.log(list)
+  //   sql = sql + head + list.join(defaultJoinVerb)
+  //   console.log(sql)
+  // }
+  // pool.connect((err,client, release)=>{
+  //   res.contentType('application/json')
+  //   if(err){
+  //     return console.error("error ")
+  //   }
+  //   if (Object.keys(req.query).length!==0){
+
+  //     const query = new QueryStream(sql, values)
+  //     const stream = client.query(query)
+  //     stream.on('end',release)
+  //     stream.pipe(JSONStream.stringify()).pipe(res)
+  //   } else {
+  //     const query = new QueryStream(sql)
+  //     const stream = client.query(query)
+
+  //     stream.on('end',release)
+  //     stream.pipe(JSONStream.stringify()).pipe(res)
+  //   }
+  // })
+}
