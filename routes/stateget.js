@@ -8,6 +8,7 @@ const dataLPI = require('../controllers/lpiget')
 const dataSoil = require('../controllers/soilStabilityget')
 const dataGap = require('../controllers/gapget')
 const dataHeader = require('../controllers/headerget')
+const dataSoilStability = require('../models/dataSoilStability')
 // const postTest=require('../controllers/posttest')
 
 
@@ -1038,7 +1039,17 @@ router.post('/postgap',dataGap.postGap)
 
 
 router.get('/dataheader',dataHeader.getHeader)
+
 router.get('/dataheader_coords',dataHeader.getHeaderCoords)
+router.get('/dataheight_coords',dataHeight.getHeightCoords)
+router.get('/datagap_coords',dataGap.getGapCoords)
+router.get('/datalpi_coords',dataLPI.getLPICoords)
+router.get('/datasoilstability_coords',dataSoil.getSoilStabilityCoords)
+router.get('/dataspeciesinventory_coords',dataSpeciesInv.getSpeciesInventoryCoords)
+
+router.get('/geospecies_coords',geoSpeciesController.getGeoSpeciesCoords)
+router.get('/geoindicators_coords',geoIndicatorsController.getGeoIndicatorsCoords)
+
 router.post('/postheader',dataHeader.postHeader)
 
 

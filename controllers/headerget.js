@@ -172,6 +172,7 @@ exports.getHeaderCoords = (req, res, next) =>{
     let usefulCoords = decoded.split(",").map(Number)
     console.log(usefulCoords)
     let pre = pairUp(usefulCoords)
+    console.log(coordPair(pre), "HMM")
     let finalcoords = `header_json('${coordPair(pre)}')`
     sql = sql + finalcoords
     console.log(sql)
@@ -199,116 +200,27 @@ exports.getHeaderCoords = (req, res, next) =>{
 
 
 /*
-BEGIN 
-
-	 RETURN json_build_object(
-    'type', 'FeatureCollection', 
-    'features', json_agg(
-        json_build_object(
-            'type',       'Feature',
-            'id',         gs."PrimaryKey", 
-            'geometry',   postgis.ST_AsGeoJSON(dh."wkb_geometry")::json,
-            'properties', json_build_object(
-                -- list of fields
-                'id', gs."PrimaryKey", 
-				'EcologicalSiteId', dh."EcologicalSiteId", 
-				'Project', dh."ProjectKey",
-				'isPublic', gs."Public"
-            )
-        )
-    )
-)
-FROM 
-	public."dataHeader" as dh
-INNER JOIN 
-	public."geoSpecies" as gs
-ON dh."PrimaryKey" = gs."PrimaryKey"
-
-WHERE postgis.ST_Intersects(
-	dh.wkb_geometry,
-	postgis.ST_MakePolygon(
-		postgis.ST_SetSRID(
-			postgis.ST_GeomFromText(
-				format('LINESTRING(%s)', VARIADIC "coords")
-			)::postgis.geometry, 
-	4326))) = 't' AND gs."Public" = "isPublic";
-END;
-
-
-CREATE OR REPLACE FUNCTION header_json(VARIADIC coords character varying[])
-   RETURN json as 
-$$
-BEGIN
-(SELECT row_to_json(dh) 
-
-FROM 
-	public."dataHeader" as dh
-
-WHERE postgis.ST_Intersects(
-	dh.wkb_geometry,
-	postgis.ST_MakePolygon(
-		postgis.ST_SetSRID(
-			postgis.ST_GeomFromText(
-				format('LINESTRING(%s)', VARIADIC "coords")
-			)::postgis.geometry, 
-	4326))) = 't')
-END;
-$$ LANGUAGE plpgsql;
-
-
-
-CREATE OR REPLACE FUNCTION header_json(VARIADIC coords character varying[])
-RETURNS SETOF "dataHeader"
-AS
-$body$
-
-(SELECT *
-
-FROM 
-	public."dataHeader" as dh
-
-WHERE postgis.ST_Intersects(
-	dh.wkb_geometry,
-	postgis.ST_MakePolygon(
-		postgis.ST_SetSRID(
-			postgis.ST_GeomFromText(
-				format('LINESTRING(%s)', VARIADIC "coords")
-			)::postgis.geometry, 
-	4326))) = 't')
-	
-$body$
-language sql
-
-
-
-
-
-
-
-
-[-98.547894, 43.097202,-100.549706, 43.057674,-98.845461, 44.753565,-98.547894, 43.097202]
-
-
-
-
-
-
-
-(SELECT row_to_json(dh) 
-
-FROM 
-	public."dataHeader" as dh
-
-WHERE postgis.ST_Intersects(
-	dh.wkb_geometry,
-	postgis.ST_MakePolygon(
-		postgis.ST_SetSRID(
-			postgis.ST_GeomFromText(
-				format('LINESTRING(%s)', VARIADIC "coords")
-			)::postgis.geometry, 
-	4326))) = 't')
-
-
+CREATE TYPE dataheight_result AS (
+    "PrimaryKey" VARCHAR(100),
+    "SpeciesState" VARCHAR(2),
+    "PlotID" TEXT,
+    "PlotKey" VARCHAR(50),
+    "DBKey" TEXT,
+    "EcologicalSiteId" VARCHAR(50),
+    "Latitude_NAD83" NUMERIC,
+    "Longitude_NAD83" NUMERIC,
+    "State" VARCHAR(2),
+    "County" VARCHAR(50),
+    "DateEstablished" DATE,
+    "DateLoadedInDb" DATE,
+    "ProjectName" TEXT,
+    "ProjectKey" TEXT,
+    "LocationType" VARCHAR(20),
+    "DateVisited" DATE,
+    "ELEVATION" NUMERIC,
+    "PercentCoveredByEcoSite" NUMERIC,
+    "wkb_geometry" GEOMETRY
+);
 
 */
 
