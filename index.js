@@ -9,6 +9,28 @@ const path = require('path')
 const bodyparser = require('body-parser')
 const { QueryTypes } = require('sequelize');
 app.use(bodyparser.json())
+
+// auth0 prep
+const jwt = require('express-jwt');
+const jwtAuthz = require('express-jwt-authz');
+const jwksRsa = require('jwks-rsa');
+const checkJwt = jwt({
+  // Dynamically provide a signing key
+  // based on the kid in the header and 
+  // the signing keys provided by the JWKS endpoint.
+  secret: jwksRsa.expressJwtSecret({
+    cache: true,
+    rateLimit: true,
+    jwksRequestsPerMinute: 5,
+    jwksUri: `https://dev-mg6fdv6o.auth0.com/.well-known/jwks.json`
+  }),
+
+  // Validate the audience and the issuer.
+  audience: 'http://localhost:5002',
+  issuer: `https://dev-mg6fdv6o.auth0.com/`,
+  algorithms: ['RS256']
+});
+
 // app.use(bodyparser.urlencoded({ extended: true }));
 
 //routes
@@ -54,7 +76,7 @@ app.get('/', cors(),(req, res) =>
 
 //routes 
 
-app.use('/api',cors(), stateRoutes)
+app.use('/api',cors(),checkJwt, stateRoutes)
 // route for fetching tables
 app.get('/tables',cors(), (req, res)=>{
   db.query(`
@@ -92,6 +114,10 @@ db
   .then(result=>{
     const server = app.listen(process.env.PORT || 5002)
   })
+  /*
+  order splice
+  
+  */
 
 
 
