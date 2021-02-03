@@ -77,7 +77,8 @@ app.get('/', cors(),(req, res) =>
 //routes 
 
 app.use('/api',cors(),checkJwt, stateRoutes)
-// route for fetching tables
+// route for fetching tables 
+
 app.get('/tables',cors(), (req, res)=>{
   db.query(`
    select * from pg_catalog.pg_tables 
