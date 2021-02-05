@@ -4,7 +4,7 @@ const geoIndicators= require('../models/geoIndicators')
 
 const JSONStream = require('JSONStream')
 const QueryStream = require('pg-query-stream')
-// const SequelizeStream = require('../config/sequelize-stream')
+const SequelizeStream = require('../config/sequelize-stream')
 const  db  = require('../config/database')
 const {Pool} = require('pg')
 const dataGap = require('../models/dataGap')

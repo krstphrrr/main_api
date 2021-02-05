@@ -80,11 +80,11 @@ const dataHeader = db.define('dataHeader', {
 			allowNull: true,
 			field: 'DateVisited'
 		},
-		Elevation: {
-			type: Sequelize.DOUBLE,
-			allowNull: true,
-			field: 'ELEVATION'
-		},
+		// Elevation: {
+		// 	type: Sequelize.DOUBLE,
+		// 	allowNull: true,
+		// 	field: 'ELEVATION'
+		// },
 		PercentCoveredByEcoSite: {
 			type: Sequelize.DOUBLE,
 			allowNull: true,
@@ -104,14 +104,7 @@ const dataHeader = db.define('dataHeader', {
 		tableName: 'dataHeader',
 		createdAt: false,
 		updatedAt:false,
-		// classMethod:{
-		// 	associate: (models)=>{
-		// 	dataHeader.hasMany(models.dataGap,{
-		// 		foreignKey: 'PrimaryKey',
 
-		// 	})
-		// 	}
-		// }
 	});
 
 	module.exports = dataHeader

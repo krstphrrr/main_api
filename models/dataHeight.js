@@ -79,26 +79,26 @@ const dataHeight = db.define('dataHeight', {
 			allowNull: true,
 			field: 'FormDate'
 		},
-		Observer: {
-			type: Sequelize.TEXT,
-			allowNull: true,
-			field: 'Observer'
-		},
-		Recorder: {
-			type: Sequelize.TEXT,
-			allowNull: true,
-			field: 'Recorder'
-		},
-		DataEntry: {
-			type: Sequelize.TEXT,
-			allowNull: true,
-			field: 'DataEntry'
-		},
-		DataErrorChecking: {
-			type: Sequelize.TEXT,
-			allowNull: true,
-			field: 'DataErrorChecking'
-		},
+		// Observer: {
+		// 	type: Sequelize.TEXT,
+		// 	allowNull: true,
+		// 	field: 'Observer'
+		// },
+		// Recorder: {
+		// 	type: Sequelize.TEXT,
+		// 	allowNull: true,
+		// 	field: 'Recorder'
+		// },
+		// DataEntry: {
+		// 	type: Sequelize.TEXT,
+		// 	allowNull: true,
+		// 	field: 'DataEntry'
+		// },
+		// DataErrorChecking: {
+		// 	type: Sequelize.TEXT,
+		// 	allowNull: true,
+		// 	field: 'DataErrorChecking'
+		// },
 		Direction: {
 			type: Sequelize.STRING,
 			allowNull: true,

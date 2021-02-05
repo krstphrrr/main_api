@@ -1,3 +1,4 @@
+require('dotenv').config()
 const express = require('express')
 const app = express()
 const db = require('./config/database')
@@ -12,7 +13,7 @@ app.use(bodyparser.json())
 
 // auth0 prep
 const jwt = require('express-jwt');
-const jwtAuthz = require('express-jwt-authz');
+// const jwtAuthz = require('express-jwt-authz');
 const jwksRsa = require('jwks-rsa');
 const checkJwt = jwt({
   // Dynamically provide a signing key
@@ -68,7 +69,7 @@ db.authenticate()
 app.use(cors())
 app.use(helmet())
 
-// app.use(express.raw({limit:1}))
+// // app.use(express.raw({limit:1}))
 
 app.get('/', cors(),(req, res) => 
   res.send('ldc api up. update:01-21-2021')
@@ -76,7 +77,7 @@ app.get('/', cors(),(req, res) =>
 
 //routes 
 
-app.use('/api',cors(),checkJwt, stateRoutes)
+app.use('/api',cors(), checkJwt, stateRoutes)
 // route for fetching tables 
 
 app.get('/tables',cors(), (req, res)=>{
@@ -108,7 +109,7 @@ app.get('/tables',cors(), (req, res)=>{
 
 
 db
-  .sync({logging:false})
+  .authenticate()
   .catch(err=>{
     console.log(err)
   })

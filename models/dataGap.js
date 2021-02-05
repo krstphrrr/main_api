@@ -30,26 +30,26 @@ const dataGap = db.define('dataGap', {
 			allowNull: true,
 			field: 'FormDate'
 		},
-		Observer: {
-			type: Sequelize.TEXT,
-			allowNull: true,
-			field: 'Observer'
-		},
-		Recorder: {
-			type: Sequelize.TEXT,
-			allowNull: true,
-			field: 'Recorder'
-		},
-		DataEntry: {
-			type: Sequelize.TEXT,
-			allowNull: true,
-			field: 'DataEntry'
-		},
-		DataErrorChecking: {
-			type: Sequelize.TEXT,
-			allowNull: true,
-			field: 'DataErrorChecking'
-		},
+		// Observer: {
+		// 	type: Sequelize.TEXT,
+		// 	allowNull: true,
+		// 	field: 'Observer'
+		// },
+		// Recorder: {
+		// 	type: Sequelize.TEXT,
+		// 	allowNull: true,
+		// 	field: 'Recorder'
+		// },
+		// DataEntry: {
+		// 	type: Sequelize.TEXT,
+		// 	allowNull: true,
+		// 	field: 'DataEntry'
+		// },
+		// DataErrorChecking: {
+		// 	type: Sequelize.TEXT,
+		// 	allowNull: true,
+		// 	field: 'DataErrorChecking'
+		// },
 		Direction: {
 			type: Sequelize.DOUBLE,
 			allowNull: true,
@@ -175,16 +175,16 @@ const dataGap = db.define('dataGap', {
 			allowNull: true,
 			field: 'ProjectKey'
 		},
-		State: {
-			type: Sequelize.TEXT,
-			allowNull: true,
-			field: 'STATE'
-		},
-		PlotKey: {
-			type: Sequelize.TEXT,
-			allowNull: true,
-			field: 'PLOTKEY'
-		},
+		// State: {
+		// 	type: Sequelize.TEXT,
+		// 	allowNull: true,
+		// 	field: 'STATE'
+		// },
+		// PlotKey: {
+		// 	type: Sequelize.TEXT,
+		// 	allowNull: true,
+		// 	field: 'PLOTKEY'
+		// },
 		DateLoadedInDb: {
 			type: Sequelize.DATEONLY,
 			allowNull: true,
