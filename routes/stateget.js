@@ -9,6 +9,7 @@ const dataSoil = require('../controllers/soilStabilityget')
 const dataGap = require('../controllers/gapget')
 const dataHeader = require('../controllers/headerget')
 const dataSoilStability = require('../models/dataSoilStability')
+const checkJwt = require('../index')
 // const postTest=require('../controllers/posttest')
 
 
@@ -1037,12 +1038,29 @@ router.post('/postgap',dataGap.postGap)
  * 
  */
 
+router.use('/logged/datagap_coords', (req,res,next)=>{
+  if(req.headers.authorization){
+    checkJwt
+    next()
+  } else {
+    console.log('forbidden')
+    res.status(403).send('forbidden!!!')
+  }
+})
+router.get('/logged/dataheader',dataHeader.getHeader)
+router.get('/logged/dataheader_coords',dataHeader.getHeaderCoords)
+router.get('/logged/dataheight_coords',dataHeight.getHeightCoords)
+router.get('/logged/datagap_coords', dataGap.getGapCoords)
+router.get('/logged/datalpi_coords',dataLPI.getLPICoords)
+router.get('/logged/datasoilstability_coords',dataSoil.getSoilStabilityCoords)
+router.get('/logged/dataspeciesinventory_coords',dataSpeciesInv.getSpeciesInventoryCoords)
+router.get('/logged/geospecies_coords',geoSpeciesController.getGeoSpeciesCoords)
+router.get('/logged/geoindicators_coords',geoIndicatorsController.getGeoIndicatorsCoords)
 
 router.get('/dataheader',dataHeader.getHeader)
-
 router.get('/dataheader_coords',dataHeader.getHeaderCoords)
 router.get('/dataheight_coords',dataHeight.getHeightCoords)
-router.get('/datagap_coords',dataGap.getGapCoords)
+router.get('/datagap_coords',dataGap.getGapCoords_public)
 router.get('/datalpi_coords',dataLPI.getLPICoords)
 router.get('/datasoilstability_coords',dataSoil.getSoilStabilityCoords)
 router.get('/dataspeciesinventory_coords',dataSpeciesInv.getSpeciesInventoryCoords)

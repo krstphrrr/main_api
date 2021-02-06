@@ -27,6 +27,7 @@ const checkJwt = jwt({
   }),
 
   // Validate the audience and the issuer.
+  credentialsRequired:false,
   audience: 'http://localhost:5002',
   issuer: `https://dev-mg6fdv6o.auth0.com/`,
   algorithms: ['RS256']
@@ -77,7 +78,7 @@ app.get('/', cors(),(req, res) =>
 
 //routes 
 
-app.use('/api',cors(), checkJwt, stateRoutes)
+app.use('/api',cors(), stateRoutes)
 // route for fetching tables 
 
 app.get('/tables',cors(), (req, res)=>{
@@ -120,6 +121,7 @@ db
   order splice
   
   */
+ module.exports = checkJwt
 
 
 
