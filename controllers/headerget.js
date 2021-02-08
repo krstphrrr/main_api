@@ -197,36 +197,42 @@ exports.getHeaderCoords = (req, res, next) =>{
       }
     })
   }
+}
 
+exports.getHeaderCoords_public = (req, res, next) =>{
+  sql = `
+    SELECT * 
+      FROM 
+    `
+  for(const [key,value] of Object.entries(req.query)){
+    // console.log(value)
+    let bufferObj = Buffer.from(value, 'base64')
+    let decoded = bufferObj.toString("utf-8")
+    let usefulCoords = decoded.split(",").map(Number)
+    console.log(usefulCoords)
+    let pre = pairUp(usefulCoords)
+    let finalcoords = `header_json('${coordPair(pre)}') limit 5`
+    sql = sql + finalcoords
+    console.log(sql)
 
-/*
-CREATE TYPE dataheight_result AS (
-    "PrimaryKey" VARCHAR(100),
-    "SpeciesState" VARCHAR(2),
-    "PlotID" TEXT,
-    "PlotKey" VARCHAR(50),
-    "DBKey" TEXT,
-    "EcologicalSiteId" VARCHAR(50),
-    "Latitude_NAD83" NUMERIC,
-    "Longitude_NAD83" NUMERIC,
-    "State" VARCHAR(2),
-    "County" VARCHAR(50),
-    "DateEstablished" DATE,
-    "DateLoadedInDb" DATE,
-    "ProjectName" TEXT,
-    "ProjectKey" TEXT,
-    "LocationType" VARCHAR(20),
-    "DateVisited" DATE,
-    "ELEVATION" NUMERIC,
-    "PercentCoveredByEcoSite" NUMERIC,
-    "wkb_geometry" GEOMETRY
-);
-
-*/
-
-
-
-
-
+    pool.connect((err,client, release)=>{
+      res.contentType('application/json')
+      if(err){
+        return console.error("error ")
+      }
+      if (Object.keys(req.query).length!==0){
   
+        const query = new QueryStream(sql)
+        const stream = client.query(query)
+        stream.on('end',release)
+        stream.pipe(JSONStream.stringify()).pipe(res)
+      } else {
+        const query = new QueryStream(sql)
+        const stream = client.query(query)
+  
+        stream.on('end',release)
+        stream.pipe(JSONStream.stringify()).pipe(res)
+      }
+    })
+  }
 }

@@ -8,6 +8,9 @@ const SequelizeStream = require('../config/sequelize-stream')
 const  db  = require('../config/database')
 const {Pool} = require('pg')
 const dataGap = require('../models/dataGap')
+/*
+
+*/
 
 // const pairUp = require('../config/utils')
 // const coordPair = require('../config/utils')
@@ -226,6 +229,43 @@ exports.getGeoIndicatorsCoords = (req, res, next) =>{
     console.log(usefulCoords)
     let pre = pairUp(usefulCoords)
     let finalcoords = `geoind_json('${coordPair(pre)}')`
+    sql = sql + finalcoords
+    console.log(sql)
+
+    pool.connect((err,client, release)=>{
+      res.contentType('application/json')
+      if(err){
+        return console.error("error ")
+      }
+      if (Object.keys(req.query).length!==0){
+  
+        const query = new QueryStream(sql)
+        const stream = client.query(query)
+        stream.on('end',release)
+        stream.pipe(JSONStream.stringify()).pipe(res)
+      } else {
+        const query = new QueryStream(sql)
+        const stream = client.query(query)
+  
+        stream.on('end',release)
+        stream.pipe(JSONStream.stringify()).pipe(res)
+      }
+    })
+  }
+}
+exports.getGeoInd_public = (req, res, next) =>{
+  sql = `
+    SELECT * 
+      FROM 
+    `
+  for(const [key,value] of Object.entries(req.query)){
+    // console.log(value)
+    let bufferObj = Buffer.from(value, 'base64')
+    let decoded = bufferObj.toString("utf-8")
+    let usefulCoords = decoded.split(",").map(Number)
+    console.log(usefulCoords)
+    let pre = pairUp(usefulCoords)
+    let finalcoords = `geoind_json('${coordPair(pre)}') limit 5`
     sql = sql + finalcoords
     console.log(sql)
 

@@ -1037,7 +1037,9 @@ router.post('/postgap',dataGap.postGap)
  *        type: "geometry"
  * 
  */
-
+router.get('/logged/dataheader',dataHeader.getHeader)
+/*PROTECTED ROUTES */
+// DATA GAP
 router.use('/logged/datagap_coords', (req,res,next)=>{
   if(req.headers.authorization){
     checkJwt
@@ -1047,27 +1049,99 @@ router.use('/logged/datagap_coords', (req,res,next)=>{
     res.status(403).send('forbidden!!!')
   }
 })
-router.get('/logged/dataheader',dataHeader.getHeader)
-router.get('/logged/dataheader_coords',dataHeader.getHeaderCoords)
-router.get('/logged/dataheight_coords',dataHeight.getHeightCoords)
 router.get('/logged/datagap_coords', dataGap.getGapCoords)
+
+// DATA HEADER
+router.use('/logged/dataheader_coords', (req,res,next)=>{
+  if(req.headers.authorization){
+    checkJwt
+    next()
+  } else {
+    console.log('forbidden')
+    res.status(403).send('forbidden!!!')
+  }
+})
+router.get('/logged/dataheader_coords',dataHeader.getHeaderCoords)
+
+// DATA HEIGHT 
+router.use('/logged/dataheight_coords', (req,res,next)=>{
+  if(req.headers.authorization){
+    checkJwt
+    next()
+  } else {
+    console.log('forbidden')
+    res.status(403).send('forbidden!!!')
+  }
+})
+router.get('/logged/dataheight_coords',dataHeight.getHeightCoords)
+
+// DATA LPI
+router.use('/logged/datalpi_coords', (req,res,next)=>{
+  if(req.headers.authorization){
+    checkJwt
+    next()
+  } else {
+    console.log('forbidden')
+    res.status(403).send('forbidden!!!')
+  }
+})
 router.get('/logged/datalpi_coords',dataLPI.getLPICoords)
+// DATA SOIL STAB 
+router.use('/logged/datasoilstability_coords', (req,res,next)=>{
+  if(req.headers.authorization){
+    checkJwt
+    next()
+  } else {
+    console.log('forbidden')
+    res.status(403).send('forbidden!!!')
+  }
+})
 router.get('/logged/datasoilstability_coords',dataSoil.getSoilStabilityCoords)
+
+//DATA SPECIES INV 
+router.use('/logged/dataspeciesinventory_coords', (req,res,next)=>{
+  if(req.headers.authorization){
+    checkJwt
+    next()
+  } else {
+    console.log('forbidden')
+    res.status(403).send('forbidden!!!')
+  }
+})
 router.get('/logged/dataspeciesinventory_coords',dataSpeciesInv.getSpeciesInventoryCoords)
+// GEO SPECIES 
+router.use('/logged/geospecies_coords', (req,res,next)=>{
+  if(req.headers.authorization){
+    checkJwt
+    next()
+  } else {
+    console.log('forbidden')
+    res.status(403).send('forbidden!!!')
+  }
+})
 router.get('/logged/geospecies_coords',geoSpeciesController.getGeoSpeciesCoords)
+// GEO INDICATORS 
+router.use('/logged/geoindicators_coords', (req,res,next)=>{
+  if(req.headers.authorization){
+    checkJwt
+    next()
+  } else {
+    console.log('forbidden')
+    res.status(403).send('forbidden!!!')
+  }
+})
 router.get('/logged/geoindicators_coords',geoIndicatorsController.getGeoIndicatorsCoords)
 
-router.get('/dataheader',dataHeader.getHeader)
-router.get('/dataheader_coords',dataHeader.getHeaderCoords)
-router.get('/dataheight_coords',dataHeight.getHeightCoords)
+/* PUBLIC ROUTES */
+
+router.get('/dataheader_coords',dataHeader.getHeaderCoords_public)
+router.get('/dataheight_coords',dataHeight.getHeightCoords_public)
 router.get('/datagap_coords',dataGap.getGapCoords_public)
-router.get('/datalpi_coords',dataLPI.getLPICoords)
-router.get('/datasoilstability_coords',dataSoil.getSoilStabilityCoords)
-router.get('/dataspeciesinventory_coords',dataSpeciesInv.getSpeciesInventoryCoords)
-
-router.get('/geospecies_coords',geoSpeciesController.getGeoSpeciesCoords)
-router.get('/geoindicators_coords',geoIndicatorsController.getGeoIndicatorsCoords)
-
+router.get('/datalpi_coords',dataLPI.getLPICoords_public)
+router.get('/datasoilstability_coords',dataSoil.getSoilStabilityCoords_public)
+router.get('/dataspeciesinventory_coords',dataSpeciesInv.getSpeciesInventoryCoords_public)
+router.get('/geospecies_coords',geoSpeciesController.getGeoSpeciesCoords_public)
+router.get('/geoindicators_coords',geoIndicatorsController.getGeoInd_public)
 router.post('/postheader',dataHeader.postHeader)
 
 
