@@ -13,18 +13,20 @@ app.use(bodyparser.json())
 
 // auth0 prep
 const jwt = require('express-jwt');
+// var jwtok = require('jsonwebtoken');
 // const jwtAuthz = require('express-jwt-authz');
 const jwksRsa = require('jwks-rsa');
+const secretKey = jwksRsa.expressJwtSecret({
+  cache: true,
+  // rateLimit: true,
+  jwksRequestsPerMinute: 5,
+  jwksUri: `https://dev-mg6fdv6o.auth0.com/.well-known/jwks.json`
+})
 const checkJwt = jwt({
   // Dynamically provide a signing key
   // based on the kid in the header and 
   // the signing keys provided by the JWKS endpoint.
-  secret: jwksRsa.expressJwtSecret({
-    cache: true,
-    rateLimit: true,
-    jwksRequestsPerMinute: 5,
-    jwksUri: `https://dev-mg6fdv6o.auth0.com/.well-known/jwks.json`
-  }),
+  secret: secretKey,
 
   // Validate the audience and the issuer.
   credentialsRequired:false,
@@ -78,7 +80,7 @@ app.get('/', cors(),(req, res) =>
 
 //routes 
 
-app.use('/api',cors(), stateRoutes)
+app.use('/api',cors(),checkJwt,stateRoutes)
 // route for fetching tables 
 
 app.get('/tables',cors(), (req, res)=>{

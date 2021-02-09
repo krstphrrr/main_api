@@ -10,6 +10,7 @@ const dataGap = require('../controllers/gapget')
 const dataHeader = require('../controllers/headerget')
 const dataSoilStability = require('../models/dataSoilStability')
 const checkJwt = require('../index')
+const jwtok = require('jsonwebtoken');
 // const postTest=require('../controllers/posttest')
 
 
@@ -1038,18 +1039,37 @@ router.post('/postgap',dataGap.postGap)
  * 
  */
 router.get('/logged/dataheader',dataHeader.getHeader)
+
+
 /*PROTECTED ROUTES */
 // DATA GAP
+let decoded
 router.use('/logged/datagap_coords', (req,res,next)=>{
+
+  let token =req.headers.authorization.split(' ')[1]
+  decoded = jwtok.decode(token)
+
   if(req.headers.authorization){
     checkJwt
+    // console.log(decoded)
     next()
   } else {
     console.log('forbidden')
     res.status(403).send('forbidden!!!')
   }
 })
-router.get('/logged/datagap_coords', dataGap.getGapCoords)
+router.get('/logged/datagap_coords', (req,res, next)=>{
+  switch(true){
+    case decoded.permissions.length>0:
+      console.log("hay algo")
+      next()
+      break 
+    case decoded.permissions.length<=0:
+      console.log("vacio")
+      next()
+      break
+    }
+},dataGap.getGapCoords)
 
 // DATA HEADER
 router.use('/logged/dataheader_coords', (req,res,next)=>{
