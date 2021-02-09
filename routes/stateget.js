@@ -1051,25 +1051,19 @@ router.use('/logged/datagap_coords', (req,res,next)=>{
 
   if(req.headers.authorization){
     checkJwt
-    // console.log(decoded)
+    console.log(decoded)
     next()
   } else {
     console.log('forbidden')
     res.status(403).send('forbidden!!!')
   }
 })
+
 router.get('/logged/datagap_coords', (req,res, next)=>{
-  switch(true){
-    case decoded.permissions.length>0:
-      console.log("hay algo")
-      next()
-      break 
-    case decoded.permissions.length<=0:
-      console.log("vacio")
-      next()
-      break
-    }
-},dataGap.getGapCoords)
+  if(decoded.permissions.length>0) next('route') 
+  else next()
+},dataGap.getGapCoords_public)
+router.get('/logged/datagap_coords',dataGap.getGapCoords)
 
 // DATA HEADER
 router.use('/logged/dataheader_coords', (req,res,next)=>{

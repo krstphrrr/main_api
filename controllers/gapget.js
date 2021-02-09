@@ -251,4 +251,5 @@ exports.getGapCoords_public = (req, res, next) =>{
     })
   }
 }
+exports.simpleFun = () => {}
 
