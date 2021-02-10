@@ -1067,6 +1067,8 @@ router.get('/logged/datagap_coords',dataGap.getGapCoords)
 
 // DATA HEADER
 router.use('/logged/dataheader_coords', (req,res,next)=>{
+  let token =req.headers.authorization.split(' ')[1]
+  decoded = jwtok.decode(token)
   if(req.headers.authorization){
     checkJwt
     next()
@@ -1075,10 +1077,18 @@ router.use('/logged/dataheader_coords', (req,res,next)=>{
     res.status(403).send('forbidden!!!')
   }
 })
+router.get('/logged/dataheader_coords', (req,res, next)=>{
+  // tier 1
+  console.log(decoded.permissions)
+  if(decoded.permissions.length>0 && decoded.permissions.includes("read:test")) next('route') 
+  else next()
+},dataHeader.getHeaderCoords_public)
 router.get('/logged/dataheader_coords',dataHeader.getHeaderCoords)
 
 // DATA HEIGHT 
 router.use('/logged/dataheight_coords', (req,res,next)=>{
+  let token =req.headers.authorization.split(' ')[1]
+  decoded = jwtok.decode(token)
   if(req.headers.authorization){
     checkJwt
     next()
@@ -1087,10 +1097,20 @@ router.use('/logged/dataheight_coords', (req,res,next)=>{
     res.status(403).send('forbidden!!!')
   }
 })
+
+router.get('/logged/dataheight_coords', (req,res, next)=>{
+  // tier 1
+  console.log(decoded.permissions)
+  if(decoded.permissions.length>0 && decoded.permissions.includes("read:test")) next('route') 
+  else next()
+},dataHeight.getHeightCoords_public)
+
 router.get('/logged/dataheight_coords',dataHeight.getHeightCoords)
 
 // DATA LPI
 router.use('/logged/datalpi_coords', (req,res,next)=>{
+  let token =req.headers.authorization.split(' ')[1]
+  decoded = jwtok.decode(token)
   if(req.headers.authorization){
     checkJwt
     next()
@@ -1099,9 +1119,21 @@ router.use('/logged/datalpi_coords', (req,res,next)=>{
     res.status(403).send('forbidden!!!')
   }
 })
+
+router.get('/logged/datalpi_coords', (req,res, next)=>{
+  // tier 1
+  console.log(decoded.permissions)
+  if(decoded.permissions.length>0 && decoded.permissions.includes("read:test")) next('route') 
+  else next()
+},dataLPI.getLPICoords_public)
+
 router.get('/logged/datalpi_coords',dataLPI.getLPICoords)
+
+
 // DATA SOIL STAB 
 router.use('/logged/datasoilstability_coords', (req,res,next)=>{
+  let token =req.headers.authorization.split(' ')[1]
+  decoded = jwtok.decode(token)
   if(req.headers.authorization){
     checkJwt
     next()
@@ -1110,10 +1142,20 @@ router.use('/logged/datasoilstability_coords', (req,res,next)=>{
     res.status(403).send('forbidden!!!')
   }
 })
+
+router.get('/logged/datasoilstability_coords', (req,res, next)=>{
+  // tier 1
+  console.log(decoded.permissions)
+  if(decoded.permissions.length>0 && decoded.permissions.includes("read:test")) next('route') 
+  else next()
+},dataSoil.getSoilStabilityCoords_public)
+
 router.get('/logged/datasoilstability_coords',dataSoil.getSoilStabilityCoords)
 
 //DATA SPECIES INV 
 router.use('/logged/dataspeciesinventory_coords', (req,res,next)=>{
+  let token =req.headers.authorization.split(' ')[1]
+  decoded = jwtok.decode(token)
   if(req.headers.authorization){
     checkJwt
     next()
@@ -1122,9 +1164,20 @@ router.use('/logged/dataspeciesinventory_coords', (req,res,next)=>{
     res.status(403).send('forbidden!!!')
   }
 })
+
+router.get('/logged/dataspeciesinventory_coords', (req,res, next)=>{
+  // tier 1
+  console.log(decoded.permissions)
+  if(decoded.permissions.length>0 && decoded.permissions.includes("read:test")) next('route') 
+  else next()
+},dataSpeciesInv.getSpeciesInventoryCoords_public)
+
 router.get('/logged/dataspeciesinventory_coords',dataSpeciesInv.getSpeciesInventoryCoords)
+
 // GEO SPECIES 
 router.use('/logged/geospecies_coords', (req,res,next)=>{
+  let token =req.headers.authorization.split(' ')[1]
+  decoded = jwtok.decode(token)
   if(req.headers.authorization){
     checkJwt
     next()
@@ -1133,9 +1186,20 @@ router.use('/logged/geospecies_coords', (req,res,next)=>{
     res.status(403).send('forbidden!!!')
   }
 })
+
+router.get('/logged/geospecies_coords', (req,res, next)=>{
+  // tier 1
+  console.log(decoded.permissions)
+  if(decoded.permissions.length>0 && decoded.permissions.includes("read:test")) next('route') 
+  else next()
+},geoSpeciesController.getGeoSpeciesCoords_public)
+
 router.get('/logged/geospecies_coords',geoSpeciesController.getGeoSpeciesCoords)
+
 // GEO INDICATORS 
 router.use('/logged/geoindicators_coords', (req,res,next)=>{
+  let token =req.headers.authorization.split(' ')[1]
+  decoded = jwtok.decode(token)
   if(req.headers.authorization){
     checkJwt
     next()
@@ -1144,6 +1208,13 @@ router.use('/logged/geoindicators_coords', (req,res,next)=>{
     res.status(403).send('forbidden!!!')
   }
 })
+router.get('/logged/geoindicators_coords', (req,res, next)=>{
+  // tier 1
+  console.log(decoded.permissions)
+  if(decoded.permissions.length>0 && decoded.permissions.includes("read:test")) next('route') 
+  else next()
+},geoIndicatorsController.getGeoIndicatorsCoords_public)
+
 router.get('/logged/geoindicators_coords',geoIndicatorsController.getGeoIndicatorsCoords)
 
 /* PUBLIC ROUTES */
@@ -1155,7 +1226,7 @@ router.get('/datalpi_coords',dataLPI.getLPICoords_public)
 router.get('/datasoilstability_coords',dataSoil.getSoilStabilityCoords_public)
 router.get('/dataspeciesinventory_coords',dataSpeciesInv.getSpeciesInventoryCoords_public)
 router.get('/geospecies_coords',geoSpeciesController.getGeoSpeciesCoords_public)
-router.get('/geoindicators_coords',geoIndicatorsController.getGeoInd_public)
+router.get('/geoindicators_coords',geoIndicatorsController.getGeoIndicatorsCoords_public)
 router.post('/postheader',dataHeader.postHeader)
 
 

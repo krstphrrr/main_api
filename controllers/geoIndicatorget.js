@@ -253,7 +253,7 @@ exports.getGeoIndicatorsCoords = (req, res, next) =>{
     })
   }
 }
-exports.getGeoInd_public = (req, res, next) =>{
+exports.getGeoIndicatorsCoords_public = (req, res, next) =>{
   sql = `
     SELECT * 
       FROM 
