@@ -1060,10 +1060,23 @@ router.use('/logged/datagap_coords', (req,res,next)=>{
 })
 
 router.get('/logged/datagap_coords', (req,res, next)=>{
-  if(decoded.permissions.length>0) next('route') 
+  if(decoded.permissions.includes("read:test")) next('route') 
   else next()
-},dataGap.getGapCoords_public)
+},dataGap.getGapCoords_loggedrestricted)
+
 router.get('/logged/datagap_coords',dataGap.getGapCoords)
+
+
+
+
+
+
+
+
+
+
+
+
 
 // DATA HEADER
 router.use('/logged/dataheader_coords', (req,res,next)=>{
