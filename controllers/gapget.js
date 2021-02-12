@@ -226,7 +226,7 @@ exports.getGapCoords_public = (req, res, next) =>{
     let usefulCoords = decoded.split(",").map(Number)
     console.log(usefulCoords)
     let pre = pairUp(usefulCoords)
-    let finalcoords = `gap_json('${coordPair(pre)}') limit 3`
+    let finalcoords = `gap_json_public('${coordPair(pre)}')`
     sql = sql + finalcoords
     console.log(sql)
 

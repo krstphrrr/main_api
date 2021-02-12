@@ -230,7 +230,7 @@ exports.getSpeciesInventoryCoords_public = (req, res, next) =>{
     let usefulCoords = decoded.split(",").map(Number)
     console.log(usefulCoords)
     let pre = pairUp(usefulCoords)
-    let finalcoords = `specinv_json('${coordPair(pre)}') limit 5`
+    let finalcoords = `specinv_json_public('${coordPair(pre)}')`
     sql = sql + finalcoords
     console.log(sql)
 
