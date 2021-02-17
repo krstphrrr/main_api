@@ -1043,6 +1043,25 @@ router.get('/logged/dataheader',dataHeader.getHeader)
 
 /*PROTECTED ROUTES */
 // DATA GAP
+
+// only projectkey===LMF if no extra permission
+// only DateVisited is before 2/11/2019 if no extra permission
+
+/*
+1. check auth 
+
+2. if permissions include lmf -> next 
+     if not: publicrestricted(3 pk's only lmf and datevisited <2/11/2019 ) 
+   if permissions include testDate -> next 
+     if not: public_lmf ( 3 pk's only, datevisited <2/11/2019)
+  next: unrestricted
+
+
+
+
+*/
+
+
 let decoded
 router.use('/logged/datagap_coords', (req,res,next)=>{
 
@@ -1058,13 +1077,27 @@ router.use('/logged/datagap_coords', (req,res,next)=>{
     res.status(403).send('forbidden!!!')
   }
 })
-
+// if both permissions
 router.get('/logged/datagap_coords', (req,res, next)=>{
-  if(decoded.permissions.includes("read:test")) next('route') 
-  else next()
-},dataGap.getGapCoords_loggedrestricted)
+  console.log("if it has both:",decoded.permissions.includes("read:lmf"),!decoded.permissions.includes("read:date"))
+  if(decoded.permissions.includes("read:lmf") && decoded.permissions.includes("read:date"))  next()
+  else next('route')
+},dataGap.getGapCoords)
 
-router.get('/logged/datagap_coords',dataGap.getGapCoords)
+// no date permission == datelimited
+router.get('/logged/datagap_coords',(req,res, next)=>{
+  if(decoded.permissions.includes("read:lmf") && !decoded.permissions.includes("read:date")) next() 
+  else next('route')
+},dataGap.getGapCoords_loggedrestricted_datelimited)
+
+// no lmf permission == lmflimited
+router.get('/logged/datagap_coords', (req,res, next)=>{
+  if(!decoded.permissions.includes("read:lmf") && decoded.permissions.includes("read:date")) next() 
+  else next('route')
+},dataGap.getGapCoords_loggedrestricted_lmflimited)
+
+// no permissions BUT logged in
+router.get('/logged/datagap_coords', dataGap.getGapCoords_loggedrestricted)
 
 
 
