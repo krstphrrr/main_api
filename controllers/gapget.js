@@ -302,7 +302,7 @@ exports.getGapCoords_loggedrestricted_lmflimited = (req, res, next) =>{
     let usefulCoords = decoded.split(",").map(Number)
     console.log(usefulCoords)
     let pre = pairUp(usefulCoords)
-    let finalcoords = `gap_json_public_lmflimited('${coordPair(pre)}')`
+    let finalcoords = `gap_json_lmflimited('${coordPair(pre)}')`
     sql = sql + finalcoords
     console.log(sql)
 
@@ -340,7 +340,7 @@ exports.getGapCoords_loggedrestricted_datelimited = (req, res, next) =>{
     let usefulCoords = decoded.split(",").map(Number)
     console.log(usefulCoords)
     let pre = pairUp(usefulCoords)
-    let finalcoords = `gap_json_public_datelimited('${coordPair(pre)}')`
+    let finalcoords = `gap_json_datelimited('${coordPair(pre)}')`
     sql = sql + finalcoords
     console.log(sql)
 

@@ -1105,12 +1105,6 @@ router.get('/logged/datagap_coords', dataGap.getGapCoords_loggedrestricted)
 
 
 
-
-
-
-
-
-
 // DATA HEADER
 router.use('/logged/dataheader_coords', (req,res,next)=>{
   let token =req.headers.authorization.split(' ')[1]
@@ -1130,6 +1124,39 @@ router.get('/logged/dataheader_coords', (req,res, next)=>{
   else next()
 },dataHeader.getHeaderCoords_public)
 router.get('/logged/dataheader_coords',dataHeader.getHeaderCoords)
+
+
+
+// if both permissions
+router.get('/logged/dataheader_coords', (req,res, next)=>{
+  console.log("if it has both:",decoded.permissions.includes("read:lmf"),!decoded.permissions.includes("read:date"))
+  if(decoded.permissions.includes("read:lmf") && decoded.permissions.includes("read:date"))  next()
+  else next('route')
+},dataHeader.getHeaderCoords)
+
+// no date permission == datelimited
+router.get('/logged/dataheader_coords',(req,res, next)=>{
+  if(decoded.permissions.includes("read:lmf") && !decoded.permissions.includes("read:date")) next() 
+  else next('route')
+},dataHeader.getHeaderCoords_loggedrestricted_datelimited)
+
+// no lmf permission == lmflimited
+router.get('/logged/dataheader_coords', (req,res, next)=>{
+  if(!decoded.permissions.includes("read:lmf") && decoded.permissions.includes("read:date")) next() 
+  else next('route')
+},dataHeader.getHeaderCoords_loggedrestricted_lmflimited)
+
+// no permissions BUT logged in
+router.get('/logged/dataheader_coords', dataHeader.getHeaderCoords_loggedrestricted)
+
+
+
+
+
+
+
+
+
 
 // DATA HEIGHT 
 router.use('/logged/dataheight_coords', (req,res,next)=>{
