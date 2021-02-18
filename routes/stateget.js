@@ -1365,14 +1365,33 @@ router.use('/logged/geoindicators_coords', (req,res,next)=>{
     res.status(403).send('forbidden!!!')
   }
 })
-router.get('/logged/geoindicators_coords', (req,res, next)=>{
-  // tier 1
-  console.log(decoded.permissions)
-  if(decoded.permissions.length>0 && decoded.permissions.includes("read:test")) next('route') 
-  else next()
-},geoIndicatorsController.getGeoIndicatorsCoords_public)
 
-router.get('/logged/geoindicators_coords',geoIndicatorsController.getGeoIndicatorsCoords)
+// if both permissions
+router.get('/logged/geoindicators_coords', (req,res, next)=>{
+  console.log("if it has both:",decoded.permissions.includes("read:lmf"),!decoded.permissions.includes("read:date"))
+  if(decoded.permissions.includes("read:lmf") && decoded.permissions.includes("read:date"))  next()
+  else next('route')
+},geoIndicatorsController.getGeoIndicatorsCoords)
+
+// no date permission == datelimited
+router.get('/logged/geoindicators_coords',(req,res, next)=>{
+  if(decoded.permissions.includes("read:lmf") && !decoded.permissions.includes("read:date")) next() 
+  else next('route')
+},geoIndicatorsController.getGeoIndicatorsCoords_loggedrestricted_datelimited)
+
+// no lmf permission == lmflimited
+router.get('/logged/geoindicators_coords', (req,res, next)=>{
+  if(!decoded.permissions.includes("read:lmf") && decoded.permissions.includes("read:date")) next() 
+  else next('route')
+},geoIndicatorsController.getGeoIndicatorsCoords_loggedrestricted_lmflimited)
+
+// no permissions BUT logged in
+router.get('/logged/geoindicators_coords', geoIndicatorsController.getGeoIndicatorsCoords_loggedrestricted)
+
+
+
+
+
 
 /* PUBLIC ROUTES */
 
