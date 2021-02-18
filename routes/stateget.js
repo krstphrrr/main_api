@@ -1284,15 +1284,6 @@ router.use('/logged/dataspeciesinventory_coords', (req,res,next)=>{
   }
 })
 
-router.get('/logged/dataspeciesinventory_coords', (req,res, next)=>{
-  // tier 1
-  console.log(decoded.permissions)
-  if(decoded.permissions.length>0 && decoded.permissions.includes("read:test")) next('route') 
-  else next()
-},dataSpeciesInv.getSpeciesInventoryCoords_public)
-
-router.get('/logged/dataspeciesinventory_coords',dataSpeciesInv.getSpeciesInventoryCoords)
-
 
 // if both permissions
 router.get('/logged/dataspeciesinventory_coords', (req,res, next)=>{
@@ -1335,14 +1326,32 @@ router.use('/logged/geospecies_coords', (req,res,next)=>{
   }
 })
 
+// if both permissions
 router.get('/logged/geospecies_coords', (req,res, next)=>{
-  // tier 1
-  console.log(decoded.permissions)
-  if(decoded.permissions.length>0 && decoded.permissions.includes("read:test")) next('route') 
-  else next()
-},geoSpeciesController.getGeoSpeciesCoords_public)
+  console.log("if it has both:",decoded.permissions.includes("read:lmf"),!decoded.permissions.includes("read:date"))
+  if(decoded.permissions.includes("read:lmf") && decoded.permissions.includes("read:date"))  next()
+  else next('route')
+},geoSpeciesController.getGeoSpeciesCoords)
 
-router.get('/logged/geospecies_coords',geoSpeciesController.getGeoSpeciesCoords)
+// no date permission == datelimited
+router.get('/logged/geospecies_coords',(req,res, next)=>{
+  if(decoded.permissions.includes("read:lmf") && !decoded.permissions.includes("read:date")) next() 
+  else next('route')
+},geoSpeciesController.getGeoSpeciesCoords_loggedrestricted_datelimited)
+
+// no lmf permission == lmflimited
+router.get('/logged/geospecies_coords', (req,res, next)=>{
+  if(!decoded.permissions.includes("read:lmf") && decoded.permissions.includes("read:date")) next() 
+  else next('route')
+},geoSpeciesController.getGeoSpeciesCoords_loggedrestricted_lmflimited)
+
+// no permissions BUT logged in
+router.get('/logged/geospecies_coords', geoSpeciesController.getGeoSpeciesCoords_loggedrestricted)
+
+
+
+
+
 
 // GEO INDICATORS 
 router.use('/logged/geoindicators_coords', (req,res,next)=>{
