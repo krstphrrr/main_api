@@ -365,5 +365,5 @@ exports.getGapCoords_loggedrestricted_datelimited = (req, res, next) =>{
     })
   }
 }
-exports.simpleFun = () => {}
+
 

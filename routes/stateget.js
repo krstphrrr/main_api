@@ -1117,15 +1117,6 @@ router.use('/logged/dataheader_coords', (req,res,next)=>{
     res.status(403).send('forbidden!!!')
   }
 })
-router.get('/logged/dataheader_coords', (req,res, next)=>{
-  // tier 1
-  console.log(decoded.permissions)
-  if(decoded.permissions.length>0 && decoded.permissions.includes("read:test")) next('route') 
-  else next()
-},dataHeader.getHeaderCoords_public)
-router.get('/logged/dataheader_coords',dataHeader.getHeaderCoords)
-
-
 
 // if both permissions
 router.get('/logged/dataheader_coords', (req,res, next)=>{
@@ -1153,11 +1144,6 @@ router.get('/logged/dataheader_coords', dataHeader.getHeaderCoords_loggedrestric
 
 
 
-
-
-
-
-
 // DATA HEIGHT 
 router.use('/logged/dataheight_coords', (req,res,next)=>{
   let token =req.headers.authorization.split(' ')[1]
@@ -1171,14 +1157,32 @@ router.use('/logged/dataheight_coords', (req,res,next)=>{
   }
 })
 
-router.get('/logged/dataheight_coords', (req,res, next)=>{
-  // tier 1
-  console.log(decoded.permissions)
-  if(decoded.permissions.length>0 && decoded.permissions.includes("read:test")) next('route') 
-  else next()
-},dataHeight.getHeightCoords_public)
 
-router.get('/logged/dataheight_coords',dataHeight.getHeightCoords)
+// if both permissions
+router.get('/logged/dataheight_coords', (req,res, next)=>{
+  console.log("if it has both:",decoded.permissions.includes("read:lmf"),!decoded.permissions.includes("read:date"))
+  if(decoded.permissions.includes("read:lmf") && decoded.permissions.includes("read:date"))  next()
+  else next('route')
+},dataHeight.getHeightCoords)
+
+// no date permission == datelimited
+router.get('/logged/dataheight_coords',(req,res, next)=>{
+  if(decoded.permissions.includes("read:lmf") && !decoded.permissions.includes("read:date")) next() 
+  else next('route')
+},dataHeight.getHeightCoords_loggedrestricted_datelimited)
+
+// no lmf permission == lmflimited
+router.get('/logged/dataheight_coords', (req,res, next)=>{
+  if(!decoded.permissions.includes("read:lmf") && decoded.permissions.includes("read:date")) next() 
+  else next('route')
+},dataHeight.getHeightCoords_loggedrestricted_lmflimited)
+
+// no permissions BUT logged in
+router.get('/logged/dataheight_coords', dataHeight.getHeightCoords_loggedrestricted)
+
+
+
+
 
 // DATA LPI
 router.use('/logged/datalpi_coords', (req,res,next)=>{
