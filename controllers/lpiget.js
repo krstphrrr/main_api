@@ -259,3 +259,117 @@ exports.getLPICoords_public = (req, res, next) =>{
     })
   }
 }
+
+exports.getLPICoords_loggedrestricted = (req, res, next) =>{
+  sql = `
+    SELECT * 
+      FROM 
+    `
+  for(const [key,value] of Object.entries(req.query)){
+    // console.log(value)
+    let bufferObj = Buffer.from(value, 'base64')
+    let decoded = bufferObj.toString("utf-8")
+    let usefulCoords = decoded.split(",").map(Number)
+    console.log(usefulCoords)
+    let pre = pairUp(usefulCoords)
+    let finalcoords = `lpi_json_nopermissions('${coordPair(pre)}')`
+    sql = sql + finalcoords
+    console.log(sql)
+
+    pool.connect((err,client, release)=>{
+      res.contentType('application/json')
+      if(err){
+        return console.error("error ")
+      }
+      if (Object.keys(req.query).length!==0){
+  
+        const query = new QueryStream(sql)
+        const stream = client.query(query)
+        stream.on('end',release)
+        stream.pipe(JSONStream.stringify()).pipe(res)
+      } else {
+        const query = new QueryStream(sql)
+        const stream = client.query(query)
+  
+        stream.on('end',release)
+        stream.pipe(JSONStream.stringify()).pipe(res)
+      }
+    })
+  }
+}
+
+exports.getLPICoords_loggedrestricted_lmflimited = (req, res, next) =>{
+  sql = `
+    SELECT * 
+      FROM 
+    `
+  for(const [key,value] of Object.entries(req.query)){
+    // console.log(value)
+    let bufferObj = Buffer.from(value, 'base64')
+    let decoded = bufferObj.toString("utf-8")
+    let usefulCoords = decoded.split(",").map(Number)
+    console.log(usefulCoords)
+    let pre = pairUp(usefulCoords)
+    let finalcoords = `lpi_json_lmflimited('${coordPair(pre)}')`
+    sql = sql + finalcoords
+    console.log(sql)
+
+    pool.connect((err,client, release)=>{
+      res.contentType('application/json')
+      if(err){
+        return console.error("error ")
+      }
+      if (Object.keys(req.query).length!==0){
+  
+        const query = new QueryStream(sql)
+        const stream = client.query(query)
+        stream.on('end',release)
+        stream.pipe(JSONStream.stringify()).pipe(res)
+      } else {
+        const query = new QueryStream(sql)
+        const stream = client.query(query)
+  
+        stream.on('end',release)
+        stream.pipe(JSONStream.stringify()).pipe(res)
+      }
+    })
+  }
+}
+
+exports.getLPICoords_loggedrestricted_datelimited = (req, res, next) =>{
+  sql = `
+    SELECT * 
+      FROM 
+    `
+  for(const [key,value] of Object.entries(req.query)){
+    // console.log(value)
+    let bufferObj = Buffer.from(value, 'base64')
+    let decoded = bufferObj.toString("utf-8")
+    let usefulCoords = decoded.split(",").map(Number)
+    console.log(usefulCoords)
+    let pre = pairUp(usefulCoords)
+    let finalcoords = `lpi_json_datelimited('${coordPair(pre)}')`
+    sql = sql + finalcoords
+    console.log(sql)
+
+    pool.connect((err,client, release)=>{
+      res.contentType('application/json')
+      if(err){
+        return console.error("error ")
+      }
+      if (Object.keys(req.query).length!==0){
+  
+        const query = new QueryStream(sql)
+        const stream = client.query(query)
+        stream.on('end',release)
+        stream.pipe(JSONStream.stringify()).pipe(res)
+      } else {
+        const query = new QueryStream(sql)
+        const stream = client.query(query)
+  
+        stream.on('end',release)
+        stream.pipe(JSONStream.stringify()).pipe(res)
+      }
+    })
+  }
+}

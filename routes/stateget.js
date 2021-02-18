@@ -1197,14 +1197,30 @@ router.use('/logged/datalpi_coords', (req,res,next)=>{
   }
 })
 
+// if both permissions
 router.get('/logged/datalpi_coords', (req,res, next)=>{
-  // tier 1
-  console.log(decoded.permissions)
-  if(decoded.permissions.length>0 && decoded.permissions.includes("read:test")) next('route') 
-  else next()
-},dataLPI.getLPICoords_public)
+  console.log("if it has both:",decoded.permissions.includes("read:lmf"),!decoded.permissions.includes("read:date"))
+  if(decoded.permissions.includes("read:lmf") && decoded.permissions.includes("read:date"))  next()
+  else next('route')
+},dataLPI.getLPICoords)
 
-router.get('/logged/datalpi_coords',dataLPI.getLPICoords)
+// no date permission == datelimited
+router.get('/logged/datalpi_coords',(req,res, next)=>{
+  if(decoded.permissions.includes("read:lmf") && !decoded.permissions.includes("read:date")) next() 
+  else next('route')
+},dataLPI.getLPICoords_loggedrestricted_datelimited)
+
+// no lmf permission == lmflimited
+router.get('/logged/datalpi_coords', (req,res, next)=>{
+  if(!decoded.permissions.includes("read:lmf") && decoded.permissions.includes("read:date")) next() 
+  else next('route')
+},dataLPI.getLPICoords_loggedrestricted_lmflimited)
+
+// no permissions BUT logged in
+router.get('/logged/datalpi_coords', dataLPI.getLPICoords_loggedrestricted)
+
+
+
 
 
 // DATA SOIL STAB 
@@ -1228,6 +1244,10 @@ router.get('/logged/datasoilstability_coords', (req,res, next)=>{
 },dataSoil.getSoilStabilityCoords_public)
 
 router.get('/logged/datasoilstability_coords',dataSoil.getSoilStabilityCoords)
+
+
+
+
 
 //DATA SPECIES INV 
 router.use('/logged/dataspeciesinventory_coords', (req,res,next)=>{
