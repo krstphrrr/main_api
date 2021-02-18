@@ -1246,6 +1246,28 @@ router.get('/logged/datasoilstability_coords', (req,res, next)=>{
 router.get('/logged/datasoilstability_coords',dataSoil.getSoilStabilityCoords)
 
 
+// if both permissions
+router.get('/logged/datasoilstability_coords', (req,res, next)=>{
+  console.log("if it has both:",decoded.permissions.includes("read:lmf"),!decoded.permissions.includes("read:date"))
+  if(decoded.permissions.includes("read:lmf") && decoded.permissions.includes("read:date"))  next()
+  else next('route')
+},dataSoil.getSoilStabilityCoords)
+
+// no date permission == datelimited
+router.get('/logged/datasoilstability_coords',(req,res, next)=>{
+  if(decoded.permissions.includes("read:lmf") && !decoded.permissions.includes("read:date")) next() 
+  else next('route')
+},dataSoil.getSoilStabilityCoords_loggedrestricted_datelimited)
+
+// no lmf permission == lmflimited
+router.get('/logged/datasoilstability_coords', (req,res, next)=>{
+  if(!decoded.permissions.includes("read:lmf") && decoded.permissions.includes("read:date")) next() 
+  else next('route')
+},dataSoil.getSoilStabilityCoords_loggedrestricted_lmflimited)
+
+// no permissions BUT logged in
+router.get('/logged/datasoilstability_coords', dataSoil.getSoilStabilityCoords_loggedrestricted)
+
 
 
 
@@ -1270,6 +1292,9 @@ router.get('/logged/dataspeciesinventory_coords', (req,res, next)=>{
 },dataSpeciesInv.getSpeciesInventoryCoords_public)
 
 router.get('/logged/dataspeciesinventory_coords',dataSpeciesInv.getSpeciesInventoryCoords)
+
+
+
 
 // GEO SPECIES 
 router.use('/logged/geospecies_coords', (req,res,next)=>{
