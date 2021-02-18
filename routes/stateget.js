@@ -1294,6 +1294,32 @@ router.get('/logged/dataspeciesinventory_coords', (req,res, next)=>{
 router.get('/logged/dataspeciesinventory_coords',dataSpeciesInv.getSpeciesInventoryCoords)
 
 
+// if both permissions
+router.get('/logged/dataspeciesinventory_coords', (req,res, next)=>{
+  console.log("if it has both:",decoded.permissions.includes("read:lmf"),!decoded.permissions.includes("read:date"))
+  if(decoded.permissions.includes("read:lmf") && decoded.permissions.includes("read:date"))  next()
+  else next('route')
+},dataSpeciesInv.getSpeciesInventoryCoords)
+
+// no date permission == datelimited
+router.get('/logged/dataspeciesinventory_coords',(req,res, next)=>{
+  if(decoded.permissions.includes("read:lmf") && !decoded.permissions.includes("read:date")) next() 
+  else next('route')
+},dataSpeciesInv.getSpeciesInventoryCoords_loggedrestricted_datelimited)
+
+// no lmf permission == lmflimited
+router.get('/logged/dataspeciesinventory_coords', (req,res, next)=>{
+  if(!decoded.permissions.includes("read:lmf") && decoded.permissions.includes("read:date")) next() 
+  else next('route')
+},dataSpeciesInv.getSpeciesInventoryCoords_loggedrestricted_lmflimited)
+
+// no permissions BUT logged in
+router.get('/logged/dataspeciesinventory_coords', dataSpeciesInv.getSpeciesInventoryCoords_loggedrestricted)
+
+
+
+
+
 
 
 // GEO SPECIES 
