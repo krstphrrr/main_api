@@ -75,7 +75,7 @@ app.use(helmet())
 // // app.use(express.raw({limit:1}))
 
 app.get('/', cors(),(req, res) => 
-  res.send('ldc api up. update:02-18-2021')
+  res.send('ldc api up. update:02-19-2021')
 )
 
 //routes 
