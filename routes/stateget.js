@@ -1396,13 +1396,22 @@ router.get('/logged/geoindicators_coords', geoIndicatorsController.getGeoIndicat
 /* PUBLIC ROUTES */
 
 router.get('/dataheader_coords',dataHeader.getHeaderCoords_public)
+router.get('/dataheader',dataHeader.getHeader)
 router.get('/dataheight_coords',dataHeight.getHeightCoords_public)
+router.get('/dataheight',dataHeight.getHeight)
 router.get('/datagap_coords',dataGap.getGapCoords_public)
+router.get('/datagap',dataGap.getGap)
 router.get('/datalpi_coords',dataLPI.getLPICoords_public)
+router.get('/datalpi',dataLPI.getLPI)
 router.get('/datasoilstability_coords',dataSoil.getSoilStabilityCoords_public)
+router.get('/datasoilstability',dataSoil.getSoilStability)
 router.get('/dataspeciesinventory_coords',dataSpeciesInv.getSpeciesInventoryCoords_public)
+router.get('/dataspeciesinventory',dataSpeciesInv.getSpeciesInventory)
 router.get('/geospecies_coords',geoSpeciesController.getGeoSpeciesCoords_public)
+router.get('/geospecies',geoSpeciesController.getGeoSpecies)
 router.get('/geoindicators_coords',geoIndicatorsController.getGeoIndicatorsCoords_public)
+router.get('/geoindicators',geoIndicatorsController.getGeoIndicators)
+
 router.post('/postheader',dataHeader.postHeader)
 
 
