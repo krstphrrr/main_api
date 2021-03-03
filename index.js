@@ -75,7 +75,7 @@ app.use(helmet())
 // // app.use(express.raw({limit:1}))
 
 app.get('/', cors(),(req, res) => 
-  res.send('ldc api up. update:02-19-2021')
+  res.send('ldc api up. update:03-02-2021')
 )
 
 //routes 
@@ -109,6 +109,74 @@ app.get('/tables',cors(), (req, res)=>{
        console.log(err)
      })
 })
+app.get('/schemas',cors(), (req, res)=>{
+  console.log(req.query)
+  let sql
+  let initialVerb = `
+  select * from gisdb.public."schemaTable"
+  `
+  console.log(objTest(initialVerb, req.query))
+
+  db.query(objTest(initialVerb, req.query),{
+  
+    logging: console.log,
+    plain: false,
+    raw: true,
+    type: QueryTypes.SELECT
+    })
+     .then(data=>{
+      //  console.log(data)
+      //  let result = data.map(a=>a.tablename)
+       res.status(200).send(data)
+      //  res.render('table.pug', {data:result})
+     })
+     .catch(err=>{
+       console.log(err)
+     })
+})
+
+let objTest = (initVerb, obj) =>{
+  if(Object.keys(obj).length!==0){
+    return sqlVerb(initVerb, obj)
+  } else{
+    return initVerb
+  }
+}
+
+let sqlVerb =(verb, reqObj)=>{
+  let sql = verb
+  let values = []
+  let head = "WHERE "
+  let defaultJoinVerb = " AND "
+  if (Object.keys(reqObj).length!==0){
+    let list = []
+    let count = 1
+
+    for(const [key,value] of Object.entries(reqObj)){
+      let trick = value
+      
+      if(Array.isArray(trick)){
+        defaultJoinVerb = " AND "
+        for (i = 0; i<trick.length; i++){
+          temp = `"${key}" = '${trick}'`
+          count+=1
+          values.push(trick[i])
+          list.push(temp)
+        }
+      } else {
+        defaultJoinVerb = " AND "
+        temp = `"${key}" = '${trick}'`
+        count+=1
+        values.push(value)
+        list.push(temp)
+      }
+    }
+    // console.log(list)
+    sql = sql + head + list.join(defaultJoinVerb)
+    console.log(sql)
+    return sql
+  }
+}
 
 
 db

@@ -18,6 +18,7 @@ exports.getHeader= (req, res, next) =>{
   let values = []
   let head = "WHERE "
   let defaultJoinVerb = " AND "
+
   if (Object.keys(req.query).length!==0){
     let list = []
     let count = 1

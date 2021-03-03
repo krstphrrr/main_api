@@ -61,7 +61,6 @@ let coordPair = (list) =>{
         // paramList+=`"${tmpData[i]}", `
       }
     }
-    
   }
   return pairList
 }
