@@ -156,9 +156,9 @@ let sqlVerb =(verb, reqObj)=>{
       let trick = value
       
       if(Array.isArray(trick)){
-        defaultJoinVerb = " AND "
+        defaultJoinVerb = " OR "
         for (i = 0; i<trick.length; i++){
-          temp = `"${key}" = '${trick}'`
+          temp = `"${key}" = '${trick[i]}'`
           count+=1
           values.push(trick[i])
           list.push(temp)
