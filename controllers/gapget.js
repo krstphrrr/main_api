@@ -214,6 +214,9 @@ exports.getGapCoords = (req, res, next) =>{
 }
 
 exports.getGapCoords_public = (req, res, next) =>{
+  // changed the public route on postgres, it now
+  // only brings 3 primary keys, but no limit on 
+  // project key or date restriction
   sql = `
     SELECT * 
       FROM 
