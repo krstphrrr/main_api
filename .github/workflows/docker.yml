@@ -27,7 +27,7 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
           dockerfile: /Dockerfile
-          tag: krstphr/main_api:latest
+          tags: krstphr/main_api:latest
         # run: |
           # docker image build -t main_api:latest .
       - uses: appleboy/ssh-action@master
