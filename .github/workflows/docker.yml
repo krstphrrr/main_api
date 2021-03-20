@@ -29,4 +29,4 @@ jobs:
           host: ${{ secrets.SERVER_IP }}
           username: ${{ secrets.SERVER_USERNAME }}
           password: ${{ secrets.SERVER_PASSWORD }}
-          script: cd ${{ secrets.PROJECT_PATH }} && git pull && docker image ls
+          script: cd ${{ secrets.PROJECT_PATH }} && git pull && sudo docker image ls
