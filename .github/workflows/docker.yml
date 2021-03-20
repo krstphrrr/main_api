@@ -19,14 +19,24 @@ jobs:
     # if: github.ref == 'refs/heads/master'
     runs-on: [ubuntu-latest]
     steps:
-      - uses: actions/checkout@v2
-      - name: Docker build
+      - name: checkout code
+        uses: actions/checkout@v2
+      - name: Docker build and push
+        uses: docker/build-push-action@v1
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+          repository: krstphr/main_api
+          dockerfile: /Dockerfile
+          tag: latest
         # run: |
           # docker image build -t main_api:latest .
-        uses: appleboy/ssh-action@master
+      - uses: appleboy/ssh-action@master
         with:
       
           host: ${{ secrets.SERVER_IP }}
           username: ${{ secrets.SERVER_USERNAME }}
           password: ${{ secrets.SERVER_PASSWORD }}
-          script: cd ${{ secrets.PROJECT_PATH }} && git pull && sudo docker image ls
+          script: |
+            docker service update api_services_main_api \
+            --image=docker.io/krstphr/main_api:latest \
