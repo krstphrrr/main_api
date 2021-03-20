@@ -41,5 +41,5 @@ jobs:
           username: ${{ secrets.SERVER_USERNAME }}
           password: ${{ secrets.SERVER_PASSWORD }}
           script: |
-            docker service update api_services_main_api \
+            sudo docker service update api_services_main_api \
             --image=docker.io/krstphr/main_api:latest \
