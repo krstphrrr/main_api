@@ -69,7 +69,13 @@ db.authenticate()
     .then(() => console.log('database connected...'))
     .catch(err => console.log('error:'+ err));
 
-app.use(cors())
+
+let allowed = ["https://landscapedatacommons.org", "http://localhost:4200"]
+let corsOptions = {
+  origin: allowed,
+  optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+}
+app.use(cors(corsOptions))
 app.use(helmet())
 
 // // app.use(express.raw({limit:1}))
