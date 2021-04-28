@@ -39,7 +39,7 @@ const router = express.Router()
  *        schema:
  *          type: string
  *      - in : query
- *        name: source
+ *        name: ProjectKey
  *        type: "array"
  *        items:
  *          type: "string"
@@ -79,7 +79,7 @@ router.post('/postgeoindicators',geoIndicatorsController.postGeoIndicators)
  *        schema:
  *          type: string
  *      - in : query
- *        name: source
+ *        name: ProjectKey
  *        schema:
  *          type: string
  *      - in : query
@@ -113,7 +113,7 @@ router.post('/postgeospecies',geoSpeciesController.postGeoSpecies)
  *        schema:
  *          type: string
  *      - in : query
- *        name: source
+ *        name: ProjectKey
  *        schema:
  *          type: string
  *    responses:
@@ -143,7 +143,7 @@ router.post('/postspeciesinventory',dataSpeciesInv.postSpeciesInventory)
  *        schema:
  *          type: string
  *      - in : query
- *        name: source
+ *        name: ProjectKey
  *        schema:
  *          type: string
  *    responses:
@@ -173,7 +173,7 @@ router.post('/postheight',dataHeight.postHeight)
  *        schema:
  *          type: string
  *      - in : query
- *        name: source
+ *        name: ProjectKey
  *        schema:
  *          type: string
  *    responses:
@@ -203,7 +203,7 @@ router.post('/postlpi',dataLPI.postLPI)
  *        schema:
  *          type: string
  *      - in : query
- *        name: source
+ *        name: ProjectKey
  *        schema:
  *          type: string
  *    responses:
@@ -233,7 +233,7 @@ router.post('/postsoilstability',dataSoil.postSoilStab)
  *        schema:
  *          type: string
  *      - in : query
- *        name: source
+ *        name: ProjectKey
  *        schema:
  *          type: string
  *      - in : query
@@ -290,7 +290,7 @@ router.post('/postgap',dataGap.postGap)
  *        schema:
  *          type: string
  *      - in : query
- *        name: source
+ *        name: ProjectKey
  *        schema:
  *          type: string
  *    responses:
@@ -734,7 +734,7 @@ router.post('/postgap',dataGap.postGap)
  *        type: "string"
  *      Species:
  *        type: "string"
- *      source:
+ *      ProjectKey:
  *        type: "string"
  *      SpeciesCount:
  *        type: "number"
@@ -799,7 +799,7 @@ router.post('/postgap',dataGap.postGap)
  *        type: "number"
  *      CheckboxLabel:
  *        type: "string"
- *      source:
+ *      ProjectKey:
  *        type: "string"
  *      UOM:
  *        type: "string"
@@ -862,7 +862,7 @@ router.post('/postgap',dataGap.postGap)
  *        type: "string"
  *      chckbox:
  *        type: "number"
- *      source:
+ *      ProjectKey:
  *        type: "string"
  *      STATE:
  *        type: "string"
@@ -919,7 +919,7 @@ router.post('/postgap',dataGap.postGap)
  *        type: "number"
  *      Hydro:
  *        type: "number"
- *      source:
+ *      ProjectKey:
  *        type: "string"
  * 
  *  datagap:
@@ -991,7 +991,7 @@ router.post('/postgap',dataGap.postGap)
  *        type: "number"
  *      Gap:
  *        type: "string"
- *      source:
+ *      ProjectKey:
  *        type: "string"
  *      STATE:
  *        type: "string"
@@ -1024,7 +1024,7 @@ router.post('/postgap',dataGap.postGap)
  *        type: "date"
  *      ProjectName:
  *        type: "string"
- *      source:
+ *      ProjectKey:
  *        type: "string"
  *      LocationType:
  *        type: "string"
