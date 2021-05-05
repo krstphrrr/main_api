@@ -305,45 +305,45 @@ router.post('/postgap',dataGap.postGap)
  *    type: "object"
  *    properties:
  *      AH_AnnGrassCover:
- *        type: "numeric"
+ *        type: "number"
  *      AH_ForbCover:
- *        type: "numeric"
+ *        type: "number"
  *      AH_GrassCover:
- *        type: "numeric"
+ *        type: "number"
  *      AH_NonNoxAnnForbCover:
- *        type: "numeric"
+ *        type: "number"
  *      AH_NonNoxAnnForbGrassCover:
- *        type: "numeric"
+ *        type: "number"
  *      AH_NonNoxAnnGrassCover:
- *        type: "numeric"
+ *        type: "number"
  *      AH_NonNoxCover:
- *        type: "numeric"
+ *        type: "number"
  *      AH_NonNoxPerenForbCover:
- *        type: "numeric"
+ *        type: "number"
  *      AH_NonNoxPerenForbGrassCover:
- *        type: "numeric"
+ *        type: "number"
  *      AH_NonNoxPerenGrassCover:
- *        type: "numeric"
+ *        type: "number"
  *      AH_NonNoxShrubCover:
  *        type: "number"
  *      AH_NonNoxSubShrubCover:
  *        type: "number"
  *      AH_NonNoxSucculentCover:
- *        type: "integer"
+ *        type: "number"
  *      AH_NonNoxTreeCover:
- *        type: "numeric"
+ *        type: "number"
  *      AH_NonSagebrushShrubCover:
- *        type: "date"
+ *        type: "number"
  *      AH_NoxAnnForbCover:
- *        type: "numeric"
+ *        type: "number"
  *      AH_NoxAnnGrassCover:
- *        type: "numeric"
+ *        type: "number"
  *      AH_NoxCover:
- *        type: "numeric"
+ *        type: "number"
  *      AH_NoxPerenForbCover:
- *        type: "numeric"
+ *        type: "number"
  *      AH_NoxPerenForbGrassCover:
- *        type: "numeric"
+ *        type: "number"
  *      AH_PreferredForb:
  *        type: "number"
  *      AH_PreferredForbCover:
@@ -351,25 +351,28 @@ router.post('/postgap',dataGap.postGap)
  *      AH_SagebrushCover:
  *        type: "number"
  *      AH_SagebrushCover_Live:
- *        type: "numeric"
+ *        type: "number"
  *      AH_ShortPerenGrassCover:
- *        type: "date"
+ *        type: "number"
  *      AH_ShrubCover:
- *        type: "numeric"
+ *        type: "number"
  *      AH_TallPerenGrassCover:
- *        type: "numeric"
+ *        type: "number"
  *      BareSoilCover:
- *        type: "numeric"
+ *        type: "number"
  *      County:
  *        type: "string"
  *      DBKey:
  *        type: "string"
  *      DateEstablished:
- *        type: "date"
+ *        type: "string"
+ *        format: date
  *      DateLoadedInDb:
- *        type: "date"
+ *        type: "string"
+ *        format: date
  *      DateVisited:
- *        type: "date"
+ *        type: "string"
+ *        format: date
  *      ELEVATION:
  *        type: "number"
  *      EcolSiteName:
@@ -377,17 +380,17 @@ router.post('/postgap',dataGap.postGap)
  *      EcologicalSiteId:
  *        type: "string"
  *      FH_CyanobacteriaCover:
- *        type: "numeric"
+ *        type: "number"
  *      FH_DepSoilCover:
- *        type: "numeric"
+ *        type: "number"
  *      FH_DuffCover:
- *        type: "numeric"
+ *        type: "number"
  *      FH_EmbLitterCover:
- *        type: "numeric"
+ *        type: "number"
  *      FH_HerbLitterCover:
- *        type: "numeric"
+ *        type: "number"
  *      FH_LichenCover:
- *        type: "numeric"
+ *        type: "number"
  *      FH_MossCover:
  *        type: "number"
  *      FH_NonNoxAnnForbCover:
@@ -395,21 +398,21 @@ router.post('/postgap',dataGap.postGap)
  *      FH_NonNoxAnnGrassCover:
  *        type: "number"
  *      FH_NonNoxPerenForbCover:
- *        type: "numeric"
+ *        type: "number"
  *      FH_NonNoxShrubCover:
- *        type: "numeric"
+ *        type: "number"
  *      FH_NonNoxSubShrubCover:
- *        type: "numeric"
+ *        type: "number"
  *      FH_NonNoxSucculentCover:
- *        type: "numeric"
+ *        type: "number"
  *      FH_NonNoxTreeCover:
- *        type: "numeric"
+ *        type: "number"
  *      FH_NoxAnnForbCover:
- *        type: "numeric"
+ *        type: "number"
  *      FH_NoxAnnGrassCover:
- *        type: "numeric"
+ *        type: "number"
  *      FH_NoxPerenForbCover:
- *        type: "numeric"
+ *        type: "number"
  *      FH_NoxPerenGrassCover:
  *        type: "number"
  *      FH_NoxShrubCover:
@@ -417,77 +420,75 @@ router.post('/postgap',dataGap.postGap)
  *      FH_NoxSubShrubCover:
  *        type: "number"
  *      FH_NoxSucculentCover:
- *        type: "numeric"
+ *        type: "number"
  *      FH_NoxTreeCover:
- *        type: "numeric"
+ *        type: "number"
  *      FH_RockCover:
- *        type: "numeric"
+ *        type: "number"
  *      FH_SagebrushCover:
- *        type: "numeric"
+ *        type: "number"
  *      FH_TotalLitterCover:
- *        type: "numeric"
+ *        type: "number"
  *      FH_VagrLichenCover:
- *        type: "numeric"
+ *        type: "number"
  *      FH_WaterCover:
- *        type: "numeric"
+ *        type: "number"
  *      FH_WoodyLitterCover:
- *        type: "numeric"
+ *        type: "number"
  *      GapCover_101_200:
- *        type: "numeric"
+ *        type: "number"
  *      GapCover_200_plus:
- *        type: "numeric"
+ *        type: "number"
  *      GapCover_25_50:
- *        type: "numeric"
+ *        type: "number"
  *      GapCover_25_plus:
- *        type: "numeric"
+ *        type: "number"
  *      GapCover_51_100:
- *        type: "numeric"
+ *        type: "number"
  *      GlobalID:
  *        type: "string"
  *      Hgt_Forb_Avg:
- *        type: "numeric"
+ *        type: "number"
  *      Hgt_Grass_Avg:
- *        type: "numeric"
+ *        type: "number"
  *      Hgt_Herbaceous_Avg:
- *        type: "numeric"
+ *        type: "number"
  *      Hgt_NonNoxPerenGrass_Avg:
- *        type: "numeric"
+ *        type: "number"
  *      Hgt_NonSagebrushShrub_Avg:
- *        type: "numeric"
+ *        type: "number"
  *      Hgt_NoxPerenGrass_Avg:
- *        type: "numeric"
+ *        type: "number"
  *      Hgt_PerenForbGrass_Avg:
- *        type: "numeric"
+ *        type: "number"
  *      Hgt_PerenForb_Avg:
- *        type: "numeric"
+ *        type: "number"
  *      Hgt_PerenGrass_Avg:
- *        type: "numeric"
+ *        type: "number"
  *      Hgt_Sagebrush_Avg:
- *        type: "numeric"
+ *        type: "number"
  *      Hgt_Sagebrush_Live_Avg:
- *        type: "numeric"
+ *        type: "number"
  *      Hgt_ShortPerenGrass_Avg:
- *        type: "numeric"
+ *        type: "number"
  *      Hgt_TallPerenGrass_Avg:
- *        type: "numeric"
+ *        type: "number"
  *      Hgt_Woody_Avg:
- *        type: "numeric"
+ *        type: "number"
  *      Latitude_NAD83:
- *        type: "numeric"
+ *        type: "number"
  *      LocationType:
  *        type: "string"
  *      Longitude_NAD83:
- *        type: "numeric"
+ *        type: "number"
  *      NumSpp_NonNoxPlant:
- *        type: "numeric"
+ *        type: "integer"
  *      NumSpp_NoxPlant:
- *        type: "numeric"
+ *        type: "integer"
  *      NumSpp_PreferredForb:
- *        type: "numeric"
- *      PLOTKEY:
- *        type: "string"
+ *        type: "integer"
  *      PercentCoveredByEcoSite:
- *        type: "numeric"
+ *        type: "number"
  *      PlotID:
  *        type: "string"
  *      PlotKey:
@@ -542,26 +543,24 @@ router.post('/postgap',dataGap.postGap)
  *        type: "string"
  *      RH_WindScouredAreas:
  *        type: "string"
- *      RecordCount:
- *        type: "string"
  *      SagebrushShape_All_ColumnCount:
- *        type: "numeric"
+ *        type: "number"
  *      SagebrushShape_All_Predominant:
  *        type: "string"
  *      SagebrushShape_All_SpreadCount:
- *        type: "numeric"
+ *        type: "number"
  *      SagebrushShape_Live_ColumnCount:
- *        type: "numeric"
+ *        type: "number"
  *      SagebrushShape_Live_Predominant:
  *        type: "string"
  *      SagebrushShape_Live_SpreadCount:
- *        type: "numeric"
+ *        type: "number"
  *      SoilStability_All:
- *        type: "numeric"
+ *        type: "number"
  *      SoilStability_Protected:
- *        type: "numeric"
+ *        type: "number"
  *      SoilStability_Unprotected:
- *        type: "numeric"
+ *        type: "number"
  *      Spp_Nox:
  *        type: "string"
  *      Spp_PreferredForb:
@@ -575,20 +574,24 @@ router.post('/postgap',dataGap.postGap)
  *      State:
  *        type: "string"
  *      TotalFoliarCover:
- *        type: "numeric"
+ *        type: "number"
  *      created_date:
- *        type: "date"
+ *        type: "string"
+ *        format: date
  *      created_user:
- *        type: "date"
+ *        type: "string"
+ *        format: date
  *      last_edited_date:
- *        type: "date"
+ *        type: "string"
+ *        format: date
  *      last_edited_user:
- *        type: "date"
+ *        type: "string"
+ *        format: date
  *  geospecies:
  *    type: "object"
  *    properties:
  *      AH_SpeciesCover:
- *        type: "numeric"
+ *        type: "number"
  *      AH_SpeciesCover_n:
  *        type: "integer"
  *      DBKey:
@@ -616,15 +619,20 @@ router.post('/postgap',dataGap.postGap)
  *      Species:
  *        type: "string"
  *      created_date:
- *        type: "date"
+ *        type: "string"
+ *        format: date
  *      created_user:
- *        type: "date"
+ *        type: "string"
+ *        format: date
  *      last_edited_date:
- *        type: "date"
+ *        type: "string"
+ *        format: date
  *      last_edited_user:
- *        type: "date"
+ *        type: "string"
+ *        format: date
  *      DateLoadedInDb:
- *        type: "date"
+ *        type: "string"
+ *        format: date
  *      SpeciesKey:
  *        type: "string"
  *  dataspeciesinventory:
@@ -635,19 +643,13 @@ router.post('/postgap',dataGap.postGap)
  *      RecKey:
  *        type: "string"
  *      DateModified:
- *        type: "date"
+ *        type: "string"
+ *        format: date
  *      FormType:
  *        type: "string"
  *      FormDate:
- *        type: "date"
- *      Observer:
  *        type: "string"
- *      Recorder:
- *        type: "string"
- *      DataEntry:
- *        type: "string"
- *      DataErrorChecking:
- *        type: "string"
+ *        format: date
  *      SpecRichMethod:
  *        type: "number"
  *      SpecRichMeasure:
@@ -717,19 +719,24 @@ router.post('/postgap',dataGap.postGap)
  *      Notes:
  *        type: "string"
  *      DateLoadedInDb:
- *        type: "date"
+ *        type: "string"
+ *        format: date
  *      PrimaryKey:
  *        type: "string"
  *      DBKey:
  *        type: "string"
  *      created_user:
- *        type: "date"
+ *        type: "string"
+ *        format: date
  *      created_date:
- *        type: "date"
+ *        type: "string"
+ *        format: date
  *      last_edited_user:
- *        type: "date"
+ *        type: "string"
+ *        format: date
  *      last_edited_date:
- *        type: "date"
+ *        type: "string"
+ *        format: date
  *      GlobalID:
  *        type: "string"
  *      Species:
@@ -768,11 +775,13 @@ router.post('/postgap',dataGap.postGap)
  *      LineKey:
  *        type: "string"
  *      DateModified:
- *        type: "date"
+ *        type: "string"
+ *        format: date
  *      FormType:
  *        type: "string"
  *      FormDate:
- *        type: "date"
+ *        type: "string"
+ *        format: date
  *      Observer:
  *        type: "string"
  *      Recorder:
@@ -804,7 +813,8 @@ router.post('/postgap',dataGap.postGap)
  *      UOM:
  *        type: "string"
  *      DateLoadedInDb:
- *        type: "date"
+ *        type: "string"
+ *        format: date
  *  datalpi:
  *    type: "object"
  *    properties:
@@ -813,11 +823,13 @@ router.post('/postgap',dataGap.postGap)
  *      RecKey:
  *        type: "string"
  *      DateModified:
- *        type: "date"
+ *        type: "string"
+ *        format: date
  *      FormType:
  *        type: "string"
  *      FormDate:
- *        type: "date"
+ *        type: "string"
+ *        format: date
  *      Observer:
  *        type: "number"
  *      Recorder:
@@ -867,7 +879,8 @@ router.post('/postgap',dataGap.postGap)
  *      STATE:
  *        type: "string"
  *      DateLoadedInDb:
- *        type: "date"
+ *        type: "string"
+ *        format: date
  *      SAGEBRUSH_SPP:
  *        type: "string"
  *      PLOTKEY:
@@ -882,11 +895,13 @@ router.post('/postgap',dataGap.postGap)
  *      RecKey:
  *        type: "string"
  *      DateModified:
- *        type: "date"
+ *        type: "string"
+ *        format: date
  *      FormType:
  *        type: "string"
  *      FormDate:
- *        type: "date"
+ *        type: "string"
+ *        format: date
  *      LineKey:
  *        type: "number"
  *      Observer:
@@ -902,7 +917,8 @@ router.post('/postgap',dataGap.postGap)
  *      Notes:
  *        type: "string"
  *      DateLoadedInDb:
- *        type: "date"
+ *        type: "string"
+ *        format: date
  *      PrimaryKey:
  *        type: "string"
  *      DBKey:
@@ -930,19 +946,13 @@ router.post('/postgap',dataGap.postGap)
  *      RecKey:
  *        type: "string"
  *      DateModified:
- *        type: "date"
+ *        type: "string"
+ *        format: date
  *      FormType:
  *        type: "string"
  *      FormDate:
- *        type: "date"
- *      Observer:
  *        type: "string"
- *      Recorder:
- *        type: "string"
- *      DataEntry:
- *        type: "string"
- *      DataErrorChecking:
- *        type: "string"
+ *        format: date
  *      Direction:
  *        type: "string"
  *      Measure:
@@ -968,7 +978,8 @@ router.post('/postgap',dataGap.postGap)
  *      NoBasalGaps:
  *        type: "number"
  *      DateLoadedInDb:
- *        type: "date"
+ *        type: "string"
+ *        format: date
  *      PerennialsBasal:
  *        type: "number"
  *      AnnualGrassesBasal:
@@ -993,10 +1004,6 @@ router.post('/postgap',dataGap.postGap)
  *        type: "string"
  *      ProjectKey:
  *        type: "string"
- *      STATE:
- *        type: "string"
- *      PLOTKEY:
- *        type: "string"
  *  dataheader:
  *    type: "object"
  *    properties:
@@ -1019,9 +1026,11 @@ router.post('/postgap',dataGap.postGap)
  *      State:
  *        type: "string"
  *      DateEstablished:
- *        type: "date"
+ *        type: "string"
+ *        format: date
  *      DateLoadedInDb:
- *        type: "date"
+ *        type: "string"
+ *        format: date
  *      ProjectName:
  *        type: "string"
  *      ProjectKey:
@@ -1029,9 +1038,8 @@ router.post('/postgap',dataGap.postGap)
  *      LocationType:
  *        type: "string"
  *      DateVisited:
- *        type: "date"
- *      ELEVATION:
- *        type: "number"
+ *        type: "string"
+ *        format: date
  *      PercentCoveredByEcoSite:
  *        type: "number"
  *      wkb_geometry:
