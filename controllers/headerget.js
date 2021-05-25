@@ -84,7 +84,7 @@ exports.postHeader = (req, res, next) =>{
                 console.log("found record; skipping ")
               } else {
                 console.log(value[1])
-                dataHeader.create(value[1])
+                // dataHeader.create(value[1])
               }
             })
 

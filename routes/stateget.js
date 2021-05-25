@@ -11,7 +11,7 @@ const dataHeader = require('../controllers/headerget')
 const dataSoilStability = require('../models/dataSoilStability')
 const checkJwt = require('../index')
 const jwtok = require('jsonwebtoken');
-// const postTest=require('../controllers/posttest')
+const postTest=require('../controllers/posttest')
 
 
 const router = express.Router()
@@ -1423,7 +1423,7 @@ router.get('/geoindicators',geoIndicatorsController.getGeoInd)
 router.post('/postheader',dataHeader.postHeader)
 
 
-// router.post("/posttest",postTest.postTest)
+router.post("/posttest",postTest.postTest)
 
 
 module.exports = router
