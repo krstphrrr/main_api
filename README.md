@@ -29,7 +29,7 @@
 
 <img src='./images/main-api-file-structure.png' alt='File structure of the DIMA API repository' width='35%'>
 
-(As of June 1, 2021)
+File structure current as of June 2, 2021. Directory `node_modules` excluded.
 
 &nbsp;
 
