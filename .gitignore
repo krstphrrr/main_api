@@ -1,4 +1,4 @@
-# CMF:01-JUN-2021: Added .DS_Store for macOS
+# CMF 01-JUN-2021: Added .DS_Store for macOS
 .DS_Store
 node_modules/.bin/is-ci
 node_modules/.bin/is-ci.cmd
