@@ -1,7 +1,7 @@
 # Endpoints, query parameters, and JSON property names for `main_api`
 &nbsp;
 
-The table below maps the `main_api` endpoints to `gisDB` table names along with the query parameters (in bold) and JSON response property names to the `gisDB` database column names. The table is current as of 08-JUN-2021.
+The table below maps the `main_api` endpoints to `gisDB` table names along with query parameters (in bold) and JSON response property names to the `gisDB` database column names. The table is current as of 08-JUN-2021.
 &nbsp;
 
 |     API Endpoint     |       API Query Parameter       |      Table Name      |           Column Name           |   Column Description                                                                                                                                                                                                                                                                                                                                               
