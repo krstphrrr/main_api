@@ -75,22 +75,23 @@ curl --location --request GET 'https://api.landscapedatacommons.org/api/datahead
 
 ### Using [Python](https://www.python.org/)
 
-The code below uses the [http.client](https://docs.python.org/3/library/http.client.html) module.
+The code below uses the [Requests](https://docs.python-requests.org/en/master/) module.
 ```
-import http.client
+import requests
 import json
 
-conn = http.client.HTTPSConnection("api.landscapedatacommons.org")
+url = "https://api.landscapedatacommons.org/api/dataheader?PrimaryKey=09010103235631742013-09-01"
+
 payload = json.dumps({
   "text": "Text"
 })
 headers = {
   'Content-Type': 'application/json'
 }
-conn.request("GET", "/api/dataheader?PrimaryKey=09010103235631742013-09-01", payload, headers)
-res = conn.getresponse()
-data = res.read()
-print(data.decode("utf-8"))
+
+response = requests.request("GET", url, headers=headers, data=payload)
+
+print(response.text)
 ```
 &nbsp;
 
