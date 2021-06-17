@@ -97,26 +97,29 @@ print(response.text)
 
 ### Using [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
 
-The code below uses the [Fetch](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API) API.
+The code below uses the [Axios package](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API) for [Node.js](https://nodejs.org/en/).
 ```
-var myHeaders = new Headers();
-myHeaders.append("Content-Type", "application/json");
-
-var raw = JSON.stringify({
+var axios = require('axios');
+var data = JSON.stringify({
   "text": "Text"
 });
 
-var requestOptions = {
-  method: 'GET',
-  headers: myHeaders,
-  body: raw,
-  redirect: 'follow'
+var config = {
+  method: 'get',
+  url: 'https://api.landscapedatacommons.org/api/dataheader?PrimaryKey=09010103235631742013-09-01',
+  headers: { 
+    'Content-Type': 'application/json'
+  },
+  data : data
 };
 
-fetch("https://api.landscapedatacommons.org/api/dataheader?PrimaryKey=09010103235631742013-09-01", requestOptions)
-  .then(response => response.text())
-  .then(result => console.log(result))
-  .catch(error => console.log('error', error));
+axios(config)
+.then(function (response) {
+  console.log(JSON.stringify(response.data));
+})
+.catch(function (error) {
+  console.log(error);
+});
 ```
 &nbsp;
 
