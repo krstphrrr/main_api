@@ -97,7 +97,7 @@ print(response.text)
 
 ### Using [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
 
-The code below uses the [Axios package](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API) for [Node.js](https://nodejs.org/en/).
+The code below uses the [Axios package](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API) with [Node.js](https://nodejs.org/en/).
 ```
 var axios = require('axios');
 var data = JSON.stringify({
